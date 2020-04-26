@@ -1,0 +1,20 @@
+{
+  "name": "web-based-cmms-system",
+  "version": "1.0.0",
+  "description": "Prototype implementation of a web-based CMMS system using MERN stack.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nada-Ashraf/web-based-cmms-system.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nada-Ashraf/web-based-cmms-system/issues"
+  },
+  "homepage": "https://github.com/Nada-Ashraf/web-based-cmms-system#readme"
+}
