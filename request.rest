@@ -1,0 +1,17 @@
+POST http://localhost:3000/api/assets/add_asset
+content-type: application/json
+
+{
+    "name": "something",
+    "number": "something",
+    "serial_number": "something",
+    "model": "something",
+    "department": "something",
+    "price": "1000",
+    "location": "something",
+    "supplier": "something",
+    "condition": 1,
+    "last_pm_date": "2017-09-14",
+    "last_failure_date": "2017-09-14",
+    "last_fix_date": "2017-09-14"
+}
