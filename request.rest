@@ -3,8 +3,7 @@ content-type: application/json
 
 {
     "name": "something",
-    "number": "something",
-    "serial_number": "something",
+    "serial_number": "something2",
     "model": "something",
     "department": "something",
     "price": "1000",
@@ -15,3 +14,7 @@ content-type: application/json
     "last_failure_date": "2017-09-14",
     "last_fix_date": "2017-09-14"
 }
+
+
+GET http://localhost:3000/api/assets/view_assets/something2
+content-type: application/json
