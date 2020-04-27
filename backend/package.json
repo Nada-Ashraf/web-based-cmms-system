@@ -4,7 +4,8 @@
   "description": "Prototype implementation of a web-based CMMS system using MERN stack.",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && PORT=3001 npm start\" "
+    "start": "node app.js",
+    "dev": "nodemon app.js" 
   },
   "repository": {
     "type": "git",
@@ -16,8 +17,5 @@
   "bugs": {
     "url": "https://github.com/Nada-Ashraf/web-based-cmms-system/issues"
   },
-  "homepage": "https://github.com/Nada-Ashraf/web-based-cmms-system#readme",
-  "devDependencies": {
-    "concurrently": "^5.2.0"
-  }
+  "homepage": "https://github.com/Nada-Ashraf/web-based-cmms-system#readme"
 }

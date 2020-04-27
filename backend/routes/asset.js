@@ -34,7 +34,8 @@ router.post("/add_asset", async (req, res) => {
 // View All assets
 router.get("/", async (req, res) => {
   const assets = await Asset.find();
-  res.send(assets);
+  // res.send(assets);
+  res.json(assets);
 });
 
 // View details of one asset
