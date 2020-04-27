@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Nada-Ashraf/web-based-cmms-system#readme",
   "devDependencies": {
-    "concurrently": "^5.2.0"
+    "concurrently": "^5.2.0",
+    "nodemon": "^2.0.3"
   }
 }
