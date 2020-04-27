@@ -1,3 +1,4 @@
+// api to work with mongodb database
 const mongoose = require("mongoose");
 
 // mongoose connect method returns a promise
