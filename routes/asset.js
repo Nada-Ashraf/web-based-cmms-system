@@ -32,16 +32,44 @@ router.post("/add_asset", async (req, res) => {
 });
 
 // View All assets
-router.get("/view_assets", async (req, res) => {
+router.get("/", async (req, res) => {
   const assets = await Asset.find();
   res.send(assets);
 });
 
 // View details of one asset
-router.get("/view_assets/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
   const asset = await Asset.find({ serial_number: req.params.id });
   res.send(asset);
   console.log(asset);
+});
+
+// Edit asset
+router.put("/:id", async (req, res) => {
+  const asset = await Asset.findByIdAndUpdate(
+    req.params.id,
+    _.pick(req.body, [
+      "name",
+      "serial_number",
+      "model",
+      "department",
+      "price",
+      "location",
+      "supplier",
+      "condition",
+      "last_pm_date",
+      "last_failure_date",
+      "last_fix_date",
+    ]),
+    { new: true }
+  );
+  res.send(asset);
+});
+
+// Delete asset
+router.delete("/:id", async (req, res) => {
+  const asset = await Asset.findByIdAndRemove(req.params.id);
+  res.send(asset);
 });
 
 module.exports = router;

@@ -15,6 +15,28 @@ content-type: application/json
     "last_fix_date": "2017-09-14"
 }
 
-
-GET http://localhost:3000/api/assets/view_assets/something2
+###
+GET http://localhost:3000/api/assets
 content-type: application/json
+
+### 
+GET http://localhost:3000/api/assets/edited2
+content-type: application/json
+
+### 
+PUT http://localhost:3000/api/assets/5ea72c367bf92022476a79dd
+content-type: application/json
+
+{
+    "name": "edited",
+    "serial_number": "edited2",
+    "model": "edited",
+    "department": "edited",
+    "price": "1000",
+    "location": "edited",
+    "supplier": "edited",
+    "condition": 1,
+    "last_pm_date": "2017-09-14",
+    "last_failure_date": "2017-09-14",
+    "last_fix_date": "2017-09-14"
+}
