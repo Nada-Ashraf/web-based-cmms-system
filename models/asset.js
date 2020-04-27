@@ -18,6 +18,7 @@ const assetSchema = new mongoose.Schema({
   condition: Boolean,
   last_pm_date: Date,
   last_failure_date: Date,
+  last_fix_date: Date,
 });
 
 // compile schema into a model to create a class
