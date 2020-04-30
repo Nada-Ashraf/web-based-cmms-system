@@ -8,8 +8,8 @@ const employeeSchema = new mongoose.Schema({
   },
   phone_number: Number,
   gender: { type: String, enum: ["Female", "Male"] },
-  shift_start: Timestamp,
-  shift_end: Timestamp,
+  shift_start: Date,
+  shift_end: Date,
 });
 
 // compile schema into a model to create a class
