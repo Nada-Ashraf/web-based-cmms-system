@@ -12,6 +12,10 @@ const reportSchema = new mongoose.Schema({
   },
   body: String,
   open_date: Date,
+  status: {
+    type: String,
+    enum: ["Open", "Assigned", "Closed"],
+  },
   finish_date: Date,
 });
 
