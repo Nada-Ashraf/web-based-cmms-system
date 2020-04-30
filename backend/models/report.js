@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const { Asset } = require("./asset");
 
 const reportSchema = new mongoose.Schema({
   name_of_reporter: String,

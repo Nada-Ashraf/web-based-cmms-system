@@ -20,7 +20,7 @@ router.post("/report_asset", async (req, res) => {
 
 // view reports
 router.get("/", async (req, res) => {
-  const reports = await Report.find().populate();
+  const reports = await Report.find().populate("asset");
   res.send(reports);
 });
 
