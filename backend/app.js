@@ -1,7 +1,8 @@
 // Required External Modules
 const mongoose = require("mongoose");
 const express = require("express");
-const assets = require("./routes/asset");
+const assets = require("./routes/assets");
+const reports = require("./routes/reports");
 const bodyParser = require("body-parser");
 
 // App Variables
@@ -21,6 +22,7 @@ mongoose
 
 // Routes files
 app.use("/api/assets", assets);
+app.use("/api/reports", reports);
 
 // Server Activation
 app.listen(port, () => console.log(`listening in port ${port}...`));

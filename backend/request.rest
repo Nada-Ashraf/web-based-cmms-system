@@ -3,7 +3,7 @@ content-type: application/json
 
 {
     "name": "something",
-    "serial_number": "something2",
+    "serial_number": "123",
     "model": "something",
     "department": "something",
     "price": "1000",
@@ -40,3 +40,23 @@ content-type: application/json
     "last_failure_date": "2017-09-14",
     "last_fix_date": "2017-09-14"
 }
+
+
+
+### 
+POST http://localhost:3000/api/assets/report_asset
+content-type: application/json
+
+{
+    "name_of_reporter":"nada",
+    "asset":"5eab1f5a5ddc7d1a5edf0489",
+    "body":"this is report body",
+    "date":"2017-09-14",
+    "finish_date":"2017-09-14"
+}
+
+###
+GET http://localhost:3000/api/reports
+content-type: application/json
+
+

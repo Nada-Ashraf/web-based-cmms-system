@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { Asset } = require("./asset");
 
 const reportSchema = new mongoose.Schema({
   name_of_reporter: String,
@@ -12,6 +13,6 @@ const reportSchema = new mongoose.Schema({
 });
 
 // compile schema into a model to create a class
-const Report = mongoose.model("Asset", reportSchema);
+const Report = mongoose.model("Report", reportSchema);
 
 exports.Report = Report;
