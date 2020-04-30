@@ -8,9 +8,10 @@ router.post("/report_asset", async (req, res) => {
   report = new Report(
     _.pick(req.body, [
       "name_of_reporter",
+      "title",
       "asset",
       "body",
-      "date",
+      "open_date",
       "finish_date",
     ])
   );

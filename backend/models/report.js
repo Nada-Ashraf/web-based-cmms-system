@@ -1,13 +1,17 @@
 const mongoose = require("mongoose");
 
 const reportSchema = new mongoose.Schema({
-  name_of_reporter: String,
+  reporter: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Employee",
+  },
+  title: String,
   asset: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Asset",
   },
   body: String,
-  date: Date,
+  open_date: Date,
   finish_date: Date,
 });
 

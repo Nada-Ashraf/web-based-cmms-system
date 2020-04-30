@@ -49,9 +49,10 @@ content-type: application/json
 
 {
     "name_of_reporter":"nada",
+    "title":"report",
     "asset":"5eab1f5a5ddc7d1a5edf0489",
     "body":"this is report body",
-    "date":"2017-09-14",
+    "open_date":"2017-09-14",
     "finish_date":"2017-09-14"
 }
 
