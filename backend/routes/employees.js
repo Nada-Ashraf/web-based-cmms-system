@@ -6,7 +6,7 @@ const _ = require("lodash");
 // Add employee
 router.post("/add_employee", async (req, res) => {
   let employee = await Employee.findOne({
-    serial_number: req.body.serial_number,
+    ssn: req.body.ssn,
   });
   if (employee) {
     return res.status(400).send("This employee already exisits!");
@@ -14,6 +14,7 @@ router.post("/add_employee", async (req, res) => {
     employee = new Employee(
       _.pick(req.body, [
         "ssn",
+        "name",
         "position",
         "phone_number",
         "gender",
@@ -35,9 +36,8 @@ router.get("/", async (req, res) => {
 
 // View details of one asset
 router.get("/:id", async (req, res) => {
-  const employee = await Employee.find({ ssn: req.params.id });
+  const employee = await Employee.findById(req.params.id);
   res.send(employee);
-  console.log(employee);
 });
 
 // Edit employee
@@ -46,6 +46,7 @@ router.put("/:id", async (req, res) => {
     req.params.id,
     _.pick(req.body, [
       "ssn",
+      "name",
       "position",
       "phone_number",
       "gender",

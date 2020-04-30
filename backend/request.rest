@@ -1,3 +1,5 @@
+### test assets routes
+
 POST http://localhost:3000/api/assets/add_asset
 content-type: application/json
 
@@ -20,7 +22,7 @@ GET http://localhost:3000/api/assets
 content-type: application/json
 
 ### 
-GET http://localhost:3000/api/assets/edited2
+GET http://localhost:3000/api/assets/5ea72c367bf92022476a79dd
 content-type: application/json
 
 ### 
@@ -42,7 +44,7 @@ content-type: application/json
 }
 
 
-
+### test reports routes
 ### 
 POST http://localhost:3000/api/assets/report_asset
 content-type: application/json
@@ -60,4 +62,38 @@ content-type: application/json
 GET http://localhost:3000/api/reports
 content-type: application/json
 
+### test employees routes
+POST http://localhost:3000/api/employees/add_employee
+content-type: application/json
 
+{
+    "ssn":"1234",
+    "name":"nada",
+    "position":"Manager",
+    "phone_number":"010",
+    "gender":"Female",
+    "shift_start":"2017-09-14",
+    "shift_end":"2017-09-14"
+}
+
+###
+GET http://localhost:3000/api/employees
+content-type: application/json
+
+### 
+GET http://localhost:3000/api/employees/5eab305ee8b082327ae6722c
+content-type: application/json
+
+### 
+PUT http://localhost:3000/api/employees/5eab305ee8b082327ae6722c
+content-type: application/json
+
+{
+    "ssn":"123",
+    "name":"edited",
+    "position":"Manager",
+    "phone_number":"010",
+    "gender":"Female",
+    "shift_start":"2017-09-14",
+    "shift_end":"2017-09-14"
+}

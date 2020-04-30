@@ -40,7 +40,7 @@ router.get("/", async (req, res) => {
 
 // View details of one asset
 router.get("/:id", async (req, res) => {
-  const asset = await Asset.find({ serial_number: req.params.id });
+  const asset = await Asset.findById(req.params.id);
   res.send(asset);
   console.log(asset);
 });
