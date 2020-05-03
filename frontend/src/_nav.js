@@ -2,7 +2,7 @@ export default {
   items: [
     {
       name: "Assets",
-      url: "/theme/Assets",
+      url: "/Assets",
       icon: "icon-screen-desktop",
     },
   ],

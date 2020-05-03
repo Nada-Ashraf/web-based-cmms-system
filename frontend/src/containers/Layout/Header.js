@@ -13,7 +13,7 @@ const propTypes = {
 
 const defaultProps = {};
 
-class DefaultHeader extends Component {
+class Header extends Component {
   render() {
     // eslint-disable-next-line
     const { children, ...attributes } = this.props;
@@ -45,7 +45,7 @@ class DefaultHeader extends Component {
   }
 }
 
-DefaultHeader.propTypes = propTypes;
-DefaultHeader.defaultProps = defaultProps;
+Header.propTypes = propTypes;
+Header.defaultProps = defaultProps;
 
-export default DefaultHeader;
+export default Header;

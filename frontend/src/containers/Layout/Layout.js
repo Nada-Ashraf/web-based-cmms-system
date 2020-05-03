@@ -18,9 +18,9 @@ import navigation from "../../_nav";
 // routes config
 import routes from "../../routes";
 
-const DefaultHeader = React.lazy(() => import("./DefaultHeader"));
+const Header = React.lazy(() => import("./Header"));
 
-class DefaultLayout extends Component {
+class Layout extends Component {
   loading = () => (
     <div className="animated fadeIn pt-1 text-center">Loading...</div>
   );
@@ -35,7 +35,7 @@ class DefaultLayout extends Component {
       <div className="app">
         <AppHeader fixed>
           <Suspense fallback={this.loading()}>
-            <DefaultHeader />
+            <Header />
           </Suspense>
         </AppHeader>
         <div className="app-body">
@@ -79,4 +79,4 @@ class DefaultLayout extends Component {
   }
 }
 
-export default DefaultLayout;
+export default Layout;
