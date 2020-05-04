@@ -4,8 +4,8 @@ import { Nav, NavItem } from "reactstrap";
 import PropTypes from "prop-types";
 
 import { AppNavbarBrand, AppSidebarToggler } from "@coreui/react";
-import logo from "../../assets/img/brand/logo.svg";
-import sygnet from "../../assets/img/brand/sygnet.svg";
+import logo from "../../assets/img/brand/logo.png";
+import sygnet from "../../assets/img/brand/sygnet.png";
 
 const propTypes = {
   children: PropTypes.node,
@@ -22,7 +22,7 @@ class Header extends Component {
       <React.Fragment>
         <AppSidebarToggler className="d-lg-none" display="md" mobile />
         <AppNavbarBrand
-          full={{ src: logo, width: 89, height: 25, alt: "CoreUI Logo" }}
+          full={{ src: logo, width: 150, height: 30, alt: "CoreUI Logo" }}
           minimized={{ src: sygnet, width: 30, height: 30, alt: "CoreUI Logo" }}
         />
         <AppSidebarToggler className="d-md-down-none" display="lg" />
@@ -35,7 +35,7 @@ class Header extends Component {
           </NavItem>
           <NavItem className="px-3">
             <Link to="/users" className="nav-link">
-              Users
+              Calendar
             </Link>
           </NavItem>
         </Nav>
