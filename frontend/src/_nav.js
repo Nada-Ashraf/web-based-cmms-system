@@ -14,6 +14,18 @@ export default {
       name: "Reports",
       url: "/Reports",
       icon: "icon-docs",
+      children: [
+        {
+          name: "PM",
+          url: "",
+          icon: "icon-refresh",
+        },
+        {
+          name: "Repair",
+          url: "",
+          icon: "icon-wrench",
+        },
+      ],
     },
   ],
 };
