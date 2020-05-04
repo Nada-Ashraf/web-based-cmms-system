@@ -1,6 +1,18 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Card, CardBody, CardHeader, Table } from "reactstrap";
+import { Badge, Card, CardBody, CardHeader, Table } from "reactstrap";
+
+const getBadge = (status) => {
+  return status === "In service"
+    ? "success"
+    : status === "Scrapped"
+    ? "secondary"
+    : status === "Need repair"
+    ? "warning"
+    : status === "Out of service"
+    ? "danger"
+    : "primary";
+};
 
 class Assets extends Component {
   state = { assets: [] };
@@ -12,7 +24,6 @@ class Assets extends Component {
   }
 
   render() {
-    // const userList = usersData.filter((user) => user.id < 10);
     return (
       <div className="animated fadeIn">
         <Card>
@@ -24,21 +35,27 @@ class Assets extends Component {
             <Table responsive hover>
               <thead>
                 <tr>
-                  <th scope="col">id</th>
-                  <th scope="col">name</th>
-                  <th scope="col">registered</th>
-                  <th scope="col">role</th>
-                  <th scope="col">status</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Model</th>
+                  <th scope="col">Serial Number</th>
+                  <th scope="col">Department</th>
+                  <th scope="col">Status</th>
                 </tr>
               </thead>
               <tbody>
                 {this.state.assets.map((asset) => (
                   <tr key={asset.serial_number}>
-                    <td>{asset.name}</td>
+                    <td>
+                      <Link to={`/assets/${asset._id}`}>{asset.name}</Link>
+                    </td>
+                    <td>{asset.model}</td>
                     <td>{asset.serial_number}</td>
-                    <td>{asset.price}</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
+                    <td>{asset.department}</td>
+                    <td>
+                      <Badge color={getBadge(asset.condition)}>
+                        {asset.condition}
+                      </Badge>
+                    </td>
                   </tr>
                 ))}
               </tbody>
