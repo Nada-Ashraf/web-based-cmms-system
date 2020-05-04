@@ -8,12 +8,12 @@ export default {
     {
       name: "Employees",
       url: "/Employees",
-      icon: "icon-screen-desktop",
+      icon: "icon-user",
     },
     {
       name: "Reports",
       url: "/Reports",
-      icon: "icon-screen-desktop",
+      icon: "icon-docs",
     },
   ],
 };
