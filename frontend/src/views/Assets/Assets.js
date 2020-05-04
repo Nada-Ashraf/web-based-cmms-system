@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Badge, Card, CardBody, CardHeader, Table } from "reactstrap";
+import { Button, Badge, Card, CardBody, CardHeader, Table } from "reactstrap";
 
 const getBadge = (status) => {
   return status === "In service"
@@ -40,13 +40,15 @@ class Assets extends Component {
                   <th scope="col">Serial Number</th>
                   <th scope="col">Department</th>
                   <th scope="col">Status</th>
+                  <th scope="col"></th>
                 </tr>
               </thead>
               <tbody>
                 {this.state.assets.map((asset) => (
                   <tr key={asset.serial_number}>
                     <td>
-                      <Link to={`/assets/${asset._id}`}>{asset.name}</Link>
+                      {/* <Link to={`/assets/${asset._id}`}>{asset.name}</Link> */}
+                      {asset.name}
                     </td>
                     <td>{asset.model}</td>
                     <td>{asset.serial_number}</td>
@@ -55,6 +57,18 @@ class Assets extends Component {
                       <Badge color={getBadge(asset.condition)}>
                         {asset.condition}
                       </Badge>
+                    </td>
+                    <td>
+                      <Button className="float-right" color="ghost-danger">
+                        <i className="icon-trash"></i>&nbsp;Delete
+                      </Button>
+                      <Button className="float-right" color="ghost-success">
+                        <i className=" icon-pencil"></i>&nbsp;Edit
+                      </Button>
+                      <Button className="float-right" color="ghost-primary">
+                        <i className="icon-book-open"></i>
+                        &nbsp;Details
+                      </Button>
                     </td>
                   </tr>
                 ))}
