@@ -30,7 +30,7 @@ class Assets extends Component {
           <CardHeader>
             <i className="fa fa-align-justify"></i> Assets{" "}
             <small className="text-muted">list</small>
-            <Link>
+            <Link to="/Assets/add_asset">
               <Button className="float-right" color="primary">
                 <i className="icon-plus"></i>
                 &nbsp;Add Asset
