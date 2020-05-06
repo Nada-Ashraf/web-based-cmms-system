@@ -8,7 +8,6 @@ const mongoose = require("mongoose");
 // in asset document
 const assetSchema = new mongoose.Schema({
   name: String,
-  number: String,
   serial_number: String,
   model: String,
   department: String,
@@ -23,6 +22,7 @@ const assetSchema = new mongoose.Schema({
   last_failure_date: Date,
   last_fix_date: Date,
   inspection_period_days: Number,
+  notes: String,
 });
 
 // compile schema into a model to create a class

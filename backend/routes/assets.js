@@ -24,6 +24,8 @@ router.post("/add_asset", async (req, res) => {
         "last_pm_date",
         "last_failure_date",
         "last_fix_date",
+        "inspection_period_days",
+        "notes",
       ])
     );
     await asset.save();
@@ -61,6 +63,8 @@ router.put("/:id", async (req, res) => {
       "last_pm_date",
       "last_failure_date",
       "last_fix_date",
+      "inspection_period_days",
+      "notes",
     ]),
     { new: true }
   );
