@@ -146,9 +146,9 @@ class AddAsset extends Component {
                   onChange={this.handleChange}
                 >
                   <option value="0">Please select</option>
-                  <option value="1">Option #1</option>
-                  <option value="2">Option #2</option>
-                  <option value="3">Option #3</option>
+                  <option value="cardiology">cardiology</option>
+                  <option value="radiology">radiology</option>
+                  <option value="operations">operations</option>
                 </Input>
               </Col>
             </FormGroup>

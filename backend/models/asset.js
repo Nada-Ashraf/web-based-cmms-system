@@ -10,7 +10,7 @@ const assetSchema = new mongoose.Schema({
   name: String,
   serial_number: String,
   model: String,
-  department: String,
+  department: { type: String, enum: ["radiology", "cardiology", "operations"] },
   price: Number,
   location: String,
   supplier: String,
