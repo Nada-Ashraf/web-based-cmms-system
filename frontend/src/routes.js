@@ -19,7 +19,7 @@ const routes = [
     name: "Add Asset",
     component: AddAsset,
   },
-  // { path: "/Assets/:id", name: "Asset Details", component: Asset },
+  { path: "/Assets/:id", name: "Asset Details", component: Asset },
   { path: "/Employees", name: "Employees", component: Employees },
   { path: "/Reports", name: "Reports", component: Reports },
   { path: "/users", exact: true, name: "Users", component: Users },

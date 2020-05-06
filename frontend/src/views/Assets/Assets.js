@@ -23,6 +23,21 @@ class Assets extends Component {
       .then((assets) => this.setState({ assets }));
   }
 
+  handleDelete = (assetId) => {
+    // Note: I'm using arrow functions inside the `.fetch()` method.
+    // This makes it so you don't have to bind component functions like `setState`
+    // to the component.
+    fetch("/api/assets/delete/" + assetId, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then(() => {
+        window.location.reload(false);
+      });
+  };
+
   render() {
     return (
       <div className="animated fadeIn">
@@ -65,16 +80,25 @@ class Assets extends Component {
                       </Badge>
                     </td>
                     <td>
-                      <Button className="float-right" color="ghost-danger">
+                      <Button
+                        className="float-right"
+                        color="ghost-danger"
+                        onClick={() => {
+                          this.handleDelete(asset._id);
+                        }}
+                      >
                         <i className="icon-trash"></i>&nbsp;Delete
                       </Button>
+                      handleDelete
                       <Button className="float-right" color="ghost-success">
                         <i className=" icon-pencil"></i>&nbsp;Edit
                       </Button>
-                      <Button className="float-right" color="ghost-primary">
-                        <i className="icon-list"></i>
-                        &nbsp;Details
-                      </Button>
+                      <Link to={`/Assets/${asset._id}`}>
+                        <Button className="float-right" color="ghost-primary">
+                          <i className="icon-list"></i>
+                          &nbsp;Details
+                        </Button>
+                      </Link>
                     </td>
                   </tr>
                 ))}

@@ -73,7 +73,7 @@ router.put("/:id", async (req, res) => {
 });
 
 // Delete asset
-router.delete("/:id", async (req, res) => {
+router.delete("/delete/:id", async (req, res) => {
   const asset = await Asset.findByIdAndRemove(req.params.id);
   res.send(asset);
 });
