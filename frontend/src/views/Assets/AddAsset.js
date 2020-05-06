@@ -3,7 +3,6 @@ import {
   Button,
   Card,
   CardBody,
-  CardFooter,
   CardHeader,
   Col,
   Form,
@@ -13,49 +12,32 @@ import {
 } from "reactstrap";
 
 class AddAsset extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.handleSubmit = this.handleSubmit.bind(this);
-  // }
-
-  // handleSubmit(event) {
-  //   event.preventDefault();
-  //   fetch("/api/assets/add_asset", {
-  //     method: "post",
-  //     headers: {
-  //       Accept: "application/json",
-  //       "Content-Type": "application/json",
-  //     },
-  //     //make sure to serialize your JSON body
-  //     body: JSON.stringify({
-  //       name: this.name.value,
-  //     }),
-  //   }).then((response) => {
-  //     console.log(response);
-  //   });
-  // }
-
   constructor(props) {
     super(props);
-    this.state = { asset_name: "", serial_number: "" };
+    this.state = {
+      asset_name: "",
+      serial_number: "",
+      model: "",
+      department: "",
+      price: "",
+      location: "",
+      supplier: "",
+      notes: "",
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    // const value = event.target.value;
-    // this.setState({
-    //   ...this.state,
-    //   [event.target.name]: value,
-    // });
-    let change = {};
-    change[event.target.name] = event.target.value;
-    this.setState(change);
+    const value = event.target.value;
+    this.setState({
+      ...this.state,
+      [event.target.name]: value,
+    });
   }
 
   handleSubmit(event) {
-    alert("A value was submitted: " + this.state.asset_name);
     event.preventDefault();
     fetch("/api/assets/add_asset", {
       method: "post",
@@ -63,15 +45,19 @@ class AddAsset extends Component {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      //make sure to serialize your JSON body
       body: JSON.stringify({
         name: this.state.asset_name,
         serial_number: this.state.serial_number,
+        model: this.state.model,
+        department: this.state.department,
+        price: this.state.price,
+        location: this.state.location,
+        supplier: this.state.supplier,
+        notes: this.state.notes,
       }),
     }).then((response) => {
       console.log(response);
     });
-    // event.preventDefault();
   }
 
   render() {
@@ -96,9 +82,6 @@ class AddAsset extends Component {
                 <Input
                   type="text"
                   value={this.state.asset_name}
-                  // onChange={(event) => {
-                  //   this.setState({ value: event.target.value });
-                  // }}
                   onChange={this.handleChange}
                   id="asset_name"
                   name="asset_name"
@@ -114,11 +97,6 @@ class AddAsset extends Component {
                 <Input
                   value={this.state.serial_number}
                   onChange={this.handleChange}
-                  // onChange={(event) => {
-                  //   this.setState({
-                  //     serial_number: event.target.serial_number,
-                  //   });
-                  // }}
                   type="text"
                   id="serial_number"
                   name="serial_number"
@@ -132,9 +110,11 @@ class AddAsset extends Component {
               </Col>
               <Col xs="12" md="9">
                 <Input
+                  value={this.state.model}
+                  onChange={this.handleChange}
                   type="text"
-                  id="text-input"
-                  name="text-input"
+                  id="model"
+                  name="model"
                   placeholder="Asset model"
                 />
               </Col>
@@ -146,8 +126,8 @@ class AddAsset extends Component {
               <Col xs="12" md="9">
                 <Input
                   type="date"
-                  id="date-input"
-                  name="date-input"
+                  id="registeration date"
+                  name="registeration date"
                   placeholder="Registeration date"
                   disabled
                 />
@@ -158,7 +138,13 @@ class AddAsset extends Component {
                 <Label htmlFor="select">Department</Label>
               </Col>
               <Col xs="12" md="9">
-                <Input type="select" name="select" id="select">
+                <Input
+                  type="select"
+                  name="department"
+                  id="department"
+                  value={this.state.department}
+                  onChange={this.handleChange}
+                >
                   <option value="0">Please select</option>
                   <option value="1">Option #1</option>
                   <option value="2">Option #2</option>
@@ -173,9 +159,11 @@ class AddAsset extends Component {
               <Col xs="12" md="9">
                 <Input
                   type="text"
-                  id="text-input"
-                  name="text-input"
+                  id="location"
+                  name="location"
                   placeholder="Asset exact location"
+                  value={this.state.location}
+                  onChange={this.handleChange}
                 />
               </Col>
             </FormGroup>
@@ -186,9 +174,11 @@ class AddAsset extends Component {
               <Col xs="12" md="9">
                 <Input
                   type="text"
-                  id="text-input"
-                  name="text-input"
+                  id="price"
+                  name="price"
                   placeholder="Asset purchase price"
+                  value={this.state.price}
+                  onChange={this.handleChange}
                 />
               </Col>
             </FormGroup>
@@ -197,7 +187,13 @@ class AddAsset extends Component {
                 <Label htmlFor="select">Supplier</Label>
               </Col>
               <Col xs="12" md="9">
-                <Input type="select" name="select" id="select">
+                <Input
+                  value={this.state.supplier}
+                  onChange={this.handleChange}
+                  type="select"
+                  name="supplier"
+                  id="supplier"
+                >
                   <option value="0">Please select</option>
                   <option value="1">Option #1</option>
                   <option value="2">Option #2</option>
@@ -210,7 +206,7 @@ class AddAsset extends Component {
                 <Label htmlFor="file-input">Image</Label>
               </Col>
               <Col xs="12" md="9">
-                <Input type="file" id="file-input" name="file-input" />
+                <Input type="file" id="image" name="image" />
               </Col>
             </FormGroup>
             <FormGroup row>
@@ -218,7 +214,7 @@ class AddAsset extends Component {
                 <Label htmlFor="file-input">Manual</Label>
               </Col>
               <Col xs="12" md="9">
-                <Input type="file" id="file-input" name="file-input" />
+                <Input type="file" id="manual" name="manual" />
               </Col>
             </FormGroup>
             <FormGroup row>
@@ -227,27 +223,26 @@ class AddAsset extends Component {
               </Col>
               <Col xs="12" md="9">
                 <Input
+                  value={this.state.notes}
+                  onChange={this.handleChange}
                   type="textarea"
-                  name="textarea-input"
-                  id="textarea-input"
+                  name="notes"
+                  id="notes"
                   rows="9"
                   placeholder="Notes"
                 />
               </Col>
             </FormGroup>
-            <Button type="submit" size="sm" color="primary">
+            <Button
+              className="btn-pill"
+              type="submit"
+              size="lg"
+              color="primary"
+            >
               <i className="fa fa-dot-circle-o"></i> Submit
             </Button>
           </Form>
         </CardBody>
-        {/* <CardFooter>
-          <Button type="submit" size="sm" color="primary">
-            <i className="fa fa-dot-circle-o"></i> Submit
-          </Button>
-          <Button type="reset" size="sm" color="danger">
-            <i className="fa fa-ban"></i> Reset
-          </Button>
-        </CardFooter> */}
       </Card>
     );
   }

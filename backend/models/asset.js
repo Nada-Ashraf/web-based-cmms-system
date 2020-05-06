@@ -17,6 +17,7 @@ const assetSchema = new mongoose.Schema({
   condition: {
     type: String,
     enum: ["In service", "Need repair", "Scrapped", "Out of service"],
+    default: "In service",
   },
   last_pm_date: Date,
   last_failure_date: Date,
