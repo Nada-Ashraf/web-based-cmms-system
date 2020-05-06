@@ -1,31 +1,79 @@
 import React, { Component } from "react";
 import {
-  Badge,
   Button,
   Card,
   CardBody,
   CardFooter,
   CardHeader,
   Col,
-  Collapse,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
-  Fade,
   Form,
   FormGroup,
-  FormText,
-  FormFeedback,
   Input,
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButtonDropdown,
-  InputGroupText,
   Label,
-  Row,
 } from "reactstrap";
 
 class AddAsset extends Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.handleSubmit = this.handleSubmit.bind(this);
+  // }
+
+  // handleSubmit(event) {
+  //   event.preventDefault();
+  //   fetch("/api/assets/add_asset", {
+  //     method: "post",
+  //     headers: {
+  //       Accept: "application/json",
+  //       "Content-Type": "application/json",
+  //     },
+  //     //make sure to serialize your JSON body
+  //     body: JSON.stringify({
+  //       name: this.name.value,
+  //     }),
+  //   }).then((response) => {
+  //     console.log(response);
+  //   });
+  // }
+
+  constructor(props) {
+    super(props);
+    this.state = { asset_name: "", serial_number: "" };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    // const value = event.target.value;
+    // this.setState({
+    //   ...this.state,
+    //   [event.target.name]: value,
+    // });
+    let change = {};
+    change[event.target.name] = event.target.value;
+    this.setState(change);
+  }
+
+  handleSubmit(event) {
+    alert("A value was submitted: " + this.state.asset_name);
+    event.preventDefault();
+    fetch("/api/assets/add_asset", {
+      method: "post",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      //make sure to serialize your JSON body
+      body: JSON.stringify({
+        name: this.state.asset_name,
+        serial_number: this.state.serial_number,
+      }),
+    }).then((response) => {
+      console.log(response);
+    });
+    // event.preventDefault();
+  }
+
   render() {
     return (
       <Card>
@@ -34,10 +82,11 @@ class AddAsset extends Component {
         </CardHeader>
         <CardBody>
           <Form
-            action=""
+            // action=""
             method="post"
             encType="multipart/form-data"
             className="form-horizontal"
+            onSubmit={this.handleSubmit}
           >
             <FormGroup row>
               <Col md="3">
@@ -46,8 +95,13 @@ class AddAsset extends Component {
               <Col xs="12" md="9">
                 <Input
                   type="text"
-                  id="text-input"
-                  name="text-input"
+                  value={this.state.asset_name}
+                  // onChange={(event) => {
+                  //   this.setState({ value: event.target.value });
+                  // }}
+                  onChange={this.handleChange}
+                  id="asset_name"
+                  name="asset_name"
                   placeholder="Asset name"
                 />
               </Col>
@@ -58,9 +112,16 @@ class AddAsset extends Component {
               </Col>
               <Col xs="12" md="9">
                 <Input
+                  value={this.state.serial_number}
+                  onChange={this.handleChange}
+                  // onChange={(event) => {
+                  //   this.setState({
+                  //     serial_number: event.target.serial_number,
+                  //   });
+                  // }}
                   type="text"
-                  id="text-input"
-                  name="text-input"
+                  id="serial_number"
+                  name="serial_number"
                   placeholder="Serial number"
                 />
               </Col>
@@ -174,16 +235,19 @@ class AddAsset extends Component {
                 />
               </Col>
             </FormGroup>
+            <Button type="submit" size="sm" color="primary">
+              <i className="fa fa-dot-circle-o"></i> Submit
+            </Button>
           </Form>
         </CardBody>
-        <CardFooter>
+        {/* <CardFooter>
           <Button type="submit" size="sm" color="primary">
             <i className="fa fa-dot-circle-o"></i> Submit
           </Button>
           <Button type="reset" size="sm" color="danger">
             <i className="fa fa-ban"></i> Reset
           </Button>
-        </CardFooter>
+        </CardFooter> */}
       </Card>
     );
   }

@@ -12,6 +12,7 @@ const port = process.env.PORT || 3000;
 
 // Middlewares
 app.use(bodyParser.json());
+app.use(express.urlencoded());
 
 // Database Connection
 mongoose

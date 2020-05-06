@@ -5,32 +5,33 @@ const _ = require("lodash");
 
 // Add Asset
 router.post("/add_asset", async (req, res) => {
-  let asset = await Asset.findOne({
-    serial_number: req.body.serial_number,
-  });
-  if (asset) {
-    return res.status(400).send("This asset already exisits!");
-  } else {
-    asset = new Asset(
-      _.pick(req.body, [
-        "name",
-        "serial_number",
-        "model",
-        "department",
-        "price",
-        "location",
-        "supplier",
-        "condition",
-        "last_pm_date",
-        "last_failure_date",
-        "last_fix_date",
-        "inspection_period_days",
-        "notes",
-      ])
-    );
-    await asset.save();
-    res.send(asset);
-  }
+  // let asset = await Asset.findOne({
+  //   serial_number: req.body.serial_number,
+  // });
+  // if (asset) {
+  //   return res.status(400).send("This asset already exisits!");
+  // } else {
+  const asset = new Asset(
+    _.pick(req.body, [
+      "name",
+      "serial_number",
+      "model",
+      "department",
+      "price",
+      "location",
+      "supplier",
+      "condition",
+      "last_pm_date",
+      "last_failure_date",
+      "last_fix_date",
+      "inspection_period_days",
+      "notes",
+    ])
+  );
+  await asset.save();
+  res.json(asset);
+  res.end();
+  // }
 });
 
 // View All assets
