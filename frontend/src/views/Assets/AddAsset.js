@@ -23,6 +23,7 @@ class AddAsset extends Component {
       location: "",
       supplier: "",
       notes: "",
+      curTime: new Date().toLocaleString(),
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -55,8 +56,8 @@ class AddAsset extends Component {
         supplier: this.state.supplier,
         notes: this.state.notes,
       }),
-    }).then((response) => {
-      console.log(response);
+    }).then(() => {
+      this.props.history.push("/Assets");
     });
   }
 
@@ -116,20 +117,6 @@ class AddAsset extends Component {
                   id="model"
                   name="model"
                   placeholder="Asset model"
-                />
-              </Col>
-            </FormGroup>
-            <FormGroup row>
-              <Col md="3">
-                <Label htmlFor="date-input">Registeration date</Label>
-              </Col>
-              <Col xs="12" md="9">
-                <Input
-                  type="date"
-                  id="registeration date"
-                  name="registeration date"
-                  placeholder="Registeration date"
-                  disabled
                 />
               </Col>
             </FormGroup>
