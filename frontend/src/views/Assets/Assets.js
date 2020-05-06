@@ -30,6 +30,12 @@ class Assets extends Component {
           <CardHeader>
             <i className="fa fa-align-justify"></i> Assets{" "}
             <small className="text-muted">list</small>
+            <Link>
+              <Button className="float-right" color="primary">
+                <i className="icon-plus"></i>
+                &nbsp;Add Asset
+              </Button>
+            </Link>
           </CardHeader>
           <CardBody>
             <Table responsive hover>
@@ -66,7 +72,7 @@ class Assets extends Component {
                         <i className=" icon-pencil"></i>&nbsp;Edit
                       </Button>
                       <Button className="float-right" color="ghost-primary">
-                        <i className="icon-book-open"></i>
+                        <i className="icon-list"></i>
                         &nbsp;Details
                       </Button>
                     </td>

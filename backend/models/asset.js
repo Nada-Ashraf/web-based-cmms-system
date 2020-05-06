@@ -15,10 +15,14 @@ const assetSchema = new mongoose.Schema({
   price: Number,
   location: String,
   supplier: String,
-  condition: Boolean,
+  condition: {
+    type: String,
+    enum: ["In service", "Need repair", "Scrapped", "Out of service"],
+  },
   last_pm_date: Date,
   last_failure_date: Date,
   last_fix_date: Date,
+  inspection_period_days: Number,
 });
 
 // compile schema into a model to create a class

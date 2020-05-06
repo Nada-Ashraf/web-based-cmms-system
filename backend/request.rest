@@ -4,14 +4,14 @@ POST http://localhost:3000/api/assets/add_asset
 content-type: application/json
 
 {
-    "name": "something",
-    "serial_number": "123",
-    "model": "something",
-    "department": "something",
+    "name": "Ventilator",
+    "serial_number": "35820371w1",
+    "model": "XY10",
+    "department": "ICU",
     "price": "1000",
     "location": "something",
     "supplier": "something",
-    "condition": 1,
+    "condition": "Scrapped",
     "last_pm_date": "2017-09-14",
     "last_failure_date": "2017-09-14",
     "last_fix_date": "2017-09-14"

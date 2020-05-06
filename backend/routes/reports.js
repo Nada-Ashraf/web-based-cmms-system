@@ -16,13 +16,13 @@ router.post("/report_asset", async (req, res) => {
     ])
   );
   await report.save();
-  res.send(report);
+  res.json(report);
 });
 
 // view reports
 router.get("/", async (req, res) => {
   const reports = await Report.find().populate("asset");
-  res.send(reports);
+  res.json(reports);
 });
 
 module.exports = router;
