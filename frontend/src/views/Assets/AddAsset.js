@@ -12,33 +12,26 @@ import {
 } from "reactstrap";
 
 class AddAsset extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      asset_name: "",
-      serial_number: "",
-      model: "",
-      department: "",
-      price: "",
-      location: "",
-      supplier: "",
-      notes: "",
-      curTime: new Date().toLocaleString(),
-    };
+  state = {
+    asset_name: "",
+    serial_number: "",
+    model: "",
+    department: "",
+    price: "",
+    location: "",
+    supplier: "",
+    notes: "",
+  };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(event) {
+  handleChange = (event) => {
     const value = event.target.value;
     this.setState({
       ...this.state,
       [event.target.name]: value,
     });
-  }
+  };
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     event.preventDefault();
     fetch("/api/assets/add_asset", {
       method: "post",
@@ -59,7 +52,7 @@ class AddAsset extends Component {
     }).then(() => {
       this.props.history.push("/Assets");
     });
-  }
+  };
 
   render() {
     return (
