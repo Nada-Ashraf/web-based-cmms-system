@@ -24,6 +24,19 @@ const assetSchema = new mongoose.Schema({
   last_fix_date: Date,
   inspection_period_days: Number,
   notes: String,
+  pm: {
+    title: { type: String },
+    instructions: { type: String },
+    period_in_days: { type: Number },
+    assigned_to: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Employee",
+    },
+    status: {
+      type: String,
+      enum: ["Asssined", "In progress", "Done", "Missed"],
+    },
+  },
 });
 
 // compile schema into a model to create a class

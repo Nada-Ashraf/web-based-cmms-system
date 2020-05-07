@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, CardBody, CardHeader, Col, Row, Table } from "reactstrap";
+import { Card, CardBody, CardHeader, Table } from "reactstrap";
 
 class Info extends Component {
   state = { info: [] };
@@ -12,7 +12,6 @@ class Info extends Component {
       .then((info) => this.setState({ info }));
   }
   render() {
-    // return <h1>Hi {this.state.info._id}</h1>;
     return (
       <Card>
         <CardHeader>

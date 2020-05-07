@@ -16,13 +16,13 @@ export default {
       icon: "icon-docs",
       children: [
         {
-          name: "PM",
-          url: "",
+          name: "PMs",
+          url: "/Reports/PMs",
           icon: "icon-refresh",
         },
         {
-          name: "Repair",
-          url: "",
+          name: "WOs",
+          url: "Reports/WOs",
           icon: "icon-wrench",
         },
       ],
