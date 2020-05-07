@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Badge, Card, CardBody, CardHeader, Table } from "reactstrap";
+import { Badge, Card, CardBody, CardHeader, Table, Button } from "reactstrap";
 
 const getBadge = (status) => {
   return status === "In service"
@@ -41,6 +41,7 @@ class PMs extends Component {
                   <th scope="col">Schedules</th>
                   <th scope="col">Assigned to</th>
                   <th scope="col">Status</th>
+                  <th scope="col"></th>
                 </tr>
               </thead>
               <tbody>
@@ -53,11 +54,31 @@ class PMs extends Component {
                     </td>
                     <td>{asset.department}</td>
                     <td>{asset.pm.schedules}</td>
-                    <td>{asset.pm.assigned_to}</td>
+                    <td>{asset.pm.assigned_to.name}</td>
                     <td>
                       <Badge color={getBadge(asset.pm.status)}>
                         {asset.pm.status}
                       </Badge>
+                    </td>
+                    <td>
+                      <Button
+                        className="float-right"
+                        color="ghost-danger"
+                        onClick={() => {
+                          this.handleDelete(asset._id);
+                        }}
+                      >
+                        <i className="icon-trash"></i>&nbsp;Delete
+                      </Button>
+                      <Button className="float-right" color="ghost-success">
+                        <i className=" icon-pencil"></i>&nbsp;Edit
+                      </Button>
+                      {/* <Link to={`/Assets/${asset._id}`}> */}
+                      <Button className="float-right" color="ghost-primary">
+                        <i className="icon-list"></i>
+                        &nbsp;Details
+                      </Button>
+                      {/* </Link> */}
                     </td>
                   </tr>
                 ))}

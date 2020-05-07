@@ -61,7 +61,10 @@ router.post("/add_asset", async (req, res) => {
 
 // View All assets
 router.get("/", async (req, res) => {
-  const assets = await Asset.find();
+  const assets = await Asset.find().populate({
+    path: "pm.assigned_to",
+    model: "Employee",
+  });
   // res.send(assets);
   res.json(assets);
 });
