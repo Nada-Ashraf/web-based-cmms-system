@@ -11,23 +11,48 @@ router.post("/add_asset", async (req, res) => {
   // if (asset) {
   //   return res.status(400).send("This asset already exisits!");
   // } else {
-  const asset = new Asset(
-    _.pick(req.body, [
-      "name",
-      "serial_number",
-      "model",
-      "department",
-      "price",
-      "location",
-      "supplier",
-      "condition",
-      "last_pm_date",
-      "last_failure_date",
-      "last_fix_date",
-      "inspection_period_days",
-      "notes",
-    ])
-  );
+  // const asset = new Asset(
+  //   _.pick(req.body, [
+  //     "name",
+  //     "serial_number",
+  //     "model",
+  //     "department",
+  //     "price",
+  //     "location",
+  //     "supplier",
+  //     "condition",
+  //     "last_pm_date",
+  //     "last_failure_date",
+  //     "last_fix_date",
+  //     "notes",
+  //     "title",
+  //     "instructions",
+  //     "assigned_to",
+  //     "status",
+  //     "schedules",
+  //   ])
+  // );
+  const asset = new Asset({
+    name: req.body.name,
+    serial_number: req.body.serial_number,
+    model: req.body.model,
+    department: req.body.department,
+    price: req.body.price,
+    location: req.body.location,
+    supplier: req.body.supplier,
+    condition: req.body.condition,
+    last_pm_date: req.body.last_pm_date,
+    last_failure_date: req.body.last_failure_date,
+    last_fix_date: req.body.last_fix_date,
+    notes: req.body.notes,
+    pm: {
+      title: req.body.pm.title,
+      instructions: req.body.pm.instructions,
+      assigned_to: req.body.pm.assigned_to,
+      status: req.body.pm.status,
+      schedules: req.body.pm.schedules,
+    },
+  });
   await asset.save();
   res.json(asset);
   res.end();

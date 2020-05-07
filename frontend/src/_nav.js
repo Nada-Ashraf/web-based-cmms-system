@@ -11,6 +11,11 @@ export default {
       icon: "icon-user",
     },
     {
+      name: "PMs",
+      url: "/PMs",
+      icon: "icon-user",
+    },
+    {
       name: "Reports",
       url: "/Reports",
       icon: "icon-docs",

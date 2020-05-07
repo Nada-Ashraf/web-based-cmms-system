@@ -22,11 +22,10 @@ const assetSchema = new mongoose.Schema({
   last_pm_date: Date,
   last_failure_date: Date,
   last_fix_date: Date,
-  inspection_period_days: Number,
   notes: String,
   pm: {
-    title: { type: String },
-    instructions: { type: String },
+    title: String,
+    instructions: String,
     assigned_to: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Employee",
@@ -35,7 +34,7 @@ const assetSchema = new mongoose.Schema({
       type: String,
       enum: ["Asssined", "In progress", "Done", "Missed"],
     },
-    schedules: { type: String },
+    schedules: String,
   },
 });
 

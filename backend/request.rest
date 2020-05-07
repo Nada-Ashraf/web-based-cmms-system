@@ -7,14 +7,21 @@ content-type: application/json
     "name": "Ventilator",
     "serial_number": "35820371w1",
     "model": "XY10",
-    "department": "ICU",
+    "department": "radiology",
     "price": "1000",
     "location": "something",
     "supplier": "something",
     "condition": "Scrapped",
     "last_pm_date": "2017-09-14",
     "last_failure_date": "2017-09-14",
-    "last_fix_date": "2017-09-14"
+    "last_fix_date": "2017-09-14",
+    "pm":{
+        "title":"pm title",
+        "instructions":"pm instructions",
+        "assigned_to":"5eab305ee8b082327ae6722c",
+        "status":"Done",
+        "schedules":"Every week"
+    }
 }
 
 ###

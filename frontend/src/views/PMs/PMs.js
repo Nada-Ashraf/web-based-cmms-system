@@ -37,18 +37,20 @@ class PMs extends Component {
                 <tr>
                   <th scope="col">PM name</th>
                   <th scope="col">Asset</th>
+                  <th scope="col">Department</th>
                   <th scope="col">Schedules</th>
                   <th scope="col">Assigned to</th>
                   <th scope="col">Status</th>
                 </tr>
               </thead>
               <tbody>
-                {this.state.reports.map((asset) => (
+                {this.state.assets.map((asset) => (
                   <tr key={asset.pm.title}>
                     <td>
                       {/* <Link to={`/assets/${asset._id}`}>{asset.name}</Link> */}
                       {asset.name}
                     </td>
+                    <td>{asset.department}</td>
                     <td>{asset.pm.schedules}</td>
                     <td>{asset.pm.assigned_to}</td>
                     <td>
