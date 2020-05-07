@@ -14,14 +14,7 @@ content-type: application/json
     "condition": "Scrapped",
     "last_pm_date": "2017-09-14",
     "last_failure_date": "2017-09-14",
-    "last_fix_date": "2017-09-14",
-    "pm":{
-        "title":"pm title",
-        "instructions":"pm instructions",
-        "assigned_to":"5eb449dddc3c7e398326af1e",
-        "status":"Done",
-        "schedules":"Every week"
-    }
+    "last_fix_date": "2017-09-14"
 }
 
 ###
@@ -88,7 +81,7 @@ GET http://localhost:3000/api/employees
 content-type: application/json
 
 ### 
-GET http://localhost:3000/api/employees/5eab305ee8b082327ae6722c
+GET http://localhost:3000/api/employees/5eb449dddc3c7e398326af1e
 content-type: application/json
 
 ### 
@@ -103,4 +96,18 @@ content-type: application/json
     "gender":"Female",
     "shift_start":"2017-09-14",
     "shift_end":"2017-09-14"
+}
+
+### PMS testing
+
+POST http://localhost:3000/api/pms/add_pm
+content-type: application/json
+
+{
+    "title":"pm title",
+    "asset":"5eb456ae26aaa05a87eb7a9c",
+    "instructions":["1","2","3"],
+    "assigned_to":"5eb449dddc3c7e398326af1e",
+    "status":"Done",
+    "schedules":"Every week"
 }

@@ -15,12 +15,12 @@ const getBadge = (status) => {
 };
 
 class PMs extends Component {
-  state = { assets: [] };
+  state = { pms: [] };
 
   componentDidMount() {
-    fetch("/api/assets")
+    fetch("/api/pms")
       .then((res) => res.json())
-      .then((assets) => this.setState({ assets }));
+      .then((pms) => this.setState({ pms }));
   }
 
   render() {
@@ -45,29 +45,21 @@ class PMs extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.state.assets.map((asset) => (
-                  <tr key={asset.serial_number}>
-                    <td>{asset.pm.title}</td>
+                {this.state.pms.map((pm) => (
+                  <tr key={pm._id}>
+                    <td>{pm.title}</td>
                     <td>
-                      {/* <Link to={`/assets/${asset._id}`}>{asset.name}</Link> */}
-                      {asset.name}
+                      {/* <Link to={`/pms/${pm._id}`}>{pm.name}</Link> */}
+                      {pm.asset.name}
                     </td>
-                    <td>{asset.department}</td>
-                    <td>{asset.pm.schedules}</td>
-                    <td>{asset.pm.assigned_to.name}</td>
+                    <td>{pm.asset.department}</td>
+                    <td>{pm.schedules}</td>
+                    <td>{pm.assigned_to.name}</td>
                     <td>
-                      <Badge color={getBadge(asset.pm.status)}>
-                        {asset.pm.status}
-                      </Badge>
+                      <Badge color={getBadge(pm.status)}>{pm.status}</Badge>
                     </td>
                     <td>
-                      <Button
-                        className="float-right"
-                        color="ghost-danger"
-                        onClick={() => {
-                          this.handleDelete(asset._id);
-                        }}
-                      >
+                      <Button className="float-right" color="ghost-danger">
                         <i className="icon-trash"></i>&nbsp;Delete
                       </Button>
                       <Button className="float-right" color="ghost-success">

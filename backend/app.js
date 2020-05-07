@@ -4,13 +4,15 @@ const express = require("express");
 const assets = require("./routes/assets");
 const reports = require("./routes/reports");
 const employees = require("./routes/employees");
+const pms = require("./routes/pms");
 const bodyParser = require("body-parser");
 
 // App Variables
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Middlewares
+// Middlewaresemployees
+employees;
 app.use(bodyParser.json());
 app.use(express.urlencoded());
 
@@ -26,6 +28,7 @@ mongoose
 app.use("/api/assets", assets);
 app.use("/api/reports", reports);
 app.use("/api/employees", employees);
+app.use("/api/pms", pms);
 
 // Server Activation
 app.listen(port, () => console.log(`listening in port ${port}...`));

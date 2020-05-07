@@ -45,13 +45,6 @@ router.post("/add_asset", async (req, res) => {
     last_failure_date: req.body.last_failure_date,
     last_fix_date: req.body.last_fix_date,
     notes: req.body.notes,
-    pm: {
-      title: req.body.pm.title,
-      instructions: req.body.pm.instructions,
-      assigned_to: req.body.pm.assigned_to,
-      status: req.body.pm.status,
-      schedules: req.body.pm.schedules,
-    },
   });
   await asset.save();
   res.json(asset);
