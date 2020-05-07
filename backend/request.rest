@@ -111,3 +111,24 @@ content-type: application/json
     "status":"Done",
     "schedules":"Every week"
 }
+
+###
+GET http://localhost:3000/api/pms
+content-type: application/json
+
+### 
+GET http://localhost:3000/api/pms/5eb45e1771e3b561a7b9a149
+content-type: application/json
+
+### 
+PUT http://localhost:3000/api/pms/5eb45e1771e3b561a7b9a149
+content-type: application/json
+
+{
+    "title":"pm title edited",
+    "asset":"5eb456ae26aaa05a87eb7a9c",
+    "instructions":["1","2","3","4"],
+    "assigned_to":"5eb449dddc3c7e398326af1e",
+    "status":"Done",
+    "schedules":"Every week"
+}
