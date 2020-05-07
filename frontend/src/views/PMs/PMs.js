@@ -45,7 +45,8 @@ class PMs extends Component {
               </thead>
               <tbody>
                 {this.state.assets.map((asset) => (
-                  <tr key={asset.pm.title}>
+                  <tr key={asset.serial_number}>
+                    <td>{asset.pm.title}</td>
                     <td>
                       {/* <Link to={`/assets/${asset._id}`}>{asset.name}</Link> */}
                       {asset.name}
