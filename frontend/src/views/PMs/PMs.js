@@ -28,8 +28,14 @@ class PMs extends Component {
       <div className="animated fadeIn">
         <Card>
           <CardHeader>
-            <i className="fa fa-align-justify"></i> reports{" "}
+            <i className="fa fa-align-justify"></i> PMs{" "}
             <small className="text-muted">list</small>
+            {/* <Link to="/Assets/add_asset"> */}
+            <Button className="float-right" color="primary">
+              <i className="icon-plus"></i>
+              &nbsp;Add PM
+            </Button>
+            {/* </Link> */}
           </CardHeader>
           <CardBody>
             <Table responsive hover>

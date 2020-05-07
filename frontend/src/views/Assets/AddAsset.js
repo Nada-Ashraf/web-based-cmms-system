@@ -10,6 +10,8 @@ import {
   Input,
   Label,
 } from "reactstrap";
+import { Link } from "react-router-dom";
+import AddAssetPMs from "./AddAssetPMs";
 
 class AddAsset extends Component {
   state = {
@@ -49,16 +51,16 @@ class AddAsset extends Component {
         supplier: this.state.supplier,
         notes: this.state.notes,
       }),
-    }).then(() => {
-      this.props.history.push("/Assets");
     });
+    // .then(() => {
+    // });
   };
 
   render() {
     return (
       <Card>
         <CardHeader>
-          <strong>Add Asset</strong>
+          <strong>Asset info</strong>
         </CardHeader>
         <CardBody>
           <Form
@@ -213,14 +215,16 @@ class AddAsset extends Component {
                 />
               </Col>
             </FormGroup>
-            <Button
-              className="btn-pill"
-              type="submit"
-              size="lg"
-              color="primary"
-            >
-              <i className="fa fa-dot-circle-o"></i> Submit
-            </Button>
+            <Link to="/Assets/add_asset/add_asset_pms">
+              <Button
+                className="btn-pill"
+                type="submit"
+                size="lg"
+                color="primary"
+              >
+                <i className="fa fa-dot-circle-o"></i> Submit
+              </Button>
+            </Link>
           </Form>
         </CardBody>
       </Card>

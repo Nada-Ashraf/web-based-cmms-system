@@ -89,7 +89,6 @@ class Assets extends Component {
                       >
                         <i className="icon-trash"></i>&nbsp;Delete
                       </Button>
-                      handleDelete
                       <Button className="float-right" color="ghost-success">
                         <i className=" icon-pencil"></i>&nbsp;Edit
                       </Button>

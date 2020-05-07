@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { Asset } = require("../models/asset");
+const { PM } = require("../models/pm");
 const _ = require("lodash");
 
 // Add Asset
@@ -25,26 +26,16 @@ router.post("/add_asset", async (req, res) => {
       "last_failure_date",
       "last_fix_date",
       "notes",
-      "title",
-      "instructions",
-      "assigned_to",
-      "status",
-      "schedules",
     ])
   );
-
   await asset.save();
   res.json(asset);
   res.end();
-  // }
 });
 
 // View All assets
 router.get("/", async (req, res) => {
-  const assets = await Asset.find().populate({
-    path: "pm.assigned_to",
-    model: "Employee",
-  });
+  const assets = await Asset.find();
   // res.send(assets);
   res.json(assets);
 });

@@ -81,7 +81,7 @@ GET http://localhost:3000/api/employees
 content-type: application/json
 
 ### 
-GET http://localhost:3000/api/employees/5eb449dddc3c7e398326af1e
+GET http://localhost:3000/api/employees/5eb476385319c47d89133849
 content-type: application/json
 
 ### 
@@ -105,7 +105,7 @@ content-type: application/json
 
 {
     "title":"pm title",
-    "asset":"5eb456ae26aaa05a87eb7a9c",
+    "asset":"5eb4741e5fa94a7ab088328e",
     "instructions":["1","2","3"],
     "assigned_to":"5eb449dddc3c7e398326af1e",
     "status":"Done",
@@ -117,7 +117,7 @@ GET http://localhost:3000/api/pms
 content-type: application/json
 
 ### 
-GET http://localhost:3000/api/pms/5eb45e1771e3b561a7b9a149
+GET http://localhost:3000/api/pms/5eb476525319c47d8913384a
 content-type: application/json
 
 ### 
@@ -128,7 +128,7 @@ content-type: application/json
     "title":"pm title edited",
     "asset":"5eb456ae26aaa05a87eb7a9c",
     "instructions":["1","2","3","4"],
-    "assigned_to":"5eb449dddc3c7e398326af1e",
+    "assigned_to":"5eb46b3931859d6f72f724fb",
     "status":"Done",
     "schedules":"Every week"
 }

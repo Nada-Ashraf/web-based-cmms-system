@@ -23,21 +23,15 @@ router.post("/add_pm", async (req, res) => {
 
 // View All pms
 router.get("/", async (req, res) => {
-  const pms = await PM.find()
-    .populate({
-      path: "assigned_to",
-      model: "Employee",
-    })
-    .populate({
-      path: "asset",
-      model: "Asset",
-    });
+  const pms = await PM.find().populate("asset").populate("assigned_to");
   res.json(pms);
 });
 
 // View details of one pm
 router.get("/:id", async (req, res) => {
-  const pm = await PM.findById(req.params.id);
+  const pm = await PM.findById(req.params.id)
+    .populate("asset")
+    .populate("assigned_to");
   res.send(pm);
 });
 
