@@ -6,7 +6,7 @@ const getBadge = (status) => {
   return status === "In service"
     ? "success"
     : status === "Scrapped"
-    ? "secondary"
+    ? "secondconditionary"
     : status === "Need repair"
     ? "warning"
     : status === "Out of service"
@@ -15,12 +15,12 @@ const getBadge = (status) => {
 };
 
 class PMs extends Component {
-  state = { reports: [] };
+  state = { assets: [] };
 
   componentDidMount() {
     fetch("/api/assets")
       .then((res) => res.json())
-      .then((reports) => this.setState({ assets }));
+      .then((assets) => this.setState({ assets }));
   }
 
   render() {
@@ -43,18 +43,17 @@ class PMs extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.state.reports.map((report) => (
-                  <tr key={report.serial_number}>
+                {this.state.reports.map((asset) => (
+                  <tr key={asset.pm.title}>
                     <td>
-                      {/* <Link to={`/reports/${report._id}`}>{report.name}</Link> */}
-                      {report.name}
+                      {/* <Link to={`/assets/${asset._id}`}>{asset.name}</Link> */}
+                      {asset.name}
                     </td>
-                    <td>{report.model}</td>
-                    <td>{report.serial_number}</td>
-                    <td>{report.department}</td>
+                    <td>{asset.pm.schedules}</td>
+                    <td>{asset.pm.assigned_to}</td>
                     <td>
-                      <Badge color={getBadge(report.condition)}>
-                        {report.condition}
+                      <Badge color={getBadge(asset.pm.status)}>
+                        {asset.pm.status}
                       </Badge>
                     </td>
                   </tr>
