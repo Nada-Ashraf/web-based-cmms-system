@@ -1,18 +1,6 @@
 import React, { Component } from "react";
-import {
-  Badge,
-  Col,
-  Nav,
-  NavItem,
-  NavLink,
-  Row,
-  TabContent,
-  TabPane,
-  Card,
-  CardBody,
-  CardHeader,
-} from "reactstrap";
-import classnames from "classnames";
+import { Nav, NavItem, NavLink, TabContent, TabPane } from "reactstrap";
+import Info from "./Info";
 // this.props.match.params.id
 class Asset extends Component {
   constructor(props) {
@@ -39,7 +27,9 @@ class Asset extends Component {
   tabPane() {
     return (
       <>
-        <TabPane tabId="1">{`1. ${this.lorem()}`}</TabPane>
+        <TabPane tabId="1">
+          {<Info id={this.props.match.params.id}></Info>}
+        </TabPane>
         <TabPane tabId="2">{`2. ${this.lorem()}`}</TabPane>
         <TabPane tabId="3">{`3. ${this.lorem()}`}</TabPane>
       </>
@@ -56,7 +46,7 @@ class Asset extends Component {
                 this.toggle(0, "1");
               }}
             >
-              Home
+              Info
             </NavLink>
           </NavItem>
           <NavItem>
@@ -66,7 +56,7 @@ class Asset extends Component {
                 this.toggle(0, "2");
               }}
             >
-              Profile
+              Work orders
             </NavLink>
           </NavItem>
           <NavItem>
@@ -76,7 +66,7 @@ class Asset extends Component {
                 this.toggle(0, "3");
               }}
             >
-              Messages
+              PMs
             </NavLink>
           </NavItem>
         </Nav>
