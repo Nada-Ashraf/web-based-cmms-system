@@ -27,7 +27,6 @@ const assetSchema = new mongoose.Schema({
   pm: {
     title: { type: String },
     instructions: { type: String },
-    period_in_days: { type: Number },
     assigned_to: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Employee",
@@ -36,6 +35,7 @@ const assetSchema = new mongoose.Schema({
       type: String,
       enum: ["Asssined", "In progress", "Done", "Missed"],
     },
+    schedules: { type: String },
   },
 });
 
