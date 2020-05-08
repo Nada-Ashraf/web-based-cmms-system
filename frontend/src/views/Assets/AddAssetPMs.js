@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 class AddAssetPMs extends Component {
   state = {
     title: "",
-    asset: this.props.asset_id,
+    asset: this.props.match.params.id,
     instructions: "",
   };
 
@@ -38,10 +38,12 @@ class AddAssetPMs extends Component {
       body: JSON.stringify({
         title: this.state.title,
         instructions: this.state.instructions,
+        asset: this.state.asset,
+        assigned_to: "5eab2fbef6eff8317a974eb4",
+        status: "Done",
+        schedules: "Weekly",
       }),
-    }).then(() => {
-      console.log("done");
-    });
+    }).then(() => {});
   };
 
   render() {
@@ -90,16 +92,16 @@ class AddAssetPMs extends Component {
               </Col>
             </FormGroup>
 
-            <Link to="/Assets/add_asset/add_asset_pms">
-              <Button
-                className="btn-pill"
-                type="submit"
-                size="lg"
-                color="primary"
-              >
-                <i className="fa fa-dot-circle-o"></i> Submit
-              </Button>
-            </Link>
+            {/* <Link to="/Assets/add_asset/add_asset_pms"> */}
+            <Button
+              className="btn-pill"
+              type="submit"
+              size="lg"
+              color="primary"
+            >
+              <i className="fa fa-dot-circle-o"></i> Submit
+            </Button>
+            {/* </Link> */}
           </Form>
         </CardBody>
       </Card>
