@@ -9,12 +9,14 @@ import {
   FormGroup,
   Input,
   Label,
+  Progress,
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import AddAssetPMs from "./AddAssetPMs";
 
 class AddAsset extends Component {
   state = {
+    _id: "",
     asset_name: "",
     serial_number: "",
     model: "",
@@ -51,16 +53,16 @@ class AddAsset extends Component {
         supplier: this.state.supplier,
         notes: this.state.notes,
       }),
-    });
-    // .then(() => {
-    // });
+    })
+      .then((response) => response.json())
+      .then((data) => this.setState({ _id: data._id }));
   };
 
   render() {
     return (
       <Card>
         <CardHeader>
-          <strong>Asset info</strong>
+          <strong>Add asset info</strong>
         </CardHeader>
         <CardBody>
           <Form
@@ -215,14 +217,20 @@ class AddAsset extends Component {
                 />
               </Col>
             </FormGroup>
-            <Link to="/Assets/add_asset/add_asset_pms">
-              <Button
-                className="btn-pill"
-                type="submit"
-                size="lg"
-                color="primary"
-              >
-                <i className="fa fa-dot-circle-o"></i> Submit
+            {/* <Link to={`/Assets/add_asset/${this.state._id}`}> */}
+            <Button
+              className="btn-pill"
+              type="submit"
+              size="lg"
+              color="primary"
+            >
+              <i className="icon-arrow-right-circle"></i> Submit
+              {/* <i className="fa fa-dot-circle-o"></i> Submit */}
+            </Button>
+            <Link to={`/Assets/add_asset/${this.state._id}`}>
+              <Button className="btn-pill" size="lg" color="primary">
+                <i className="icon-arrow-right-circle"></i> Add PMs
+                {/* <i className="fa fa-dot-circle-o"></i> Submit */}
               </Button>
             </Link>
           </Form>

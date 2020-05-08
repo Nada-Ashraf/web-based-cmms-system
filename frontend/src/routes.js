@@ -22,7 +22,7 @@ const routes = [
     component: AddAsset,
   },
   {
-    path: "/Assets/add_asset/add_asset_pms",
+    path: "/Assets/add_asset/:id",
     name: "",
     component: AddAssetPMs,
   },
