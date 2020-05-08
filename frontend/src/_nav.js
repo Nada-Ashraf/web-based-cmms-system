@@ -13,7 +13,12 @@ export default {
     {
       name: "PMs",
       url: "/PMs",
-      icon: "icon-user",
+      icon: "icon-speedometer",
+    },
+    {
+      name: "WOs",
+      url: "/WOs",
+      icon: "icon-wrench",
     },
     {
       name: "Reports",
