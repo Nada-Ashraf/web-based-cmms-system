@@ -141,6 +141,6 @@ content-type: application/json
 
 {
     "name":"nada",
-    "email":"email@gmail.com",
+    "email":"dada@gmail.com",
     "password":"1998"
 }

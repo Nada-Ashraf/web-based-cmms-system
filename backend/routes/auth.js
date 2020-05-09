@@ -8,7 +8,8 @@ const auth = require("../middleware/auth");
 const { User } = require("../models/User");
 const _ = require("lodash");
 
-const { JWT_SECRET } = config;
+// const { JWT_SECRET } = config;
+const JWT_SECRET = "1234";
 
 /**
  * @route   POST api/auth/login
@@ -16,37 +17,37 @@ const { JWT_SECRET } = config;
  * @access  Public
  */
 
-router.post("/login", async (req, res) => {
-  const { email, password } = req.body;
+// router.post("/login", async (req, res) => {
+//   const { email, password } = req.body;
 
-  // Simple validation
-  if (!email || !password) {
-    return res.status(400).json({ msg: "Please enter all fields" });
-  }
+//   // Simple validation
+//   if (!email || !password) {
+//     return res.status(400).json({ msg: "Please enter all fields" });
+//   }
 
-  try {
-    // Check for existing user
-    const user = await User.findOne({ email });
-    if (!user) throw Error("User Does not exist");
+//   try {
+//     // Check for existing user
+//     const user = await User.findOne({ email });
+//     if (!user) throw Error("User Does not exist");
 
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) throw Error("Invalid credentials");
+//     const isMatch = await bcrypt.compare(password, user.password);
+//     if (!isMatch) throw Error("Invalid credentials");
 
-    const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: 3600 });
-    if (!token) throw Error("Couldnt sign the token");
+//     const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: 3600 });
+//     if (!token) throw Error("Couldnt sign the token");
 
-    res.status(200).json({
-      token,
-      user: {
-        id: user._id,
-        name: user.name,
-        email: user.email,
-      },
-    });
-  } catch (e) {
-    res.status(400).json({ msg: e.message });
-  }
-});
+//     res.status(200).json({
+//       token,
+//       user: {
+//         id: user._id,
+//         name: user.name,
+//         email: user.email,
+//       },
+//     });
+//   } catch (e) {
+//     res.status(400).json({ msg: e.message });
+//   }
+// });
 
 /**
  * @route   POST api/users
@@ -81,12 +82,12 @@ router.post("/register", async (req, res) => {
     const savedUser = await newUser.save();
     if (!savedUser) throw Error("Something went wrong saving the user");
 
-    // const token = jwt.sign({ id: savedUser._id }, JWT_SECRET, {
-    //   expiresIn: 3600,
-    // });
+    const token = jwt.sign({ id: savedUser._id }, JWT_SECRET, {
+      expiresIn: 3600,
+    });
 
     res.status(200).json({
-      // token,
+      token,
       user: {
         id: savedUser.id,
         name: savedUser.name,
@@ -111,13 +112,14 @@ router.post("/register", async (req, res) => {
  * @access  Private
  */
 
-router.get("/user", auth, async (req, res) => {
-  try {
-    const user = await User.findById(req.user.id).select("-password");
-    if (!user) throw Error("User Does not exist");
-    res.json(user);
-  } catch (e) {
-    res.status(400).json({ msg: e.message });
-  }
-});
+// router.get("/user", auth, async (req, res) => {
+//   try {
+//     const user = await User.findById(req.user.id).select("-password");
+//     if (!user) throw Error("User Does not exist");
+//     res.json(user);
+//   } catch (e) {
+//     res.status(400).json({ msg: e.message });
+//   }
+// });
+
 module.exports = router;

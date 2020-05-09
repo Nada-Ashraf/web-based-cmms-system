@@ -8,7 +8,6 @@ const employees = require("./routes/employees");
 const users = require("./routes/users");
 const pms = require("./routes/pms");
 const bodyParser = require("body-parser");
-
 // App Variables
 const app = express();
 const port = process.env.PORT || 3000;
