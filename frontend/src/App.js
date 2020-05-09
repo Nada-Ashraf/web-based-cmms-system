@@ -19,8 +19,8 @@ class App extends Component {
   }
   render() {
     return (
-      <Provider store={store}>
-        <HashRouter>
+      <HashRouter>
+        <Provider store={store}>
           <React.Suspense fallback={loading()}>
             <Switch>
               <Route
@@ -30,8 +30,8 @@ class App extends Component {
               />
             </Switch>
           </React.Suspense>
-        </HashRouter>
-      </Provider>
+        </Provider>
+      </HashRouter>
     );
   }
 }
