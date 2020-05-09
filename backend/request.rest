@@ -141,6 +141,16 @@ content-type: application/json
 
 {
     "name":"nada",
-    "email":"dada@gmail.com",
+    "email":"nadosh@gmail.com",
+    "password":"1998"
+}
+
+###
+
+POST http://localhost:3000/api/auth/login
+content-type: application/json
+
+{
+    "email":"nadosh1@gmail.com",
     "password":"1998"
 }
