@@ -132,3 +132,15 @@ content-type: application/json
     "status":"Done",
     "schedules":"Every week"
 }
+
+### 
+## login and registeration
+
+POST http://localhost:3000/api/auth/register
+content-type: application/json
+
+{
+    "name":"nada",
+    "email":"email@gmail.com",
+    "password":"1998"
+}

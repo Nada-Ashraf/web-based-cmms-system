@@ -1,9 +1,9 @@
-import jwt from "jsonwebtoken";
-import config from "../config";
+const jwt = require("jsonwebtoken");
+const config = require("../config");
 
 const { JWT_SECRET } = config;
 
-export default (req, res, next) => {
+auth = (req, res, next) => {
   const token = req.header("x-auth-token");
 
   // Check for token
@@ -20,3 +20,5 @@ export default (req, res, next) => {
     res.status(400).json({ msg: "Token is not valid" });
   }
 };
+
+module.exports = auth;

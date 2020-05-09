@@ -1,13 +1,14 @@
-import { Router } from "express";
-import bcrypt from "bcryptjs";
-import config from "../../config";
-import jwt from "jsonwebtoken";
-import auth from "../../middleware/auth";
+const express = require("express");
+const router = express.Router();
+const bcrypt = require("bcryptjs");
+const config = require("../config");
+const jwt = require("jsonwebtoken");
+const auth = require("../middleware/auth");
 // User Model
-import User from "../../models/User";
+const { User } = require("../models/User");
+const _ = require("lodash");
 
 const { JWT_SECRET } = config;
-const router = Router();
 
 /**
  * @route   POST api/auth/login
@@ -62,8 +63,8 @@ router.post("/register", async (req, res) => {
   }
 
   try {
-    const user = await User.findOne({ email });
-    if (user) throw Error("User already exists");
+    // const user = await User.findOne({ email });
+    // if (user) throw Error("User already exists");
 
     const salt = await bcrypt.genSalt(10);
     if (!salt) throw Error("Something went wrong with bcrypt");
@@ -80,12 +81,12 @@ router.post("/register", async (req, res) => {
     const savedUser = await newUser.save();
     if (!savedUser) throw Error("Something went wrong saving the user");
 
-    const token = jwt.sign({ id: savedUser._id }, JWT_SECRET, {
-      expiresIn: 3600,
-    });
+    // const token = jwt.sign({ id: savedUser._id }, JWT_SECRET, {
+    //   expiresIn: 3600,
+    // });
 
     res.status(200).json({
-      token,
+      // token,
       user: {
         id: savedUser.id,
         name: savedUser.name,
@@ -96,6 +97,13 @@ router.post("/register", async (req, res) => {
     res.status(400).json({ error: e.message });
   }
 });
+
+// Add employee
+// router.post("/register", async (req, res) => {
+//   employee = new User(_.pick(req.body, ["name", "email", "password"]));
+//   await employee.save();
+//   res.send(employee);
+// });
 
 /**
  * @route   GET api/auth/user
@@ -112,5 +120,4 @@ router.get("/user", auth, async (req, res) => {
     res.status(400).json({ msg: e.message });
   }
 });
-
-export default router;
+module.exports = router;

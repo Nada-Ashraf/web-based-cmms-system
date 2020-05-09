@@ -9,12 +9,14 @@ const Reports = React.lazy(() => import("./views/Reports/Reports"));
 const Users = React.lazy(() => import("./views/Users/Users"));
 const User = React.lazy(() => import("./views/Users/User"));
 const PMs = React.lazy(() => import("./views/PMs/PMs"));
+const WOs = React.lazy(() => import("./views/WOs/WOs"));
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
   { path: "/", exact: true, name: "Home" },
   { path: "/dashboard", name: "Dashboard", component: Dashboard },
   { path: "/Assets", exact: true, name: "Assets", component: Assets },
   { path: "/PMs", exact: true, name: "PMs", component: PMs },
+  { path: "/WOs", exact: true, name: "WOs", component: WOs },
   {
     path: "/Assets/add_asset",
     exact: true,

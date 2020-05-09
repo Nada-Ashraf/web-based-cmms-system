@@ -13,7 +13,7 @@ export default {
     {
       name: "PMs",
       url: "/PMs",
-      icon: "icon-speedometer",
+      icon: "icon-shield",
     },
     {
       name: "WOs",
