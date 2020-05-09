@@ -2,6 +2,7 @@
 const mongoose = require("mongoose");
 const express = require("express");
 const assets = require("./routes/assets");
+const auth = require("./routes/auth");
 const reports = require("./routes/reports");
 const employees = require("./routes/employees");
 const pms = require("./routes/pms");
@@ -24,11 +25,12 @@ mongoose
   .then(() => console.log("Connected to MongoDB..."))
   .catch((err) => console.error("Couldn't connect to MongoDB...", err));
 
-// Routes files
+// Use Routes
 app.use("/api/assets", assets);
 app.use("/api/reports", reports);
 app.use("/api/employees", employees);
 app.use("/api/pms", pms);
+app.use("/api/auth", auth);
 
 // Server Activation
 app.listen(port, () => console.log(`listening in port ${port}...`));

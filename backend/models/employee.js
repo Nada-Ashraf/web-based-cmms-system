@@ -3,12 +3,18 @@ const mongoose = require("mongoose");
 const employeeSchema = new mongoose.Schema({
   ssn: String,
   name: String,
+  email: {
+    type: String,
+    unique: true,
+  },
+  password: {
+    type: String,
+  },
   position: {
     type: String,
-    enum: ["Manager", "Supervisor", "Maintenance Personnel"],
+    enum: ["Manager", "Supervisor", "Technician"],
   },
   phone_number: String,
-  gender: { type: String, enum: ["Female", "Male"] },
   shift_start: Date,
   shift_end: Date,
 });

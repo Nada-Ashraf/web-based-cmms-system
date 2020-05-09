@@ -17,5 +17,10 @@
   "bugs": {
     "url": "https://github.com/Nada-Ashraf/web-based-cmms-system/issues"
   },
-  "homepage": "https://github.com/Nada-Ashraf/web-based-cmms-system#readme"
+  "homepage": "https://github.com/Nada-Ashraf/web-based-cmms-system#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^8.2.0",
+    "jsonwebtoken": "^8.5.1"
+  }
 }
