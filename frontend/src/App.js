@@ -14,19 +14,24 @@ const loading = () => (
 const Layout = React.lazy(() => import("./containers/Layout"));
 
 class App extends Component {
+  componentDidMount() {
+    store.dispatch(loadUser());
+  }
   render() {
     return (
-      <HashRouter>
-        <React.Suspense fallback={loading()}>
-          <Switch>
-            <Route
-              path="/"
-              name="Home"
-              render={(props) => <Layout {...props} />}
-            />
-          </Switch>
-        </React.Suspense>
-      </HashRouter>
+      <Provider store={store}>
+        <HashRouter>
+          <React.Suspense fallback={loading()}>
+            <Switch>
+              <Route
+                path="/"
+                name="Home"
+                render={(props) => <Layout {...props} />}
+              />
+            </Switch>
+          </React.Suspense>
+        </HashRouter>
+      </Provider>
     );
   }
 }
