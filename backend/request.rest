@@ -2,6 +2,7 @@
 
 POST http://localhost:3000/api/assets/add_asset
 content-type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlYjcxZmY5MjBlYTc3NWZhNjY0ZjZhOSIsImlhdCI6MTU4OTA1OTU3NywiZXhwIjoxNTg5MDYzMTc3fQ.PTMuB71TbQMOuKz7CG8dvZ_UtQ-o6K6dShZyhjMRWUY
 
 {
     "name": "Ventilator",
@@ -141,7 +142,7 @@ content-type: application/json
 
 {
     "name":"nada",
-    "email":"nadosh@gmail.com",
+    "email":"nadaaa@gmail.com",
     "password":"1998"
 }
 

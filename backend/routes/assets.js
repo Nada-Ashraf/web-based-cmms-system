@@ -3,9 +3,10 @@ const router = express.Router();
 const { Asset } = require("../models/asset");
 const { PM } = require("../models/pm");
 const _ = require("lodash");
+const auth = require("../middleware/auth");
 
 // Add Asset
-router.post("/add_asset", async (req, res) => {
+router.post("/add_asset", auth, async (req, res) => {
   // let asset = await Asset.findOne({
   //   serial_number: req.body.serial_number,
   // });

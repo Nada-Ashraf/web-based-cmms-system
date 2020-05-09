@@ -4,7 +4,7 @@ import config from "../config";
 // const { JWT_SECRET } = config;
 const JWT_SECRET = "1234";
 
-export default (req, res, next) => {
+function auth(req, res, next) {
   const token = req.header("x-auth-token");
 
   // Check for token
@@ -20,4 +20,6 @@ export default (req, res, next) => {
   } catch (e) {
     res.status(400).json({ msg: "Token is not valid" });
   }
-};
+}
+
+module.exports = auth;

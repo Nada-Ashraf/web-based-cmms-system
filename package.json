@@ -4,7 +4,7 @@
   "description": "Prototype implementation of a web-based CMMS system using MERN stack.",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && PORT=3001 npm start\" "
+    "dev": "concurrently \"cd backend && npm run server\" \"cd frontend && PORT=3001 npm start\" "
   },
   "repository": {
     "type": "git",
