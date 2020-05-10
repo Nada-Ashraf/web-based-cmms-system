@@ -5,6 +5,7 @@ const AssetDetails = React.lazy(() => import("./views/Assets/AssetDetails"));
 const AddAsset = React.lazy(() => import("./views/Assets/AddAsset"));
 const AddAssetPMs = React.lazy(() => import("./views/Assets/AddAssetPMs"));
 const Employees = React.lazy(() => import("./views/Employees/Employees"));
+const AddEmployee = React.lazy(() => import("./views/Employees/AddEmployee"));
 const Reports = React.lazy(() => import("./views/Reports/Reports"));
 const Users = React.lazy(() => import("./views/Users/Users"));
 const User = React.lazy(() => import("./views/Users/User"));
@@ -29,7 +30,13 @@ const routes = [
     component: AddAssetPMs,
   },
   { path: "/Assets/:id", name: "Asset Details", component: AssetDetails },
-  { path: "/Employees", name: "Employees", component: Employees },
+  { path: "/Employees", exact: true, name: "Employees", component: Employees },
+  {
+    path: "/Employees/add_employee",
+    exact: true,
+    name: "Add Employee",
+    component: AddEmployee,
+  },
   { path: "/Reports", name: "Reports", component: Reports },
   { path: "/users", exact: true, name: "Users", component: Users },
   { path: "/users/:id", exact: true, name: "User Details", component: User },

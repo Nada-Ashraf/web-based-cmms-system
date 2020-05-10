@@ -8,7 +8,9 @@ import {
   PaginationItem,
   PaginationLink,
   Table,
+  Button,
 } from "reactstrap";
+import { Link } from "react-router-dom";
 
 class Employees extends Component {
   render() {
@@ -16,6 +18,12 @@ class Employees extends Component {
       <Card>
         <CardHeader>
           <i className="fa fa-align-justify"></i> Employees Table
+          <Link to="/Employees/add_employee">
+            <Button className="float-right" color="primary">
+              <i className="icon-plus"></i>
+              &nbsp;Add Employee
+            </Button>
+          </Link>
         </CardHeader>
         <CardBody>
           <Table responsive striped>
