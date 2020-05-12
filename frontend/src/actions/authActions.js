@@ -34,7 +34,7 @@ export const loadUser = () => (dispatch, getState) => {
 };
 
 // Register User
-export const register = ({ name, email, password }) => (dispatch) => {
+export const register = ({ name, email, password, role }) => (dispatch) => {
   // Headers
   const config = {
     headers: {
@@ -43,7 +43,7 @@ export const register = ({ name, email, password }) => (dispatch) => {
   };
 
   // Request body
-  const body = JSON.stringify({ name, email, password });
+  const body = JSON.stringify({ name, email, password, role });
 
   axios
     .post("/api/auth/register", body, config)
@@ -61,6 +61,13 @@ export const register = ({ name, email, password }) => (dispatch) => {
         type: REGISTER_FAIL,
       });
     });
+};
+
+// Logout User
+export const logout = () => {
+  return {
+    type: LOGOUT_SUCCESS,
+  };
 };
 
 // Setup config/headers and token

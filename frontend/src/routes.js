@@ -34,7 +34,7 @@ const routes = [
   {
     path: "/Employees/add_employee",
     exact: true,
-    name: "Add Employee",
+    name: "Register Employee",
     component: AddEmployee,
   },
   { path: "/Reports", name: "Reports", component: Reports },

@@ -2,13 +2,15 @@ import React, { Component } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Nav, NavItem } from "reactstrap";
 import PropTypes from "prop-types";
-
+import { connect } from "react-redux";
+import { logout } from "../../actions/authActions";
 import { AppNavbarBrand, AppSidebarToggler } from "@coreui/react";
 import logo from "../../assets/img/brand/logo.png";
 import sygnet from "../../assets/img/brand/sygnet.png";
 
 const propTypes = {
   children: PropTypes.node,
+  logout: PropTypes.func.isRequired,
 };
 
 const defaultProps = {};
@@ -39,7 +41,15 @@ class Header extends Component {
             </Link>
           </NavItem>
         </Nav>
-        <Nav className="ml-auto" navbar></Nav>
+        {/* <Nav className="ml-auto" navbar> */}
+
+        <Nav className="ml-auto" navbar>
+          <Link to="/dashboard">
+            <NavItem onClick={this.props.logout} className="px-3">
+              Logout
+            </NavItem>
+          </Link>
+        </Nav>
       </React.Fragment>
     );
   }
@@ -48,4 +58,4 @@ class Header extends Component {
 Header.propTypes = propTypes;
 Header.defaultProps = defaultProps;
 
-export default Header;
+export default connect(null, { logout })(Header);

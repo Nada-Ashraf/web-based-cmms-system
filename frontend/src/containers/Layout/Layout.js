@@ -27,7 +27,7 @@ class Layout extends Component {
 
   signOut(e) {
     e.preventDefault();
-    this.props.history.push("/login");
+    this.props.history.push("/dashboard");
   }
 
   render() {
@@ -35,7 +35,7 @@ class Layout extends Component {
       <div className="app">
         <AppHeader fixed>
           <Suspense fallback={this.loading()}>
-            <Header />
+            <Header onLogout={(e) => this.signOut(e)} />
           </Suspense>
         </AppHeader>
         <div className="app-body">

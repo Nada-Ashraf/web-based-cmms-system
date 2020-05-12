@@ -23,6 +23,7 @@ class AddEmployee extends Component {
     name: "",
     email: "",
     password: "",
+    role: "",
     msg: null,
   };
 
@@ -67,13 +68,14 @@ class AddEmployee extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    const { name, email, password } = this.state;
+    const { name, email, password, role } = this.state;
 
     // Create user object
     const newUser = {
       name,
       email,
       password,
+      role,
     };
 
     // Attempt to register
@@ -84,7 +86,7 @@ class AddEmployee extends Component {
     return (
       <Card>
         <CardHeader>
-          <strong>Add asset info</strong>
+          <strong>Register Employee</strong>
         </CardHeader>
         <CardBody>
           <Form
@@ -107,6 +109,24 @@ class AddEmployee extends Component {
                   name="name"
                   placeholder="name"
                 />
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Col md="3">
+                <Label htmlFor="select">Role</Label>
+              </Col>
+              <Col xs="12" md="9">
+                <Input
+                  type="select"
+                  name="role"
+                  id="role"
+                  value={this.state.role}
+                  onChange={this.handleChange}
+                >
+                  <option value="0">Please select</option>
+                  <option value="Supervisor">Supervisor</option>
+                  <option value="Technician">Technician</option>
+                </Input>
               </Col>
             </FormGroup>
             <FormGroup row>
