@@ -43,6 +43,12 @@ class Login extends Component {
         this.setState({ msg: null });
       }
     }
+
+    if (isAuthenticated) {
+      this.props.history.push("/dashboard");
+      //   this.props.clearErrors();
+      console.log("authenticated");
+    }
   }
 
   onChange = (e) => {

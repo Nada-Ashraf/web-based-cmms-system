@@ -11,7 +11,7 @@ const loading = () => (
 );
 
 // Containers
-// const Layout = React.lazy(() => import("./containers/Layout"));
+const Layout = React.lazy(() => import("./containers/Layout"));
 const Login = React.lazy(() => import("./views/Auth/Login"));
 
 class App extends Component {
@@ -25,10 +25,15 @@ class App extends Component {
           <React.Suspense fallback={loading()}>
             <Switch>
               <Route
+                exact
                 path="/"
-                name="Home"
-                // render={(props) => <Layout {...props} />}
+                name="Login Page"
                 render={(props) => <Login {...props} />}
+              />
+              <Route
+                path="/dashboard"
+                name="Home"
+                render={(props) => <Layout {...props} />}
               />
             </Switch>
           </React.Suspense>
