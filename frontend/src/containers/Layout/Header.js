@@ -13,7 +13,9 @@ const propTypes = {
   logout: PropTypes.func.isRequired,
 };
 
-const defaultProps = {};
+const defaultProps = {
+  user: {},
+};
 
 class Header extends Component {
   render() {
