@@ -2,6 +2,8 @@ import React, { Component, Suspense } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import * as router from "react-router-dom";
 import { Container } from "reactstrap";
+import { connect } from "react-redux";
+import { login } from "../../actions/authActions";
 
 import {
   AppHeader,
@@ -14,7 +16,9 @@ import {
   AppSidebarNav2 as AppSidebarNav,
 } from "@coreui/react";
 // sidebar nav config
-import navigation from "../../_nav";
+// import navigation from "../../_nav";
+import nav from "../../_nav";
+import nav2 from "../../_nav2";
 // routes config
 import routes from "../../routes";
 
@@ -31,6 +35,12 @@ class Layout extends Component {
   }
 
   render() {
+    let navigation;
+    if (this.props.role == "Manager") {
+      navigation = nav;
+    } else {
+      navigation = nav2;
+    }
     return (
       <div className="app">
         <AppHeader fixed>
@@ -79,4 +89,8 @@ class Layout extends Component {
   }
 }
 
-export default Layout;
+const mapStateToProps = (state) => ({
+  role: state.auth.user.role,
+});
+
+export default connect(mapStateToProps, { login })(Layout);
