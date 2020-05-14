@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import {
   Button,
   Card,
@@ -43,11 +42,9 @@ class Login extends Component {
         this.setState({ msg: null });
       }
     }
-
     if (isAuthenticated) {
       this.props.history.push("/");
       //   this.props.clearErrors();
-      console.log("authenticated");
     }
   }
 

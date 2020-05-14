@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Button, Badge, Card, CardBody, CardHeader, Table } from "reactstrap";
+import { connect } from "react-redux";
+import { login } from "../../actions/authActions";
 
 const getBadge = (status) => {
   return status === "In service"
@@ -39,18 +41,32 @@ class Assets extends Component {
   };
 
   render() {
+    let button;
+    if (this.props.role == "Supervisor") {
+      button = (
+        <Link to="/Assets/add_asset">
+          <Button className="float-right" color="primary">
+            <i className="icon-plus"></i>
+            &nbsp;Add Asset
+          </Button>
+        </Link>
+      );
+    } else {
+      button = <div></div>;
+    }
     return (
       <div className="animated fadeIn">
         <Card>
           <CardHeader>
             <i className="fa fa-align-justify"></i> Assets{" "}
             <small className="text-muted">list</small>
-            <Link to="/Assets/add_asset">
+            {/* <Link to="/Assets/add_asset">
               <Button className="float-right" color="primary">
                 <i className="icon-plus"></i>
                 &nbsp;Add Asset
               </Button>
-            </Link>
+            </Link> */}
+            {button}
           </CardHeader>
           <CardBody>
             <Table responsive hover>
@@ -110,4 +126,8 @@ class Assets extends Component {
   }
 }
 
-export default Assets;
+const mapStateToProps = (state) => ({
+  role: state.auth.user.role,
+});
+
+export default connect(mapStateToProps, { login })(Assets);
