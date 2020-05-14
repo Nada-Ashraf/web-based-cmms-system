@@ -25,6 +25,7 @@ class App extends Component {
           <React.Suspense fallback={loading()}>
             <Switch>
               <Route
+                // default
                 exact
                 path="/login"
                 name="Login Page"

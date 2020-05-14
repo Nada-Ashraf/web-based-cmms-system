@@ -25,6 +25,9 @@ import routes from "../../routes";
 const Header = React.lazy(() => import("./Header"));
 
 class Layout extends Component {
+  state = {
+    user: "",
+  };
   loading = () => (
     <div className="animated fadeIn pt-1 text-center">Loading...</div>
   );
