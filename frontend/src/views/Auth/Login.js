@@ -45,7 +45,7 @@ class Login extends Component {
     }
 
     if (isAuthenticated) {
-      this.props.history.push("/dashboard");
+      this.props.history.push("/");
       //   this.props.clearErrors();
       console.log("authenticated");
     }

@@ -44,7 +44,7 @@ class Header extends Component {
         {/* <Nav className="ml-auto" navbar> */}
 
         <Nav className="ml-auto" navbar>
-          <Link to="/">
+          <Link to="/login">
             <NavItem onClick={this.props.logout} className="px-3">
               Logout
             </NavItem>
