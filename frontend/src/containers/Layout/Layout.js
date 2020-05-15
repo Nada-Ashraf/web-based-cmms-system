@@ -4,7 +4,6 @@ import * as router from "react-router-dom";
 import { Container } from "reactstrap";
 import { connect } from "react-redux";
 import { login } from "../../actions/authActions";
-
 import {
   AppHeader,
   AppSidebar,
@@ -15,10 +14,11 @@ import {
   AppBreadcrumb2 as AppBreadcrumb,
   AppSidebarNav2 as AppSidebarNav,
 } from "@coreui/react";
+
 // sidebar nav config
-// import navigation from "../../_nav";
-import nav from "../../_nav";
-import nav2 from "../../_nav2";
+import nav from "../../navs/manager_supervisor_nav";
+import technician_nav from "../../navs/technician_nav";
+
 // routes config
 import routes from "../../routes";
 
@@ -36,8 +36,8 @@ class Layout extends Component {
 
   render() {
     let navigation;
-    if (this.props.role == "Supervisor") {
-      navigation = nav2;
+    if (this.props.role == "Technician") {
+      navigation = technician_nav;
     } else {
       navigation = nav;
     }

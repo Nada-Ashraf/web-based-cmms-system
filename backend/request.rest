@@ -141,10 +141,10 @@ POST http://localhost:3000/api/auth/register
 content-type: application/json
 
 {
-    "name":"nada2",
-    "email":"nada2@nada2.com",
-    "password":"nada2",
-    "role":"Supervisor",
+    "name":"tech",
+    "email":"tech@tech.com",
+    "password":"tech",
+    "role":"Technician",
     "department":"radiology"
 }
 

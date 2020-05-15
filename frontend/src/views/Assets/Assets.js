@@ -22,7 +22,6 @@ class Assets extends Component {
   componentDidMount() {
     fetch("/api/assets")
       .then((res) => res.json())
-      // .then((assets) => )
       .then((assets) => {
         const assetsFiltered = assets.filter((asset) =>
           asset.department.includes(this.props.department)
@@ -32,9 +31,6 @@ class Assets extends Component {
   }
 
   handleDelete = (assetId) => {
-    // Note: I'm using arrow functions inside the `.fetch()` method.
-    // This makes it so you don't have to bind component functions like `setState`
-    // to the component.
     fetch("/api/assets/delete/" + assetId, {
       method: "DELETE",
     })
