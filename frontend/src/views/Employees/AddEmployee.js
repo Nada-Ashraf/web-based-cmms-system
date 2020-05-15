@@ -24,6 +24,7 @@ class AddEmployee extends Component {
     email: "",
     password: "",
     role: "",
+    department: "",
     msg: null,
   };
 
@@ -68,7 +69,7 @@ class AddEmployee extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    const { name, email, password, role } = this.state;
+    const { name, email, password, role, department } = this.state;
 
     // Create user object
     const newUser = {
@@ -76,6 +77,7 @@ class AddEmployee extends Component {
       email,
       password,
       role,
+      department,
     };
 
     // Attempt to register
@@ -157,6 +159,25 @@ class AddEmployee extends Component {
                   name="password"
                   placeholder="password"
                 />
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Col md="3">
+                <Label htmlFor="select">Department</Label>
+              </Col>
+              <Col xs="12" md="9">
+                <Input
+                  type="select"
+                  name="department"
+                  id="department"
+                  value={this.state.department}
+                  onChange={this.handleChange}
+                >
+                  <option value="0">Please select</option>
+                  <option value="cardiology">cardiology</option>
+                  <option value="radiology">radiology</option>
+                  <option value="operations">operations</option>
+                </Input>
               </Col>
             </FormGroup>
             {/* <Link to={`/Assets/add_asset/${this.state._id}`}> */}

@@ -43,7 +43,7 @@ class Login extends Component {
       }
     }
     if (isAuthenticated) {
-      this.props.history.push("/");
+      this.props.history.push("/home/dashboard");
       //   this.props.clearErrors();
     }
   }
@@ -68,14 +68,14 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="app flex-row align-items-center">
+      <div className="app flex-row align-items-center bg-primary">
         <Container>
           <Row className="justify-content-center">
             <Col md="8">
               <Card className="p-4">
                 <CardBody>
                   <Form onSubmit={this.onSubmit}>
-                    <h1>Login</h1>
+                    <h1 className="text-muted">Login</h1>
                     <p className="text-muted">Sign In to your account</p>
                     {this.state.msg ? (
                       <Alert color="danger">{this.state.msg}</Alert>

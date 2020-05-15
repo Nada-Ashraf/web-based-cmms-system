@@ -22,7 +22,13 @@ class Assets extends Component {
   componentDidMount() {
     fetch("/api/assets")
       .then((res) => res.json())
-      .then((assets) => this.setState({ assets }));
+      // .then((assets) => )
+      .then((assets) => {
+        const assetsFiltered = assets.filter((asset) =>
+          asset.department.includes(this.props.department)
+        );
+        this.setState({ assets: assetsFiltered });
+      });
   }
 
   handleDelete = (assetId) => {
@@ -41,18 +47,42 @@ class Assets extends Component {
   };
 
   render() {
-    let button;
-    if (this.props.role == "Supervisor") {
-      button = (
-        <Link to="/Assets/add_asset">
+    let add_assets_button;
+    let actions_buttons;
+    if (this.props.role === "Manager") {
+      add_assets_button = (
+        <Link to="/home/Assets/add_asset">
           <Button className="float-right" color="primary">
             <i className="icon-plus"></i>
             &nbsp;Add Asset
           </Button>
         </Link>
       );
+      actions_buttons = this.state.assets.map((asset) => (
+        <td>
+          <Button
+            className="float-right"
+            color="ghost-danger"
+            onClick={() => {
+              this.handleDelete(asset._id);
+            }}
+          >
+            <i className="icon-trash"></i>&nbsp;Delete
+          </Button>
+          <Button className="float-right" color="ghost-success">
+            <i className=" icon-pencil"></i>&nbsp;Edit
+          </Button>
+          <Link to={`/Assets/${asset._id}`}>
+            <Button className="float-right" color="ghost-primary">
+              <i className="icon-list"></i>
+              &nbsp;Details
+            </Button>
+          </Link>
+        </td>
+      ));
     } else {
-      button = <div></div>;
+      add_assets_button = <div></div>;
+      actions_buttons = <div></div>;
     }
     return (
       <div className="animated fadeIn">
@@ -66,7 +96,7 @@ class Assets extends Component {
                 &nbsp;Add Asset
               </Button>
             </Link> */}
-            {button}
+            {add_assets_button}
           </CardHeader>
           <CardBody>
             <Table responsive hover>
@@ -95,7 +125,7 @@ class Assets extends Component {
                         {asset.condition}
                       </Badge>
                     </td>
-                    <td>
+                    {/* <td>
                       <Button
                         className="float-right"
                         color="ghost-danger"
@@ -114,7 +144,8 @@ class Assets extends Component {
                           &nbsp;Details
                         </Button>
                       </Link>
-                    </td>
+                    </td> */}
+                    {actions_buttons}
                   </tr>
                 ))}
               </tbody>
@@ -128,6 +159,7 @@ class Assets extends Component {
 
 const mapStateToProps = (state) => ({
   role: state.auth.user.role,
+  department: state.auth.user.department,
 });
 
 export default connect(mapStateToProps, { login })(Assets);

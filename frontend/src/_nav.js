@@ -2,37 +2,37 @@ export default {
   items: [
     {
       name: "Assets",
-      url: "/Assets",
+      url: "/home/Assets",
       icon: "icon-screen-desktop",
     },
     {
       name: "Employees",
-      url: "/Employees",
+      url: "/home/Employees",
       icon: "icon-user",
     },
     {
       name: "PMs",
-      url: "/PMs",
+      url: "/home/PMs",
       icon: "icon-shield",
     },
     {
       name: "WOs",
-      url: "/WOs",
+      url: "/home/WOs",
       icon: "icon-wrench",
     },
     {
       name: "Reports",
-      url: "/Reports",
+      url: "/home/Reports",
       icon: "icon-docs",
       children: [
         {
           name: "PMs",
-          url: "/Reports/PMs",
+          url: "/home/Reports/PMs",
           icon: "icon-refresh",
         },
         {
           name: "WOs",
-          url: "Reports/WOs",
+          url: "/homeReports/WOs",
           icon: "icon-wrench",
         },
       ],

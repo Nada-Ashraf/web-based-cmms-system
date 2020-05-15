@@ -5,7 +5,7 @@ const _ = require("lodash");
 
 // Add pm
 router.post("/add_pm", async (req, res) => {
-  pm = new PM(
+  const pm = new PM(
     _.pick(req.body, [
       "title",
       "asset",
@@ -15,7 +15,6 @@ router.post("/add_pm", async (req, res) => {
       "schedules",
     ])
   );
-
   await pm.save();
   res.json(pm);
   res.end();

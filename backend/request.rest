@@ -8,7 +8,7 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlYjcxZmY5MjBlYTc3N
     "name": "Ventilator",
     "serial_number": "35820371w1",
     "model": "XY10",
-    "department": "radiology",
+    "department": "cardiology",
     "price": "1000",
     "location": "something",
     "supplier": "something",
@@ -141,9 +141,11 @@ POST http://localhost:3000/api/auth/register
 content-type: application/json
 
 {
-    "name":"nada",
-    "email":"nadaaa@gmail.com",
-    "password":"1998"
+    "name":"nada2",
+    "email":"nada2@nada2.com",
+    "password":"nada2",
+    "role":"Supervisor",
+    "department":"radiology"
 }
 
 ###

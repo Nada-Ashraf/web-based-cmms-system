@@ -18,7 +18,7 @@ const JWT_SECRET = "1234";
  */
 
 router.post("/register", async (req, res) => {
-  const { name, email, password, role } = req.body;
+  const { name, email, password, role, department } = req.body;
 
   // Simple validation
   if (!name || !email || !password) {
@@ -40,6 +40,7 @@ router.post("/register", async (req, res) => {
       email,
       password: hash,
       role,
+      department,
     });
 
     const savedUser = await newUser.save();
@@ -56,6 +57,7 @@ router.post("/register", async (req, res) => {
         name: savedUser.name,
         email: savedUser.email,
         role: savedUser.role,
+        department: savedUser.department,
       },
     });
   } catch (e) {
@@ -95,6 +97,7 @@ router.post("/login", async (req, res) => {
         name: user.name,
         email: user.email,
         role: user.role,
+        department: user.department,
       },
     });
   } catch (e) {

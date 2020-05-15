@@ -23,6 +23,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
     enum: ["Manager", "Supervisor", "Technician"],
   },
+  department: {
+    type: String,
+    enum: ["radiology", "cardiology", "operations"],
+  },
 });
 
 const User = mongoose.model("User", UserSchema);

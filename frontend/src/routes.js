@@ -11,35 +11,47 @@ const Users = React.lazy(() => import("./views/Users/Users"));
 const User = React.lazy(() => import("./views/Users/User"));
 const PMs = React.lazy(() => import("./views/PMs/PMs"));
 const WOs = React.lazy(() => import("./views/WOs/WOs"));
+// const Login = React.lazy(() => import("./views/Auth/Login"));
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
-  { path: "/", exact: true, name: "Home" },
-  { path: "/dashboard", name: "Dashboard", component: Dashboard },
-  { path: "/Assets", exact: true, name: "Assets", component: Assets },
-  { path: "/PMs", exact: true, name: "PMs", component: PMs },
-  { path: "/WOs", exact: true, name: "WOs", component: WOs },
+  // { path: "/", exact: true, name: "Home" },
+  // { path: "/", exact: true, name: "Login", component:Login },
+  { path: "/home/dashboard", name: "Dashboard", component: Dashboard },
+  { path: "/home/Assets", exact: true, name: "Assets", component: Assets },
+  { path: "/home/PMs", exact: true, name: "PMs", component: PMs },
+  { path: "/home/WOs", exact: true, name: "WOs", component: WOs },
   {
-    path: "/Assets/add_asset",
+    path: "/home/Assets/add_asset",
     exact: true,
     name: "Add Asset",
     component: AddAsset,
   },
   {
-    path: "/Assets/add_asset/:id",
+    path: "/home/Assets/add_asset/:id",
     name: "",
     component: AddAssetPMs,
   },
-  { path: "/Assets/:id", name: "Asset Details", component: AssetDetails },
-  { path: "/Employees", exact: true, name: "Employees", component: Employees },
+  { path: "/home/Assets/:id", name: "Asset Details", component: AssetDetails },
   {
-    path: "/Employees/add_employee",
+    path: "/home/Employees",
+    exact: true,
+    name: "Employees",
+    component: Employees,
+  },
+  {
+    path: "/home/Employees/add_employee",
     exact: true,
     name: "Register Employee",
     component: AddEmployee,
   },
-  { path: "/Reports", name: "Reports", component: Reports },
-  { path: "/users", exact: true, name: "Users", component: Users },
-  { path: "/users/:id", exact: true, name: "User Details", component: User },
+  { path: "/home/Reports", name: "Reports", component: Reports },
+  { path: "/home/users", exact: true, name: "Users", component: Users },
+  {
+    path: "/home/users/:id",
+    exact: true,
+    name: "User Details",
+    component: User,
+  },
 ];
 
 export default routes;

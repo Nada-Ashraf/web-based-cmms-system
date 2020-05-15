@@ -227,7 +227,7 @@ class AddAsset extends Component {
               <i className="icon-arrow-right-circle"></i> Submit
               {/* <i className="fa fa-dot-circle-o"></i> Submit */}
             </Button>
-            <Link to={`/Assets/add_asset/${this.state._id}`}>
+            <Link to={`/home/Assets/add_asset/${this.state._id}`}>
               <Button className="btn-pill" size="lg" color="primary">
                 <i className="icon-arrow-right-circle"></i> Add PMs
                 {/* <i className="fa fa-dot-circle-o"></i> Submit */}

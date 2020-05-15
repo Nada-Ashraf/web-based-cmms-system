@@ -27,12 +27,12 @@ class App extends Component {
               <Route
                 // default
                 exact
-                path="/login"
+                path="/"
                 name="Login Page"
                 render={(props) => <Login {...props} />}
               />
               <Route
-                path="/"
+                path="/home"
                 name="Home"
                 render={(props) => <Layout {...props} />}
               />

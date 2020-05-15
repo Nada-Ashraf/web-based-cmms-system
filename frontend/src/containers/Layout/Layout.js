@@ -36,10 +36,10 @@ class Layout extends Component {
 
   render() {
     let navigation;
-    if (this.props.role == "Manager") {
-      navigation = nav;
-    } else {
+    if (this.props.role == "Supervisor") {
       navigation = nav2;
+    } else {
+      navigation = nav;
     }
     return (
       <div className="app">
