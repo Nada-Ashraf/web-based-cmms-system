@@ -22,11 +22,28 @@ class PMs extends Component {
   componentDidMount() {
     fetch("/api/pms")
       .then((res) => res.json())
-      .then((pms) => this.setState({ pms }));
+      .then((pms) => {
+        // CHECK
+        if (this.props.role === "Technician") {
+          const pmsFiltered = pms.filter(
+            (pm) =>
+              pm.assigned_to._id.includes(this.props._id) &&
+              pm.asset.department.includes(this.props.department)
+          );
+          this.setState({ pms: pmsFiltered });
+        } else {
+          const pmsFiltered = pms.filter((pm) =>
+            pm.asset.department.includes(this.props.department)
+          );
+          this.setState({ pms: pmsFiltered });
+        }
+        // this.setState({ pms: pmsFiltered });
+      });
   }
 
   render() {
     const isManager = this.props.role === "Manager";
+    const isSupervisor = this.props.role === "Supervisor";
     return (
       <div className="animated fadeIn">
         <Card>
@@ -80,7 +97,7 @@ class PMs extends Component {
                             &nbsp;Details
                           </Button>
                         </React.Fragment>
-                      ) : (
+                      ) : isSupervisor ? (
                         <React.Fragment>
                           <Link
                             to={{ pathname: "/home/PMs/assign_pm", id: pm._id }}
@@ -92,6 +109,26 @@ class PMs extends Component {
                               color="ghost-success"
                             >
                               <i className=" icon-pencil"></i>&nbsp;Assign work
+                            </Button>
+                          </Link>
+                          <Button className="float-right" color="ghost-primary">
+                            <i className="icon-list"></i>
+                            &nbsp;Details
+                          </Button>
+                        </React.Fragment>
+                      ) : (
+                        <React.Fragment>
+                          <Link
+                            to={{ pathname: "/home/PMs/assign_pm", id: pm._id }}
+                            // to="/home/PMs/assign_pm"
+                            // params={{ id: pm._id }}
+                          >
+                            <Button
+                              className="float-right"
+                              color="ghost-success"
+                            >
+                              <i className=" icon-pencil"></i>&nbsp;Complete
+                              work
                             </Button>
                           </Link>
                           <Button className="float-right" color="ghost-primary">
@@ -115,6 +152,7 @@ class PMs extends Component {
 const mapStateToProps = (state) => ({
   role: state.auth.user.role,
   department: state.auth.user.department,
+  _id: state.auth.user._id,
 });
 
 export default connect(mapStateToProps, { login })(PMs);
