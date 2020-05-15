@@ -6,7 +6,7 @@ class Info extends Component {
 
   componentDidMount() {
     fetch("/api/assets/" + this.props.id, {
-      method: "GET",
+      method: "get",
     })
       .then((res) => res.json())
       .then((info) => this.setState({ info }));

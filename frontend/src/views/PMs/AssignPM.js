@@ -12,13 +12,15 @@ import {
   Label,
   Progress,
 } from "reactstrap";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../../actions/authActions";
 class AssignPMs extends Component {
   state = {
     id: this.props.location.id,
     users: [],
+    // CHECK
+    assigned_to: "",
+    notes: "",
   };
 
   componentDidMount() {
@@ -42,46 +44,37 @@ class AssignPMs extends Component {
     });
   };
 
-  //   handleSubmit = (event) => {
-  //     event.preventDefault();
-  //     fetch("/api/assets/add_asset", {
-  //       method: "post",
-  //       headers: {
-  //         Accept: "application/json",
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         name: this.state.asset_name,
-  //         serial_number: this.state.serial_number,
-  //         model: this.state.model,
-  //         department: this.state.department,
-  //         price: this.state.price,
-  //         location: this.state.location,
-  //         supplier: this.state.supplier,
-  //         notes: this.state.notes,
-  //       }),
-  //     })
-  //       .then((response) => response.json())
-  //       .then((data) => this.setState({ _id: data._id }));
-  //   };
+  handleSubmit = (event) => {
+    event.preventDefault();
+    fetch("/api/pms/" + this.state.id, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        assigned_to: this.state.assigned_to,
+        notes: this.state.notes,
+      }),
+    }).then((response) => response.json());
+  };
 
   render() {
     let users = this.state.users;
     let optionItems = users.map((user) => (
-      <option key={user.name}>{user.name}</option>
+      <option value={user._id}>{user.name}</option>
     ));
     return (
       <Card>
         <CardHeader>
-          <strong>Add asset info</strong>
+          <strong>Assign PM</strong>
         </CardHeader>
         <CardBody>
           <Form
-            // action=""
             method="post"
             encType="multipart/form-data"
             className="form-horizontal"
-            // onSubmit={this.handleSubmit}
+            onSubmit={this.handleSubmit}
           >
             <FormGroup row>
               <Col md="3">
@@ -90,13 +83,29 @@ class AssignPMs extends Component {
               <Col xs="12" md="9">
                 <Input
                   type="select"
-                  name="assign_to"
-                  id="assign_to"
-                  value={this.state.assign_to}
+                  name="assigned_to"
+                  id="assigned_to"
+                  value={this.state.assigned_to}
                   onChange={this.handleChange}
                 >
                   {optionItems}
                 </Input>
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Col md="3">
+                <Label htmlFor="textarea-input">Notes</Label>
+              </Col>
+              <Col xs="12" md="9">
+                <Input
+                  value={this.state.notes}
+                  onChange={this.handleChange}
+                  type="textarea"
+                  name="notes"
+                  id="notes"
+                  rows="9"
+                  placeholder="Notes"
+                />
               </Col>
             </FormGroup>
             <Button

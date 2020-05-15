@@ -51,7 +51,7 @@ class AddAssetPMs extends Component {
         title: this.state.title,
         instructions: this.state.instructions,
         asset: this.state.asset,
-        assigned_to: "5eab2fbef6eff8317a974eb4",
+        // assigned_to: "",
         status: "Done",
         schedules: "Weekly",
       }),
