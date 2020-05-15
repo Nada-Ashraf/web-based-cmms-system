@@ -22,7 +22,6 @@ class Assets extends Component {
   componentDidMount() {
     fetch("/api/assets")
       .then((res) => res.json())
-      // .then((assets) => )
       .then((assets) => {
         const assetsFiltered = assets.filter((asset) =>
           asset.department.includes(this.props.department)

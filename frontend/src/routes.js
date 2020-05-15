@@ -10,6 +10,7 @@ const Reports = React.lazy(() => import("./views/Reports/Reports"));
 const Users = React.lazy(() => import("./views/Users/Users"));
 const User = React.lazy(() => import("./views/Users/User"));
 const PMs = React.lazy(() => import("./views/PMs/PMs"));
+const AssignPM = React.lazy(() => import("./views/PMs/AssignPM"));
 const WOs = React.lazy(() => import("./views/WOs/WOs"));
 // const Login = React.lazy(() => import("./views/Auth/Login"));
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
@@ -19,6 +20,12 @@ const routes = [
   { path: "/home/dashboard", name: "Dashboard", component: Dashboard },
   { path: "/home/Assets", exact: true, name: "Assets", component: Assets },
   { path: "/home/PMs", exact: true, name: "PMs", component: PMs },
+  {
+    path: "/home/PMs/assign_pm",
+    exact: true,
+    name: "Assign PM",
+    component: AssignPM,
+  },
   { path: "/home/WOs", exact: true, name: "WOs", component: WOs },
   {
     path: "/home/Assets/add_asset",

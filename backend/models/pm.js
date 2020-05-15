@@ -15,6 +15,7 @@ const pmSchema = new mongoose.Schema({
     enum: ["Asssined", "In progress", "Done", "Missed"],
   },
   schedules: String,
+  notes: String,
 });
 
 // compile schema into a model to create a class

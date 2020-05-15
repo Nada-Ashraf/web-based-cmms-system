@@ -142,10 +142,10 @@ content-type: application/json
 
 {
     "name":"op",
-    "email":"op@op.com",
+    "email":"2@2.com",
     "password":"op",
-    "role":"Supervisor",
-    "department":"operations"
+    "role":"Technician",
+    "department":"cardiology"
 }
 
 ###
@@ -157,3 +157,7 @@ content-type: application/json
     "email":"nadosh1@gmail.com",
     "password":"1998"
 }
+
+###
+GET http://localhost:3000/api/users
+content-type: application/json

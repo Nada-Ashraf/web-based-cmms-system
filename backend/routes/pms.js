@@ -13,6 +13,7 @@ router.post("/add_pm", async (req, res) => {
       "assigned_to",
       "status",
       "schedules",
+      "notes",
     ])
   );
   await pm.save();
@@ -45,6 +46,7 @@ router.put("/:id", async (req, res) => {
       "assigned_to",
       "status",
       "schedules",
+      "notes",
     ]),
     { new: true }
   );
