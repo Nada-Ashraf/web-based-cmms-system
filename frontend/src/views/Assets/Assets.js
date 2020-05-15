@@ -22,6 +22,7 @@ class Assets extends Component {
   componentDidMount() {
     fetch("/api/assets")
       .then((res) => res.json())
+      // .then((assets) => )
       .then((assets) => {
         const assetsFiltered = assets.filter((asset) =>
           asset.department.includes(this.props.department)
@@ -43,56 +44,22 @@ class Assets extends Component {
   };
 
   render() {
-    let add_assets_button;
-    let actions_buttons;
-    if (this.props.role === "Manager") {
-      add_assets_button = (
-        <Link to="/home/Assets/add_asset">
-          <Button className="float-right" color="primary">
-            <i className="icon-plus"></i>
-            &nbsp;Add Asset
-          </Button>
-        </Link>
-      );
-      actions_buttons = this.state.assets.map((asset) => (
-        <td>
-          <Button
-            className="float-right"
-            color="ghost-danger"
-            onClick={() => {
-              this.handleDelete(asset._id);
-            }}
-          >
-            <i className="icon-trash"></i>&nbsp;Delete
-          </Button>
-          <Button className="float-right" color="ghost-success">
-            <i className=" icon-pencil"></i>&nbsp;Edit
-          </Button>
-          <Link to={`/Assets/${asset._id}`}>
-            <Button className="float-right" color="ghost-primary">
-              <i className="icon-list"></i>
-              &nbsp;Details
-            </Button>
-          </Link>
-        </td>
-      ));
-    } else {
-      add_assets_button = <div></div>;
-      actions_buttons = <div></div>;
-    }
+    const isManager = this.props.role === "Manager";
     return (
       <div className="animated fadeIn">
         <Card>
           <CardHeader>
-            <i className="fa fa-align-justify"></i> Assets{" "}
-            <small className="text-muted">list</small>
-            {/* <Link to="/Assets/add_asset">
-              <Button className="float-right" color="primary">
-                <i className="icon-plus"></i>
-                &nbsp;Add Asset
-              </Button>
-            </Link> */}
-            {add_assets_button}
+            <i className="fa fa-align-justify"></i> Assets
+            {isManager ? (
+              <Link to="/home/Assets/add_asset">
+                <Button className="float-right" color="primary">
+                  <i className="icon-plus"></i>
+                  &nbsp;Add Asset
+                </Button>
+              </Link>
+            ) : (
+              <div></div>
+            )}
           </CardHeader>
           <CardBody>
             <Table responsive hover>
@@ -109,10 +76,7 @@ class Assets extends Component {
               <tbody>
                 {this.state.assets.map((asset) => (
                   <tr key={asset.serial_number}>
-                    <td>
-                      {/* <Link to={`/assets/${asset._id}`}>{asset.name}</Link> */}
-                      {asset.name}
-                    </td>
+                    <td>{asset.name}</td>
                     <td>{asset.model}</td>
                     <td>{asset.serial_number}</td>
                     <td>{asset.department}</td>
@@ -121,27 +85,40 @@ class Assets extends Component {
                         {asset.condition}
                       </Badge>
                     </td>
-                    {/* <td>
-                      <Button
-                        className="float-right"
-                        color="ghost-danger"
-                        onClick={() => {
-                          this.handleDelete(asset._id);
-                        }}
-                      >
-                        <i className="icon-trash"></i>&nbsp;Delete
-                      </Button>
-                      <Button className="float-right" color="ghost-success">
-                        <i className=" icon-pencil"></i>&nbsp;Edit
-                      </Button>
-                      <Link to={`/Assets/${asset._id}`}>
-                        <Button className="float-right" color="ghost-primary">
-                          <i className="icon-list"></i>
-                          &nbsp;Details
-                        </Button>
-                      </Link>
-                    </td> */}
-                    {actions_buttons}
+                    <td>
+                      {isManager ? (
+                        <React.Fragment>
+                          <Button
+                            className="float-right"
+                            color="ghost-danger"
+                            onClick={() => {
+                              this.handleDelete(asset._id);
+                            }}
+                          >
+                            <i className="icon-trash"></i>&nbsp;Delete
+                          </Button>
+                          <Button className="float-right" color="ghost-success">
+                            <i className=" icon-pencil"></i>&nbsp;Edit
+                          </Button>
+                          <Link to={`/Assets/${asset._id}`}>
+                            <Button
+                              className="float-right"
+                              color="ghost-primary"
+                            >
+                              <i className="icon-list"></i>
+                              &nbsp;Details
+                            </Button>
+                          </Link>
+                        </React.Fragment>
+                      ) : (
+                        <Link to={`/Assets/${asset._id}`}>
+                          <Button className="float-right" color="ghost-primary">
+                            <i className="icon-list"></i>
+                            &nbsp;Details
+                          </Button>
+                        </Link>
+                      )}
+                    </td>
                   </tr>
                 ))}
               </tbody>
