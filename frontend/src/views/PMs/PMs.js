@@ -51,14 +51,6 @@ class PMs extends Component {
           <CardHeader>
             <i className="fa fa-align-justify"></i> PMs{" "}
             <small className="text-muted">list</small>
-            {isManager ? (
-              <Button className="float-right" color="primary">
-                <i className="icon-plus"></i>
-                &nbsp;Add PM
-              </Button>
-            ) : (
-              <div></div>
-            )}
           </CardHeader>
           <CardBody>
             <Table responsive hover>
@@ -93,10 +85,15 @@ class PMs extends Component {
                           <Button className="float-right" color="ghost-success">
                             <i className=" icon-pencil"></i>&nbsp;Edit
                           </Button>
-                          <Button className="float-right" color="ghost-primary">
-                            <i className="icon-list"></i>
-                            &nbsp;Details
-                          </Button>
+                          <Link to={`/home/PMs/${pm._id}`}>
+                            <Button
+                              className="float-right"
+                              color="ghost-primary"
+                            >
+                              <i className="icon-list"></i>
+                              &nbsp;Details
+                            </Button>
+                          </Link>
                         </React.Fragment>
                       ) : isSupervisor ? (
                         <React.Fragment>

@@ -1,7 +1,8 @@
 import React from "react";
 const Dashboard = React.lazy(() => import("./views/Dashboard"));
-const Assets = React.lazy(() => import("./views/Assets/Assets"));
+const PMdetails = React.lazy(() => import("./views/PMs/PMdetails"));
 const AssetDetails = React.lazy(() => import("./views/Assets/AssetDetails"));
+const Assets = React.lazy(() => import("./views/Assets/Assets"));
 const AddAsset = React.lazy(() => import("./views/Assets/AddAsset"));
 const EditAsset = React.lazy(() => import("./views/Assets/EditAsset"));
 const AddAssetPMs = React.lazy(() => import("./views/Assets/AddAssetPMs"));
@@ -51,6 +52,11 @@ const routes = [
     path: "/home/Assets/add_asset/:id",
     name: "",
     component: AddAssetPMs,
+  },
+  {
+    path: "/home/PMs/:id",
+    name: "PM details",
+    component: PMdetails,
   },
   { path: "/home/Assets/:id", name: "Asset Details", component: AssetDetails },
   {
