@@ -54,7 +54,7 @@ class AddEmployee extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
 
     const { name, email, password, role, department } = this.state;
@@ -69,8 +69,8 @@ class AddEmployee extends Component {
     };
 
     // Attempt to register
-    this.props.register(newUser);
-    // this.props.history.push("/home/Employees");
+    await this.props.register(newUser);
+    this.props.history.push("/home/Employees");
   };
 
   render() {
