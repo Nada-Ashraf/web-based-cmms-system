@@ -23,10 +23,14 @@ class Assets extends Component {
     fetch("/api/assets")
       .then((res) => res.json())
       .then((assets) => {
-        const assetsFiltered = assets.filter((asset) =>
-          asset.department.includes(this.props.department)
-        );
-        this.setState({ assets: assetsFiltered });
+        if (this.props.role === "Supervisor") {
+          const assetsFiltered = assets.filter((asset) =>
+            asset.department.includes(this.props.department)
+          );
+          this.setState({ assets: assetsFiltered });
+        } else {
+          this.setState({ assets });
+        }
       });
   }
 
