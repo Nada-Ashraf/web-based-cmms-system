@@ -33,12 +33,6 @@ class PMdetails extends Component {
           </CardHeader>
           <CardBody>
             <Table responsive striped hover>
-              {/* <tr>
-                <td>
-                  <strong>Asset: </strong>
-                </td>
-                <td>{this.state.pm.asset.name}</td>
-              </tr> */}
               <tr>
                 <td>
                   <strong>Instructions: </strong>

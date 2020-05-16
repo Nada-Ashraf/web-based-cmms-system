@@ -42,6 +42,19 @@ class PMs extends Component {
       });
   }
 
+  handleDelete = (id) => {
+    if (window.confirm("Are you sure you want to delete this item?")) {
+      fetch("/api/pms/delete/" + id, {
+        method: "DELETE",
+      })
+        .then((response) => {
+          return response.json();
+        })
+        .then(() => {
+          window.location.reload(false);
+        });
+    }
+  };
   render() {
     const isManager = this.props.role === "Manager";
     const isSupervisor = this.props.role === "Supervisor";
@@ -81,7 +94,13 @@ class PMs extends Component {
                     <td>
                       {isManager ? (
                         <React.Fragment>
-                          <Button className="float-right" color="ghost-danger">
+                          <Button
+                            className="float-right"
+                            color="ghost-danger"
+                            onClick={() => {
+                              this.handleDelete(pm._id);
+                            }}
+                          >
                             <i className="icon-trash"></i>&nbsp;Delete
                           </Button>
                           <Button className="float-right" color="ghost-success">
