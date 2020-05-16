@@ -1,5 +1,13 @@
 import React, { Component } from "react";
-import { Card, CardBody, CardHeader, Col, Row, Table } from "reactstrap";
+import {
+  Card,
+  CardBody,
+  CardHeader,
+  Col,
+  Row,
+  Table,
+  Button,
+} from "reactstrap";
 
 class PMdetails extends Component {
   state = { pm: {}, id: this.props.match.params.id };
@@ -13,24 +21,18 @@ class PMdetails extends Component {
         this.setState({ pm });
       });
   }
+
   render() {
     return (
       <div className="animated fadeIn">
         <Card>
           <CardHeader>
             <strong>
-              <i className="icon-info pr-1"></i>PM id:{" "}
-              {this.props.match.params.id}
+              <i className="icon-info pr-1"></i>PM Title: {this.state.pm.title}{" "}
             </strong>
           </CardHeader>
           <CardBody>
             <Table responsive striped hover>
-              <tr>
-                <td>
-                  <strong>Title: </strong>
-                </td>
-                <td>{this.state.pm.title}</td>
-              </tr>
               {/* <tr>
                 <td>
                   <strong>Asset: </strong>

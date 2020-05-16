@@ -93,7 +93,7 @@ class PMs extends Component {
                               color="ghost-primary"
                             >
                               <i className="icon-list"></i>
-                              &nbsp;Details
+                              &nbsp;Instructions
                             </Button>
                           </Link>
                         </React.Fragment>
@@ -113,7 +113,7 @@ class PMs extends Component {
                           </Link>
                           <Button className="float-right" color="ghost-primary">
                             <i className="icon-list"></i>
-                            &nbsp;Details
+                            &nbsp;Instructions
                           </Button>
                         </React.Fragment>
                       ) : (
@@ -134,7 +134,7 @@ class PMs extends Component {
                           </Link>
                           <Button className="float-right" color="ghost-primary">
                             <i className="icon-list"></i>
-                            &nbsp;Details
+                            &nbsp;Instructions
                           </Button>
                         </React.Fragment>
                       )}
