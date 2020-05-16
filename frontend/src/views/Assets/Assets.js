@@ -100,9 +100,19 @@ class Assets extends Component {
                           >
                             <i className="icon-trash"></i>&nbsp;Delete
                           </Button>
-                          <Button className="float-right" color="ghost-success">
-                            <i className=" icon-pencil"></i>&nbsp;Edit
-                          </Button>
+                          <Link
+                            to={{
+                              pathname: "/home/Assets/edit_asset",
+                              id: asset._id,
+                            }}
+                          >
+                            <Button
+                              className="float-right"
+                              color="ghost-success"
+                            >
+                              <i className=" icon-pencil"></i>&nbsp;Edit
+                            </Button>
+                          </Link>
                           <Link to={`/Assets/${asset._id}`}>
                             <Button
                               className="float-right"

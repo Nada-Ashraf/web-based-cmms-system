@@ -19,7 +19,6 @@ import { clearErrors } from "../../actions/errorActions";
 
 class AddEmployee extends Component {
   state = {
-    modal: false,
     name: "",
     email: "",
     password: "",
@@ -46,21 +45,11 @@ class AddEmployee extends Component {
       }
     }
 
-    // If authenticated, close modal
-    if (this.state.modal) {
-      if (isAuthenticated) {
-        this.toggle();
-      }
+    if (isAuthenticated) {
+      this.props.history.push("/home/Employees");
+      //   this.props.clearErrors();
     }
   }
-
-  toggle = () => {
-    // Clear errors
-    this.props.clearErrors();
-    this.setState({
-      modal: !this.state.modal,
-    });
-  };
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -82,6 +71,7 @@ class AddEmployee extends Component {
 
     // Attempt to register
     this.props.register(newUser);
+    this.props.history.push("/home/Employees");
   };
 
   render() {
@@ -133,7 +123,7 @@ class AddEmployee extends Component {
             </FormGroup>
             <FormGroup row>
               <Col md="3">
-                <Label htmlFor="text-input">email</Label>
+                <Label htmlFor="text-input">Email</Label>
               </Col>
               <Col xs="12" md="9">
                 <Input
@@ -148,7 +138,7 @@ class AddEmployee extends Component {
             </FormGroup>
             <FormGroup row>
               <Col md="3">
-                <Label htmlFor="text-input">password</Label>
+                <Label htmlFor="text-input">Password</Label>
               </Col>
               <Col xs="12" md="9">
                 <Input
@@ -180,15 +170,13 @@ class AddEmployee extends Component {
                 </Input>
               </Col>
             </FormGroup>
-            {/* <Link to={`/Assets/add_asset/${this.state._id}`}> */}
             <Button
               className="btn-pill"
               type="submit"
               size="lg"
               color="primary"
             >
-              <i className="icon-arrow-right-circle"></i> Submit
-              {/* <i className="fa fa-dot-circle-o"></i> Submit */}
+              <i className="fa fa-dot-circle-o"></i> Submit
             </Button>
           </Form>
         </CardBody>

@@ -3,6 +3,7 @@ const Dashboard = React.lazy(() => import("./views/Dashboard"));
 const Assets = React.lazy(() => import("./views/Assets/Assets"));
 const AssetDetails = React.lazy(() => import("./views/Assets/AssetDetails"));
 const AddAsset = React.lazy(() => import("./views/Assets/AddAsset"));
+const EditAsset = React.lazy(() => import("./views/Assets/EditAsset"));
 const AddAssetPMs = React.lazy(() => import("./views/Assets/AddAssetPMs"));
 const Employees = React.lazy(() => import("./views/Employees/Employees"));
 const AddEmployee = React.lazy(() => import("./views/Employees/AddEmployee"));
@@ -39,6 +40,12 @@ const routes = [
     exact: true,
     name: "Add Asset",
     component: AddAsset,
+  },
+  {
+    path: "/home/Assets/edit_asset",
+    exact: true,
+    name: "Edit Asset",
+    component: EditAsset,
   },
   {
     path: "/home/Assets/add_asset/:id",
