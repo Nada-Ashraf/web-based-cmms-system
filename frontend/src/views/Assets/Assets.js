@@ -35,15 +35,17 @@ class Assets extends Component {
   }
 
   handleDelete = (assetId) => {
-    fetch("/api/assets/delete/" + assetId, {
-      method: "DELETE",
-    })
-      .then((response) => {
-        return response.json();
+    if (window.confirm("Are you sure you want to delete this item?")) {
+      fetch("/api/assets/delete/" + assetId, {
+        method: "DELETE",
       })
-      .then(() => {
-        window.location.reload(false);
-      });
+        .then((response) => {
+          return response.json();
+        })
+        .then(() => {
+          window.location.reload(false);
+        });
+    }
   };
 
   render() {

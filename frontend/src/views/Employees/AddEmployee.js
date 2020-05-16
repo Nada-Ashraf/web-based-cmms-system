@@ -9,8 +9,8 @@ import {
   FormGroup,
   Input,
   Label,
+  Alert,
 } from "reactstrap";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { register } from "../../actions/authActions";
@@ -34,7 +34,7 @@ class AddEmployee extends Component {
   };
 
   componentDidUpdate(prevProps) {
-    const { error, isAuthenticated } = this.props;
+    const { error } = this.props;
     if (error !== prevProps.error) {
       // Check for register error
       if (error.id === "REGISTER_FAIL") {
@@ -42,11 +42,6 @@ class AddEmployee extends Component {
       } else {
         this.setState({ msg: null });
       }
-    }
-
-    if (isAuthenticated) {
-      // this.props.history.push("/home/Employees");
-      //   this.props.clearErrors();
     }
   }
 
@@ -70,7 +65,11 @@ class AddEmployee extends Component {
 
     // Attempt to register
     await this.props.register(newUser);
-    this.props.history.push("/home/Employees");
+
+    // CHECK
+    // if (this.props.error.id !== "REGISTER_FAIL") {
+    //   this.props.history.push("/home/Employees");
+    // }
   };
 
   render() {
@@ -87,6 +86,9 @@ class AddEmployee extends Component {
             className="form-horizontal"
             onSubmit={this.handleSubmit}
           >
+            {this.state.msg ? (
+              <Alert color="danger">{this.state.msg}</Alert>
+            ) : null}
             <FormGroup row>
               <Col md="3">
                 <Label htmlFor="text-input">Name</Label>
@@ -185,7 +187,6 @@ class AddEmployee extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated,
   error: state.error,
 });
 

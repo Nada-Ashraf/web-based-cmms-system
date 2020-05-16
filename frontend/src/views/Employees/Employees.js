@@ -1,20 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Button, Badge, Card, CardBody, CardHeader, Table } from "reactstrap";
+import { Button, Card, CardBody, CardHeader, Table } from "reactstrap";
 import { connect } from "react-redux";
 import { login } from "../../actions/authActions";
-
-const getBadge = (status) => {
-  return status === "In service"
-    ? "success"
-    : status === "Scrapped"
-    ? "secondary"
-    : status === "Need repair"
-    ? "warning"
-    : status === "Out of service"
-    ? "danger"
-    : "primary";
-};
 
 class Employees extends Component {
   state = { employees: [] };
@@ -23,6 +11,11 @@ class Employees extends Component {
     fetch("/api/users")
       .then((res) => res.json())
       .then((employees) => {
+        employees = employees.filter(
+          (employee) =>
+            employee.role.includes("Technician") ||
+            employee.role.includes("Supervisor")
+        );
         if (this.props.role === "Supervisor") {
           const employeesFiltered = employees.filter((employee) =>
             employee.department.includes(this.props.department)
@@ -34,16 +27,18 @@ class Employees extends Component {
       });
   }
 
-  handleDelete = (assetId) => {
-    fetch("/api/users/delete/" + assetId, {
-      method: "DELETE",
-    })
-      .then((response) => {
-        return response.json();
+  handleDelete = (employeeId) => {
+    if (window.confirm("Are you sure you want to delete this item?")) {
+      fetch("/api/users/delete/" + employeeId, {
+        method: "DELETE",
       })
-      .then(() => {
-        window.location.reload(false);
-      });
+        .then((response) => {
+          return response.json();
+        })
+        .then(() => {
+          window.location.reload(false);
+        });
+    }
   };
 
   render() {
@@ -52,7 +47,7 @@ class Employees extends Component {
       <div className="animated fadeIn">
         <Card>
           <CardHeader>
-            <i className="fa fa-align-justify"></i> Employees
+            <i className="fa fa-align-justify"></i> Employees List
             {isManager ? (
               <Link to="/home/Employees/add_employee">
                 <Button className="float-right" color="primary">
@@ -104,20 +99,9 @@ class Employees extends Component {
                             <i className=" icon-pencil"></i>&nbsp;Edit
                           </Button>
                           {/* </Link> */}
-                          {/* <Link to={`/Employees/${asset._id}`}> */}
-                          <Button className="float-right" color="ghost-primary">
-                            <i className="icon-list"></i>
-                            &nbsp;Details
-                          </Button>
-                          {/* </Link> */}
                         </React.Fragment>
                       ) : (
-                        // <Link to={`/Employees/${asset._id}`}>
-                        <Button className="float-right" color="ghost-primary">
-                          <i className="icon-list"></i>
-                          &nbsp;Details
-                        </Button>
-                        // </Link>
+                        <React.Fragment></React.Fragment>
                       )}
                     </td>
                   </tr>
