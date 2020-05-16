@@ -34,17 +34,17 @@ class Employees extends Component {
       });
   }
 
-  // handleDelete = (assetId) => {
-  //   fetch("/api/assets/delete/" + assetId, {
-  //     method: "DELETE",
-  //   })
-  //     .then((response) => {
-  //       return response.json();
-  //     })
-  //     .then(() => {
-  //       window.location.reload(false);
-  //     });
-  // };
+  handleDelete = (assetId) => {
+    fetch("/api/users/delete/" + assetId, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then(() => {
+        window.location.reload(false);
+      });
+  };
 
   render() {
     const isManager = this.props.role === "Manager";

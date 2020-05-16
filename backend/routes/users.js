@@ -19,9 +19,9 @@ router.get("/", async (req, res) => {
   }
 });
 
-// router.get("/", async (req, res) => {
-//   const users = await Emp.find({});
-//   res.json(users);
-// });
+router.delete("/delete/:id", async (req, res) => {
+  const user = await User.findByIdAndRemove(req.params.id);
+  res.send(user);
+});
 
 module.exports = router;
