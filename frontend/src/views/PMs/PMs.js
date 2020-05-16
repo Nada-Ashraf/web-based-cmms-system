@@ -31,13 +31,14 @@ class PMs extends Component {
               pm.asset.department.includes(this.props.department)
           );
           this.setState({ pms: pmsFiltered });
-        } else {
+        } else if (this.props.role === "Supervisor") {
           const pmsFiltered = pms.filter((pm) =>
             pm.asset.department.includes(this.props.department)
           );
           this.setState({ pms: pmsFiltered });
+        } else {
+          this.setState({ pms });
         }
-        // this.setState({ pms: pmsFiltered });
       });
   }
 
