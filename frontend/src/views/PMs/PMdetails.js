@@ -25,7 +25,24 @@ class PMdetails extends Component {
           </CardHeader>
           <CardBody>
             <Table responsive striped hover>
-              <td>{this.state.pm.title}</td>
+              <tr>
+                <td>
+                  <strong>Title: </strong>
+                </td>
+                <td>{this.state.pm.title}</td>
+              </tr>
+              {/* <tr>
+                <td>
+                  <strong>Asset: </strong>
+                </td>
+                <td>{this.state.pm.asset.name}</td>
+              </tr> */}
+              <tr>
+                <td>
+                  <strong>Instructions: </strong>
+                </td>
+                <td>{this.state.pm.instructions}</td>
+              </tr>
             </Table>
           </CardBody>
         </Card>
@@ -35,14 +52,3 @@ class PMdetails extends Component {
 }
 
 export default PMdetails;
-
-// import React, { Component } from "react";
-
-// class PMdetails extends Component {
-//   state = {};
-//   render() {
-//     return <h1>{this.props.match.params.id}</h1>;
-//   }
-// }
-
-// export default PMdetails;

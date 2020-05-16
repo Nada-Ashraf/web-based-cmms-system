@@ -69,7 +69,9 @@ class PMs extends Component {
                 {this.state.pms.map((pm) => (
                   <tr key={pm._id}>
                     <td>{pm.title}</td>
-                    <td>{pm.asset.name}</td>
+                    <Link to={`/home/Assets/${pm.asset._id}`}>
+                      <td>{pm.asset.name}</td>
+                    </Link>
                     <td>{pm.asset.department}</td>
                     <td>{pm.schedules}</td>
                     {/* <td>{pm.assigned_to.name}</td> */}

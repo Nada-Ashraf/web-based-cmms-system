@@ -34,7 +34,7 @@ router.get("/:id", async (req, res) => {
   const pm = await PM.findById(req.params.id)
     .populate("asset")
     .populate("assigned_to");
-  res.send(pm);
+  res.json(pm);
 });
 
 // Edit pm
