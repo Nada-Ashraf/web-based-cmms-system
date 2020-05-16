@@ -130,10 +130,15 @@ class PMs extends Component {
                               <i className=" icon-pencil"></i>&nbsp;Assign work
                             </Button>
                           </Link>
-                          <Button className="float-right" color="ghost-primary">
-                            <i className="icon-list"></i>
-                            &nbsp;Instructions
-                          </Button>
+                          <Link to={`/home/PMs/${pm._id}`}>
+                            <Button
+                              className="float-right"
+                              color="ghost-primary"
+                            >
+                              <i className="icon-list"></i>
+                              &nbsp;Instructions
+                            </Button>
+                          </Link>
                         </React.Fragment>
                       ) : (
                         <React.Fragment>
@@ -151,10 +156,15 @@ class PMs extends Component {
                               work
                             </Button>
                           </Link>
-                          <Button className="float-right" color="ghost-primary">
-                            <i className="icon-list"></i>
-                            &nbsp;Instructions
-                          </Button>
+                          <Link to={`/home/PMs/${pm._id}`}>
+                            <Button
+                              className="float-right"
+                              color="ghost-primary"
+                            >
+                              <i className="icon-list"></i>
+                              &nbsp;Instructions
+                            </Button>
+                          </Link>
                         </React.Fragment>
                       )}
                     </td>
