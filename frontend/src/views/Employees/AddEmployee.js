@@ -46,7 +46,7 @@ class AddEmployee extends Component {
     }
 
     if (isAuthenticated) {
-      this.props.history.push("/home/Employees");
+      // this.props.history.push("/home/Employees");
       //   this.props.clearErrors();
     }
   }
@@ -71,7 +71,7 @@ class AddEmployee extends Component {
 
     // Attempt to register
     this.props.register(newUser);
-    this.props.history.push("/home/Employees");
+    // this.props.history.push("/home/Employees");
   };
 
   render() {

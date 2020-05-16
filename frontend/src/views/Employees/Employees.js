@@ -1,111 +1,139 @@
 import React, { Component } from "react";
-import {
-  Badge,
-  Card,
-  CardBody,
-  CardHeader,
-  Pagination,
-  PaginationItem,
-  PaginationLink,
-  Table,
-  Button,
-} from "reactstrap";
 import { Link } from "react-router-dom";
+import { Button, Badge, Card, CardBody, CardHeader, Table } from "reactstrap";
+import { connect } from "react-redux";
+import { login } from "../../actions/authActions";
+
+const getBadge = (status) => {
+  return status === "In service"
+    ? "success"
+    : status === "Scrapped"
+    ? "secondary"
+    : status === "Need repair"
+    ? "warning"
+    : status === "Out of service"
+    ? "danger"
+    : "primary";
+};
 
 class Employees extends Component {
+  state = { employees: [] };
+
+  componentDidMount() {
+    fetch("/api/users")
+      .then((res) => res.json())
+      .then((employees) => {
+        if (this.props.role === "Supervisor") {
+          const employeesFiltered = employees.filter((employee) =>
+            employee.department.includes(this.props.department)
+          );
+          this.setState({ employees: employeesFiltered });
+        } else {
+          this.setState({ employees });
+        }
+      });
+  }
+
+  // handleDelete = (assetId) => {
+  //   fetch("/api/assets/delete/" + assetId, {
+  //     method: "DELETE",
+  //   })
+  //     .then((response) => {
+  //       return response.json();
+  //     })
+  //     .then(() => {
+  //       window.location.reload(false);
+  //     });
+  // };
+
   render() {
+    const isManager = this.props.role === "Manager";
     return (
-      <Card>
-        <CardHeader>
-          <i className="fa fa-align-justify"></i> Employees Table
-          <Link to="/home/Employees/add_employee">
-            <Button className="float-right" color="primary">
-              <i className="icon-plus"></i>
-              &nbsp;Add Employee
-            </Button>
-          </Link>
-        </CardHeader>
-        <CardBody>
-          <Table responsive striped>
-            <thead>
-              <tr>
-                <th>Username</th>
-                <th>Date registered</th>
-                <th>Role</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Yiorgos Avraamu</td>
-                <td>2012/01/01</td>
-                <td>Member</td>
-                <td>
-                  <Badge color="success">Active</Badge>
-                </td>
-              </tr>
-              <tr>
-                <td>Avram Tarasios</td>
-                <td>2012/02/01</td>
-                <td>Staff</td>
-                <td>
-                  <Badge color="danger">Banned</Badge>
-                </td>
-              </tr>
-              <tr>
-                <td>Quintin Ed</td>
-                <td>2012/02/01</td>
-                <td>Admin</td>
-                <td>
-                  <Badge color="secondary">Inactive</Badge>
-                </td>
-              </tr>
-              <tr>
-                <td>Enéas Kwadwo</td>
-                <td>2012/03/01</td>
-                <td>Member</td>
-                <td>
-                  <Badge color="warning">Pending</Badge>
-                </td>
-              </tr>
-              <tr>
-                <td>Agapetus Tadeáš</td>
-                <td>2012/01/21</td>
-                <td>Staff</td>
-                <td>
-                  <Badge color="success">Active</Badge>
-                </td>
-              </tr>
-            </tbody>
-          </Table>
-          <Pagination>
-            <PaginationItem disabled>
-              <PaginationLink previous tag="button">
-                Prev
-              </PaginationLink>
-            </PaginationItem>
-            <PaginationItem active>
-              <PaginationLink tag="button">1</PaginationLink>
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationLink tag="button">2</PaginationLink>
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationLink tag="button">3</PaginationLink>
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationLink tag="button">4</PaginationLink>
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationLink next tag="button">
-                Next
-              </PaginationLink>
-            </PaginationItem>
-          </Pagination>
-        </CardBody>
-      </Card>
+      <div className="animated fadeIn">
+        <Card>
+          <CardHeader>
+            <i className="fa fa-align-justify"></i> Employees
+            {isManager ? (
+              <Link to="/home/Employees/add_employee">
+                <Button className="float-right" color="primary">
+                  <i className="icon-plus"></i>
+                  &nbsp;Add Employee
+                </Button>
+              </Link>
+            ) : (
+              <div></div>
+            )}
+          </CardHeader>
+          <CardBody>
+            <Table responsive hover>
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Role</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Department</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.state.employees.map((employee) => (
+                  <tr key={employee._id}>
+                    <td>{employee.name}</td>
+                    <td>{employee.role}</td>
+                    <td>{employee.email}</td>
+                    <td>{employee.department}</td>
+                    <td>
+                      {isManager ? (
+                        <React.Fragment>
+                          <Button
+                            className="float-right"
+                            color="ghost-danger"
+                            onClick={() => {
+                              this.handleDelete(employee._id);
+                            }}
+                          >
+                            <i className="icon-trash"></i>&nbsp;Delete
+                          </Button>
+                          {/* <Link
+                            to={{
+                              pathname: "/home/Employees/edit_employee",
+                              id: employee._id,
+                            }}
+                          > */}
+                          <Button className="float-right" color="ghost-success">
+                            <i className=" icon-pencil"></i>&nbsp;Edit
+                          </Button>
+                          {/* </Link> */}
+                          {/* <Link to={`/Employees/${asset._id}`}> */}
+                          <Button className="float-right" color="ghost-primary">
+                            <i className="icon-list"></i>
+                            &nbsp;Details
+                          </Button>
+                          {/* </Link> */}
+                        </React.Fragment>
+                      ) : (
+                        // <Link to={`/Employees/${asset._id}`}>
+                        <Button className="float-right" color="ghost-primary">
+                          <i className="icon-list"></i>
+                          &nbsp;Details
+                        </Button>
+                        // </Link>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </CardBody>
+        </Card>
+      </div>
     );
   }
 }
 
-export default Employees;
+const mapStateToProps = (state) => ({
+  role: state.auth.user.role,
+  department: state.auth.user.department,
+});
+
+export default connect(mapStateToProps, { login })(Employees);
