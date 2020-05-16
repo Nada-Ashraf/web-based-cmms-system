@@ -12,7 +12,7 @@ const pmSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ["Asssined", "In progress", "Done", "Missed"],
+    enum: ["Asssined", "Not Assigned", "Done", "There's an issue"],
   },
   schedules: String,
   notes: String,

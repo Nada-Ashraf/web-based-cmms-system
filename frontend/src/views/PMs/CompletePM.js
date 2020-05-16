@@ -19,6 +19,7 @@ class CompletePM extends Component {
     id: this.props.location.id,
     report_title: "",
     report_body: "",
+    status: "",
   };
 
   handleChange = (event) => {
@@ -40,6 +41,7 @@ class CompletePM extends Component {
       body: JSON.stringify({
         report_title: this.state.report_title,
         report_body: this.state.report_body,
+        status: this.state.status,
       }),
     }).then((response) => response.json());
   };
@@ -57,6 +59,39 @@ class CompletePM extends Component {
             className="form-horizontal"
             onSubmit={this.handleSubmit}
           >
+            <FormGroup row>
+              <Col md="3">
+                <Label>Status</Label>
+              </Col>
+              <Col md="9">
+                <FormGroup check className="radio">
+                  <Input
+                    className="form-check-input"
+                    value={this.state.status}
+                    onChange={this.handleChange}
+                    type="radio"
+                    id="Done"
+                    name="radios"
+                  />
+                  <Label check className="form-check-label" htmlFor="radio1">
+                    Done
+                  </Label>
+                </FormGroup>
+                <FormGroup check className="radio">
+                  <Input
+                    className="form-check-input"
+                    value={this.state.status}
+                    onChange={this.handleChange}
+                    type="radio"
+                    id="There's an issue"
+                    name="radios"
+                  />
+                  <Label check className="form-check-label" htmlFor="radio2">
+                    There's an issue
+                  </Label>
+                </FormGroup>
+              </Col>
+            </FormGroup>
             <FormGroup row>
               <Col md="3">
                 <Label htmlFor="text-input">Title</Label>

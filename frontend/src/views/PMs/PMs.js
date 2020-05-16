@@ -118,18 +118,24 @@ class PMs extends Component {
                         </React.Fragment>
                       ) : isSupervisor ? (
                         <React.Fragment>
-                          <Link
-                            to={{ pathname: "/home/PMs/assign_pm", id: pm._id }}
-                            // to="/home/PMs/assign_pm"
-                            // params={{ id: pm._id }}
-                          >
-                            <Button
-                              className="float-right"
-                              color="ghost-success"
+                          {pm.status === "Not Assgined" || ( // CHECK
+                            <Link
+                              to={{
+                                pathname: "/home/PMs/assign_pm",
+                                id: pm._id,
+                              }}
+                              // to="/home/PMs/assign_pm"
+                              // params={{ id: pm._id }}
                             >
-                              <i className=" icon-pencil"></i>&nbsp;Assign work
-                            </Button>
-                          </Link>
+                              <Button
+                                className="float-right"
+                                color="ghost-success"
+                              >
+                                <i className=" icon-pencil"></i>&nbsp;Assign
+                                work
+                              </Button>
+                            </Link>
+                          )}
                           <Link to={`/home/PMs/${pm._id}`}>
                             <Button
                               className="float-right"
