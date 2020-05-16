@@ -46,7 +46,7 @@ class AssignPMs extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    fetch("/api/pms/" + this.state.id, {
+    fetch("/api/pms/edit/" + this.state.id, {
       method: "PUT",
       headers: {
         Accept: "application/json",

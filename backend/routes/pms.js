@@ -38,7 +38,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // Edit pm
-router.put("edit/:id", async (req, res) => {
+router.put("/edit/:id", async (req, res) => {
   const pm = await PM.findByIdAndUpdate(
     req.params.id,
     _.pick(req.body, [

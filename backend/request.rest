@@ -123,11 +123,11 @@ GET http://localhost:3000/api/pms/5ec050ef6c57db3bcc2ad7b9
 content-type: application/json
 
 ### 
-PUT http://localhost:3000/api/pms/5ebed441307ec31364057239
+PUT http://localhost:3000/api/pms/edit/5ec050ef6c57db3bcc2ad7b9
 content-type: application/json
 
 {
-    "report_title":"title"
+    "notes":"notes"
 }
 
 ### 
