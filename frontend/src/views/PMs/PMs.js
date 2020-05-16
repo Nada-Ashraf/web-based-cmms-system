@@ -119,9 +119,10 @@ class PMs extends Component {
                       ) : (
                         <React.Fragment>
                           <Link
-                            to={{ pathname: "/home/PMs/assign_pm", id: pm._id }}
-                            // to="/home/PMs/assign_pm"
-                            // params={{ id: pm._id }}
+                            to={{
+                              pathname: "/home/PMs/complete_pm",
+                              id: pm._id,
+                            }}
                           >
                             <Button
                               className="float-right"

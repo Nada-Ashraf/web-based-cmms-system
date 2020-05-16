@@ -4,7 +4,7 @@ const { Report } = require("../models/report");
 const _ = require("lodash");
 
 // Add Report
-router.post("/report_asset", async (req, res) => {
+router.post("/add_report", async (req, res) => {
   report = new Report(
     _.pick(req.body, [
       "name_of_reporter",

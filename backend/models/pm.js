@@ -16,6 +16,12 @@ const pmSchema = new mongoose.Schema({
   },
   schedules: String,
   notes: String,
+  // return_report: {
+  //   report_title: { type: String },
+  //   report_body: { type: String },
+  // },
+  report_title: String,
+  report_body: String,
 });
 
 // compile schema into a model to create a class

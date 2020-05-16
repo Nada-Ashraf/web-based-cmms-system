@@ -23,7 +23,7 @@ GET http://localhost:3000/api/assets
 content-type: application/json
 
 ### 
-GET http://localhost:3000/api/assets/5ea72c367bf92022476a79dd
+GET http://localhost:3000/api/assets/5eb456ae26aaa05a87eb7a9c
 content-type: application/json
 
 ### 
@@ -110,7 +110,8 @@ content-type: application/json
     "instructions":["1","2","3"],
     "assigned_to":"5eb449dddc3c7e398326af1e",
     "status":"Done",
-    "schedules":"Every week"
+    "schedules":"Every week",
+    "department":"Car"
 }
 
 ###
@@ -122,16 +123,11 @@ GET http://localhost:3000/api/pms/5eb476525319c47d8913384a
 content-type: application/json
 
 ### 
-PUT http://localhost:3000/api/pms/5ebe19e2b509fb2946bb1295
+PUT http://localhost:3000/api/pms/5ebed441307ec31364057239
 content-type: application/json
 
 {
-    "title":"pm title edited",
-    "asset":"5eb456ae26aaa05a87eb7a9c",
-    "instructions":["1","2","3","4"],
-    "assigned_to":"5eb46b3931859d6f72f724fb",
-    "status":"Done",
-    "schedules":"Every week"
+    "report_title":"title"
 }
 
 ### 

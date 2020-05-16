@@ -14,6 +14,8 @@ router.post("/add_pm", async (req, res) => {
       "status",
       "schedules",
       "notes",
+      "report_title",
+      "report_body",
     ])
   );
   await pm.save();
@@ -47,12 +49,13 @@ router.put("/:id", async (req, res) => {
       "status",
       "schedules",
       "notes",
+      "report_title",
+      "report_body",
     ]),
     { new: true }
   );
   res.send(pm);
 });
-
 // Delete pm
 router.delete("/delete/:id", async (req, res) => {
   const pm = await PM.findByIdAndRemove(req.params.id);
