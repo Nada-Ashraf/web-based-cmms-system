@@ -15,8 +15,10 @@ const User = React.lazy(() => import("./views/Users/User"));
 const PMs = React.lazy(() => import("./views/PMs/PMs"));
 const AssignPM = React.lazy(() => import("./views/PMs/AssignPM"));
 const CompletePM = React.lazy(() => import("./views/PMs/CompletePM"));
+const CompleteWO = React.lazy(() => import("./views/WOs/CompleteWO"));
 const WOs = React.lazy(() => import("./views/WOs/WOs"));
 const AddWO = React.lazy(() => import("./views/WOs/AddWO"));
+const WOdetails = React.lazy(() => import("./views/WOs/WOdetails"));
 // const Login = React.lazy(() => import("./views/Auth/Login"));
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
@@ -36,6 +38,12 @@ const routes = [
     exact: true,
     name: "Complete PM",
     component: CompletePM,
+  },
+  {
+    path: "/home/WOs/complete_wo",
+    exact: true,
+    name: "Complete WO",
+    component: CompleteWO,
   },
   { path: "/home/WOs", exact: true, name: "WOs", component: WOs },
   { path: "/home/WOs/Add_WO", exact: true, name: "Add WO", component: AddWO },
@@ -60,6 +68,12 @@ const routes = [
     path: "/home/PMs/:id",
     name: "PM details",
     component: PMdetails,
+  },
+  {
+    path: "/home/WOs/:id",
+    exact: true,
+    name: "WO details",
+    component: WOdetails,
   },
   { path: "/home/Assets/:id", name: "Asset Details", component: AssetDetails },
   {
