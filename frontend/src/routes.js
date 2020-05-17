@@ -8,7 +8,8 @@ const EditAsset = React.lazy(() => import("./views/Assets/EditAsset"));
 const AddAssetPMs = React.lazy(() => import("./views/Assets/AddAssetPMs"));
 const Employees = React.lazy(() => import("./views/Employees/Employees"));
 const AddEmployee = React.lazy(() => import("./views/Employees/AddEmployee"));
-const Reports = React.lazy(() => import("./views/Reports/Reports"));
+const PMReports = React.lazy(() => import("./views/Reports/PMReports"));
+const ViewPmReport = React.lazy(() => import("./views/Reports/ViewPmReport"));
 const Users = React.lazy(() => import("./views/Users/Users"));
 const User = React.lazy(() => import("./views/Users/User"));
 const PMs = React.lazy(() => import("./views/PMs/PMs"));
@@ -71,7 +72,17 @@ const routes = [
     name: "Register Employee",
     component: AddEmployee,
   },
-  { path: "/home/Reports", name: "Reports", component: Reports },
+  {
+    path: "/home/Reports/PMs",
+    exact: true,
+    name: "PMReports",
+    component: PMReports,
+  },
+  {
+    path: "/home/Reports/PMs/:id",
+    name: "View Report",
+    component: ViewPmReport,
+  },
   { path: "/home/users", exact: true, name: "Users", component: Users },
   {
     path: "/home/users/:id",

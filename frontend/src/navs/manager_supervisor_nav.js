@@ -22,7 +22,7 @@ export default {
     },
     {
       name: "Reports",
-      url: "/home/Reports",
+      url: "",
       icon: "icon-docs",
       children: [
         {
@@ -32,7 +32,7 @@ export default {
         },
         {
           name: "WOs",
-          url: "/homeReports/WOs",
+          url: "/home/Reports/WOs",
           icon: "icon-wrench",
         },
       ],

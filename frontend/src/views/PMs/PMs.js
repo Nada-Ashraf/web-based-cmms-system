@@ -5,13 +5,13 @@ import { connect } from "react-redux";
 import { login } from "../../actions/authActions";
 
 const getBadge = (status) => {
-  return status === "In service"
+  return status === "Done"
     ? "success"
-    : status === "Scrapped"
+    : status === "Assigned"
     ? "secondconditionary"
-    : status === "Need repair"
+    : status === "Not Assigned"
     ? "warning"
-    : status === "Out of service"
+    : status === "There's an issue"
     ? "danger"
     : "primary";
 };
