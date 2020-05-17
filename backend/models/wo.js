@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const pmSchema = new mongoose.Schema({
+const woSchema = new mongoose.Schema({
   title: String,
   asset: {
     type: mongoose.Schema.Types.ObjectId,
@@ -10,17 +10,26 @@ const pmSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-  status: {
+  priority: {
     type: String,
-    enum: ["Asssined", "Not Assigned", "Done", "There's an issue", ""],
+    enum: ["Urgent", "Not Urgent"],
   },
-  schedules: String,
+  importance: {
+    type: String,
+    enum: ["Important", "Not Important"],
+  },
+  issue_date: {
+    type: Date,
+    default: Date.now,
+  },
+  assignment_date: Date,
+  due_date: Date,
   notes: String,
   report_title: String,
   report_body: String,
 });
 
 // compile schema into a model to create a class
-const PM = mongoose.model("PM", pmSchema);
+const WO = mongoose.model("WO", woSchema);
 
-exports.PM = PM;
+exports.WO = WO;

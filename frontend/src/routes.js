@@ -75,7 +75,7 @@ const routes = [
   {
     path: "/home/Reports/PMs",
     exact: true,
-    name: "PMReports",
+    name: "PM Reports",
     component: PMReports,
   },
   {
