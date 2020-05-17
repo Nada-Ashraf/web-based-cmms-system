@@ -6,6 +6,7 @@ const auth = require("./routes/auth");
 const reports = require("./routes/reports");
 const employees = require("./routes/employees");
 const users = require("./routes/users");
+const wos = require("./routes/wos");
 const pms = require("./routes/pms");
 const bodyParser = require("body-parser");
 // App Variables
@@ -32,6 +33,7 @@ app.use("/api/employees", employees);
 app.use("/api/pms", pms);
 app.use("/api/auth", auth);
 app.use("/api/users", users);
+app.use("/api/wos", wos);
 
 // Server Activation
 app.listen(port, () => console.log(`listening in port ${port}...`));

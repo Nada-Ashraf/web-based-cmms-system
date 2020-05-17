@@ -12,17 +12,16 @@ const woSchema = new mongoose.Schema({
   },
   priority: {
     type: String,
-    enum: ["Urgent", "Not Urgent"],
+    enum: ["Urgent", "Not Urgent", ""],
   },
   importance: {
     type: String,
-    enum: ["Important", "Not Important"],
+    enum: ["Important", "Not Important", ""],
   },
   issue_date: {
     type: Date,
     default: Date.now,
   },
-  assignment_date: Date,
   due_date: Date,
   notes: String,
   report_title: String,

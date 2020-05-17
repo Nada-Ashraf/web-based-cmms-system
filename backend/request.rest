@@ -157,3 +157,24 @@ content-type: application/json
 ###
 GET http://localhost:3000/api/users
 content-type: application/json
+
+## WOs
+
+###
+
+POST http://localhost:3000/api/wos/create
+content-type: application/json
+
+{
+    "title":"Title",
+    "asset":"5ebed42c307ec31364057238",
+    "instructions":"Instructions",
+    "assigned_to":"5ec05796f3afb54fa97a750a",
+    "priority":"Urgent",
+    "importance":"Important",
+    "issue_date":"2017-09-14",
+    "due_date":"2017-09-14",
+    "notes":"Notes",
+    "report_title":"Title",
+    "report_body":"Body"
+}

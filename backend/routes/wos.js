@@ -4,7 +4,7 @@ const { WO } = require("../models/wo");
 const _ = require("lodash");
 
 // Add wo
-router.post("/add_wo", async (req, res) => {
+router.post("/create", async (req, res) => {
   const wo = new WO(
     _.pick(req.body, [
       "title",
@@ -14,7 +14,6 @@ router.post("/add_wo", async (req, res) => {
       "priority",
       "importance",
       "issue_date",
-      "assignment_date",
       "due_date",
       "notes",
       "report_title",
@@ -52,7 +51,6 @@ router.put("/edit/:id", async (req, res) => {
       "priority",
       "importance",
       "issue_date",
-      "assignment_date",
       "due_date",
       "notes",
       "report_title",
