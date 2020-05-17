@@ -70,7 +70,7 @@ class WOReports extends Component {
                       <Badge color={getBadge(wo.status)}>{wo.status}</Badge>
                     </td>
                     <td>
-                      <Link to={`/home/Reports/wos/${wo._id}`}>
+                      <Link to={`/home/Reports/WOs/${wo._id}`}>
                         <Button className="float-right" color="ghost-primary">
                           <i className="icon-list"></i>
                           &nbsp;View Report
