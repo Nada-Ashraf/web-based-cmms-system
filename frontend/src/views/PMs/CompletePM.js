@@ -1,4 +1,3 @@
-// this.props.location.id
 import React, { Component } from "react";
 import {
   Button,
@@ -32,7 +31,7 @@ class CompletePM extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    fetch("/api/pms/" + this.state.id, {
+    fetch("/api/pms/edit/" + this.state.id, {
       method: "PUT",
       headers: {
         Accept: "application/json",
@@ -43,14 +42,16 @@ class CompletePM extends Component {
         report_body: this.state.report_body,
         status: this.state.status,
       }),
-    }).then((response) => response.json());
+    })
+      .then((response) => response.json())
+      .then(() => this.props.history.push("/home/PMs"));
   };
 
   render() {
     return (
       <Card>
         <CardHeader>
-          <strong>Complete PM Work</strong>
+          <strong>Report PM Work</strong>
         </CardHeader>
         <CardBody>
           <Form
@@ -61,35 +62,20 @@ class CompletePM extends Component {
           >
             <FormGroup row>
               <Col md="3">
-                <Label>Status</Label>
+                <Label htmlFor="select">Status</Label>
               </Col>
-              <Col md="9">
-                <FormGroup check className="radio">
-                  <Input
-                    className="form-check-input"
-                    value={this.state.status}
-                    onChange={this.handleChange}
-                    type="radio"
-                    id="Done"
-                    name="radios"
-                  />
-                  <Label check className="form-check-label" htmlFor="radio1">
-                    Done
-                  </Label>
-                </FormGroup>
-                <FormGroup check className="radio">
-                  <Input
-                    className="form-check-input"
-                    value={this.state.status}
-                    onChange={this.handleChange}
-                    type="radio"
-                    id="There's an issue"
-                    name="radios"
-                  />
-                  <Label check className="form-check-label" htmlFor="radio2">
-                    There's an issue
-                  </Label>
-                </FormGroup>
+              <Col xs="12" md="9">
+                <Input
+                  type="select"
+                  name="status"
+                  id="status"
+                  value={this.state.status}
+                  onChange={this.handleChange}
+                >
+                  <option value="">Please select</option>
+                  <option value="Done">Done</option>
+                  <option value="There's an issue">There's an issue</option>
+                </Input>
               </Col>
             </FormGroup>
             <FormGroup row>
