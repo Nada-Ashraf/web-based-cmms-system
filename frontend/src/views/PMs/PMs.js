@@ -148,20 +148,23 @@ class PMs extends Component {
                         </React.Fragment>
                       ) : (
                         <React.Fragment>
-                          <Link
-                            to={{
-                              pathname: "/home/PMs/complete_pm",
-                              id: pm._id,
-                            }}
-                          >
-                            <Button
-                              className="float-right"
-                              color="ghost-success"
+                          {" "}
+                          {pm.status === "Assigned" && (
+                            <Link
+                              to={{
+                                pathname: "/home/PMs/complete_pm",
+                                id: pm._id,
+                              }}
                             >
-                              <i className=" icon-pencil"></i>&nbsp;Complete
-                              work
-                            </Button>
-                          </Link>
+                              <Button
+                                className="float-right"
+                                color="ghost-success"
+                              >
+                                <i className=" icon-pencil"></i>&nbsp;Complete
+                                work
+                              </Button>
+                            </Link>
+                          )}
                           <Link to={`/home/PMs/${pm._id}`}>
                             <Button
                               className="float-right"
