@@ -7,7 +7,9 @@ import {
   Row,
   Table,
   Button,
+  CardFooter,
 } from "reactstrap";
+import { Link } from "react-router-dom";
 
 class ViewPmReport extends Component {
   state = { pm: {}, id: this.props.match.params.id };
@@ -42,6 +44,18 @@ class ViewPmReport extends Component {
               </tr>
             </Table>
           </CardBody>
+          <CardFooter>
+            <Link
+              to={{
+                pathname: "/home/WOs/Add_WO",
+                id: this.state.pm._id,
+              }}
+            >
+              <Button className="float-right" color="primary">
+                Start Work order
+              </Button>
+            </Link>
+          </CardFooter>
         </Card>
       </div>
     );

@@ -16,6 +16,7 @@ const PMs = React.lazy(() => import("./views/PMs/PMs"));
 const AssignPM = React.lazy(() => import("./views/PMs/AssignPM"));
 const CompletePM = React.lazy(() => import("./views/PMs/CompletePM"));
 const WOs = React.lazy(() => import("./views/WOs/WOs"));
+const AddWO = React.lazy(() => import("./views/WOs/AddWO"));
 // const Login = React.lazy(() => import("./views/Auth/Login"));
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
@@ -37,6 +38,7 @@ const routes = [
     component: CompletePM,
   },
   { path: "/home/WOs", exact: true, name: "WOs", component: WOs },
+  { path: "/home/WOs/Add_WO", exact: true, name: "Add WO", component: AddWO },
   {
     path: "/home/Assets/add_asset",
     exact: true,
