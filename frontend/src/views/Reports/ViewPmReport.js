@@ -48,7 +48,7 @@ class ViewPmReport extends Component {
             <Link
               to={{
                 pathname: "/home/WOs/Add_WO",
-                id: this.state.pm._id,
+                // asset_id: this.state.pm.asset._id,
               }}
             >
               <Button className="float-right" color="primary">

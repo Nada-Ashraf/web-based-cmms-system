@@ -11,15 +11,17 @@ import {
   Input,
   Label,
   Progress,
+  Badge,
 } from "reactstrap";
 import { connect } from "react-redux";
 import { login } from "../../actions/authActions";
 class AddWO extends Component {
   state = {
-    id: this.props.location.id,
+    // asset_id: this.props.location.asset_id,
     users: [],
+    assets: [],
     title: "",
-    asset: "5ebed42c307ec31364057238",
+    asset: "5ebed42c307ec31364057238", //
     instructions: "",
     assigned_to: "",
     priority: "",
@@ -29,15 +31,32 @@ class AddWO extends Component {
   };
 
   componentDidMount() {
-    fetch("/api/users")
-      .then((res) => res.json())
-      .then((users) => {
+    // fetch("/api/users")
+    //   .then((res) => res.json())
+    //   .then((users) => {
+    //     const usersFiltered = users.filter(
+    //       (user) =>
+    //         user.role.includes("Technician") &&
+    //         user.department.includes(this.props.department)
+    //     );
+    //     this.setState({ users: usersFiltered });
+    //   });
+
+    Promise.all([
+      fetch("/api/users"), //res1 // users
+      fetch("/api/assets"), //res2 //assets
+    ])
+      .then(([users, assets]) => Promise.all([users.json(), assets.json()]))
+      .then(([users, assets]) => {
         const usersFiltered = users.filter(
           (user) =>
             user.role.includes("Technician") &&
             user.department.includes(this.props.department)
         );
-        this.setState({ users: usersFiltered });
+        const assetsFiltered = assets.filter((asset) =>
+          asset.department.includes(this.props.department)
+        );
+        this.setState({ users: usersFiltered, assets: assetsFiltered });
       });
   }
 
@@ -74,13 +93,19 @@ class AddWO extends Component {
 
   render() {
     let users = this.state.users;
-    let optionItems = users.map((user) => (
+    let usersOptionItems = users.map((user) => (
       <option value={user._id}>{user.name}</option>
     ));
+
+    let assets = this.state.assets;
+    let assetsOptionItems = assets.map((asset) => (
+      <option value={asset._id}>{asset.name}</option>
+    ));
+
     return (
       <Card>
         <CardHeader>
-          <strong>Assign PM</strong>
+          <strong>Create Work Order</strong>
         </CardHeader>
         <CardBody>
           <Form
@@ -89,6 +114,21 @@ class AddWO extends Component {
             className="form-horizontal"
             onSubmit={this.handleSubmit}
           >
+            <FormGroup row>
+              <Col md="3">
+                <Label htmlFor="text-input">WO title</Label>
+              </Col>
+              <Col xs="12" md="9">
+                <Input
+                  type="text"
+                  value={this.state.title}
+                  onChange={this.handleChange}
+                  id="title"
+                  name="title"
+                  placeholder="WO Title"
+                />
+              </Col>
+            </FormGroup>
             <FormGroup row>
               <Col md="3">
                 <Label htmlFor="select">Assign to</Label>
@@ -101,8 +141,91 @@ class AddWO extends Component {
                   value={this.state.assigned_to}
                   onChange={this.handleChange}
                 >
-                  {optionItems}
+                  {usersOptionItems}
                 </Input>
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Col md="3">
+                <Label htmlFor="select">Asset</Label>
+              </Col>
+              <Col xs="12" md="9">
+                <Input
+                  type="select"
+                  name="asset"
+                  id="asset"
+                  value={this.state.asset}
+                  onChange={this.handleChange}
+                >
+                  {assetsOptionItems}
+                </Input>
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Col md="3">
+                <Label htmlFor="textarea-input">Instructions</Label>
+              </Col>
+              <Col xs="12" md="9">
+                <Input
+                  value={this.state.instructions}
+                  onChange={this.handleChange}
+                  type="textarea"
+                  name="instructions"
+                  id="instructions"
+                  rows="9"
+                  placeholder="instructions"
+                />
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Col md="3">
+                <Label htmlFor="select">Priority</Label>
+              </Col>
+              <Col xs="12" md="9">
+                <Input
+                  type="select"
+                  name="priority"
+                  id="priority"
+                  value={this.state.priority}
+                  onChange={this.handleChange}
+                >
+                  <option value="">Please select</option>
+                  <option value="Urgent">Urgent</option>
+                  <option value="Not Urgent">Not Urgent</option>
+                </Input>
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Col md="3">
+                <Label htmlFor="select">Importance</Label>
+              </Col>
+              <Col xs="12" md="9">
+                <Input
+                  type="select"
+                  name="importance"
+                  id="importance"
+                  value={this.state.importance}
+                  onChange={this.handleChange}
+                >
+                  <option value="">Please select</option>
+                  <option value="Important">Important</option>
+                  <option value="Not Important">Not Important</option>
+                </Input>
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Col md="3">
+                <Label htmlFor="date-input"> Due Date</Label>
+              </Col>
+              <Col xs="12" md="9">
+                <Input
+                  type="date"
+                  value={this.state.due_date}
+                  onChange={this.handleChange}
+                  id="due_date"
+                  name="due_date"
+                  placeholder="due date"
+                />
               </Col>
             </FormGroup>
             <FormGroup row>
