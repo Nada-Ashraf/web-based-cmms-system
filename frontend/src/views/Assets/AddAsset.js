@@ -35,7 +35,7 @@ class AddAsset extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    fetch("/api/assets/add_asset", {
+    fetch("/api/assets/", {
       method: "post",
       headers: {
         Accept: "application/json",

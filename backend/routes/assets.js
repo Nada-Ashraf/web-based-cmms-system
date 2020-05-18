@@ -4,8 +4,13 @@ import { pick } from "lodash";
 
 const router = Router();
 
-// Add Asset
-router.post("/add_asset", async (req, res) => {
+/**
+ * @route   POST api/assets
+ * @desc    Create An Asset
+ * @access  Public
+ */
+
+router.post("/", async (req, res) => {
   const asset = new Asset(
     pick(req.body, [
       "name",
@@ -34,20 +39,34 @@ router.post("/add_asset", async (req, res) => {
   res.end();
 });
 
-// View All assets
+/**
+ * @route   GET api/assets
+ * @desc    View All Assets
+ * @access  Public
+ */
+
 router.get("/", async (req, res) => {
-  const assets = await Asset.find();
+  const assets = await Asset.find().populate("recieved_by");
   res.json(assets);
 });
 
-// View details of one asset
+/**
+ * @route   GET api/assets/:id
+ * @desc    View details of one asset
+ * @access  Public
+ */
+
 router.get("/:id", async (req, res) => {
-  const asset = await Asset.findById(req.params.id);
+  const asset = await Asset.findById(req.params.id).populate("recieved_by");
   res.send(asset);
   console.log(asset);
 });
 
-// Edit asset
+/**
+ * @route   PUT api/assets/edit/:id
+ * @desc    Edit an asset
+ * @access  Public
+ */
 router.put("/edit/:id", async (req, res) => {
   const asset = await Asset.findByIdAndUpdate(
     req.params.id,
@@ -77,7 +96,11 @@ router.put("/edit/:id", async (req, res) => {
   res.send(asset);
 });
 
-// Delete asset
+/**
+ * @route   DELETE api/assets/delete/:id
+ * @desc    Delete an asset
+ * @access  Public
+ */
 router.delete("/delete/:id", async (req, res) => {
   const asset = await Asset.findByIdAndRemove(req.params.id);
   res.send(asset);

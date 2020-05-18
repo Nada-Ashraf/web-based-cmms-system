@@ -1,6 +1,6 @@
 ### test assets routes
 
-POST http://localhost:3000/api/assets/add_asset
+POST http://localhost:3000/api/assets
 content-type: application/json
 x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlYjcxZmY5MjBlYTc3NWZhNjY0ZjZhOSIsImlhdCI6MTU4OTA1OTU3NywiZXhwIjoxNTg5MDYzMTc3fQ.PTMuB71TbQMOuKz7CG8dvZ_UtQ-o6K6dShZyhjMRWUY
 
@@ -16,6 +16,33 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlYjcxZmY5MjBlYTc3N
     "last_pm_date": "2017-09-14",
     "last_failure_date": "2017-09-14",
     "last_fix_date": "2017-09-14"
+}
+
+###
+
+POST  http://localhost:3000/api/assets
+Content-Type: application/json
+
+{
+    "name":"test",
+    "serial_number":"test",
+    "model":"test",
+    "brand":"test",
+    "department":"cardiology",
+    "COO":"test",
+    "supply_date":"2017-09-14",
+    "operation_date":"2017-09-14",
+    "supply_country":"test",
+    "warranty_period":"3",
+    "parts":["test","test2"],
+    "price":"3000",
+    "maintenance_company":"test",
+    "contract_type":"test",
+    "contract_start_date":"2017-09-14",
+    "contract_end_date":"2017-09-14",
+    "recieved_by":"5ebdfa8db509fb2946bb1284",
+    "condition":"In service",
+    "notes":"test"
 }
 
 ###
