@@ -1,27 +1,14 @@
 import React, { Component } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Nav, NavItem } from "reactstrap";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logout } from "../../actions/authActions";
 import { AppNavbarBrand, AppSidebarToggler } from "@coreui/react";
 import logo from "../../assets/img/brand/logo.png";
 import sygnet from "../../assets/img/brand/sygnet.png";
 
-const propTypes = {
-  children: PropTypes.node,
-  logout: PropTypes.func.isRequired,
-};
-
-const defaultProps = {
-  user: {},
-};
-
 class Header extends Component {
   render() {
-    // eslint-disable-next-line
-    const { children, ...attributes } = this.props;
-
     return (
       <React.Fragment>
         <AppSidebarToggler className="d-lg-none" display="md" mobile />
@@ -37,13 +24,7 @@ class Header extends Component {
               Dashboard
             </NavLink>
           </NavItem>
-          <NavItem className="px-3">
-            <Link to="/users" className="nav-link">
-              Calendar
-            </Link>
-          </NavItem>
         </Nav>
-        {/* <Nav className="ml-auto" navbar> */}
 
         <Nav className="ml-auto" navbar>
           <Link to="/">
@@ -56,8 +37,5 @@ class Header extends Component {
     );
   }
 }
-
-Header.propTypes = propTypes;
-Header.defaultProps = defaultProps;
 
 export default connect(null, { logout })(Header);
