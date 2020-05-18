@@ -1,31 +1,31 @@
-const express = require("express");
-const router = express.Router();
-const { Asset } = require("../models/asset");
-const { PM } = require("../models/pm");
-const _ = require("lodash");
-const auth = require("../middleware/auth");
+import { Router } from "express";
+import Asset from "../models/Asset";
+import { pick } from "lodash";
+
+const router = Router();
 
 // Add Asset
 router.post("/add_asset", async (req, res) => {
-  // let asset = await Asset.findOne({
-  //   serial_number: req.body.serial_number,
-  // });
-  // if (asset) {
-  //   return res.status(400).send("This asset already exisits!");
-  // } else {
   const asset = new Asset(
-    _.pick(req.body, [
+    pick(req.body, [
       "name",
       "serial_number",
       "model",
+      "brand",
       "department",
+      "COO",
+      "supply_date",
+      "operation_date",
+      "supply_country",
+      "warranty_period",
+      "parts",
       "price",
-      "location",
-      "supplier",
+      "maintenance_company",
+      "contract_type",
+      "contract_start_date",
+      "contract_end_date",
+      "recieved_by",
       "condition",
-      "last_pm_date",
-      "last_failure_date",
-      "last_fix_date",
       "notes",
     ])
   );
@@ -37,7 +37,6 @@ router.post("/add_asset", async (req, res) => {
 // View All assets
 router.get("/", async (req, res) => {
   const assets = await Asset.find();
-  // res.send(assets);
   res.json(assets);
 });
 
@@ -49,22 +48,28 @@ router.get("/:id", async (req, res) => {
 });
 
 // Edit asset
-router.put("/:id", async (req, res) => {
+router.put("/edit/:id", async (req, res) => {
   const asset = await Asset.findByIdAndUpdate(
     req.params.id,
-    _.pick(req.body, [
+    pick(req.body, [
       "name",
       "serial_number",
       "model",
+      "brand",
       "department",
+      "COO",
+      "supply_date",
+      "operation_date",
+      "supply_country",
+      "warranty_period",
+      "parts",
       "price",
-      "location",
-      "supplier",
+      "maintenance_company",
+      "contract_type",
+      "contract_start_date",
+      "contract_end_date",
+      "recieved_by",
       "condition",
-      "last_pm_date",
-      "last_failure_date",
-      "last_fix_date",
-      "inspection_period_days",
       "notes",
     ]),
     { new: true }
@@ -78,4 +83,4 @@ router.delete("/delete/:id", async (req, res) => {
   res.send(asset);
 });
 
-module.exports = router;
+export default router;

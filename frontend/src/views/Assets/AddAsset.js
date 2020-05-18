@@ -9,10 +9,8 @@ import {
   FormGroup,
   Input,
   Label,
-  Progress,
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import AddAssetPMs from "./AddAssetPMs";
 
 class AddAsset extends Component {
   state = {
@@ -217,7 +215,6 @@ class AddAsset extends Component {
                 />
               </Col>
             </FormGroup>
-            {/* <Link to={`/Assets/add_asset/${this.state._id}`}> */}
             <Button
               className="btn-pill"
               type="submit"
@@ -225,12 +222,10 @@ class AddAsset extends Component {
               color="primary"
             >
               <i className="icon-arrow-right-circle"></i> Submit
-              {/* <i className="fa fa-dot-circle-o"></i> Submit */}
             </Button>
             <Link to={`/home/Assets/add_asset/${this.state._id}`}>
               <Button className="btn-pill" size="lg" color="primary">
                 <i className="icon-arrow-right-circle"></i> Add PMs
-                {/* <i className="fa fa-dot-circle-o"></i> Submit */}
               </Button>
             </Link>
           </Form>

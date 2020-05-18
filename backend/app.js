@@ -1,7 +1,8 @@
 // Required External Modules
 const mongoose = require("mongoose");
 const express = require("express");
-const assets = require("./routes/assets");
+// const assets = require("./routes/assets");
+import assetRoutes from "./routes/assets";
 const auth = require("./routes/auth");
 const reports = require("./routes/reports");
 const employees = require("./routes/employees");
@@ -13,8 +14,7 @@ const bodyParser = require("body-parser");
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Middlewaresemployees
-employees;
+// Middlewares
 app.use(bodyParser.json());
 app.use(express.urlencoded());
 
@@ -27,7 +27,7 @@ mongoose
   .catch((err) => console.error("Couldn't connect to MongoDB...", err));
 
 // Use Routes
-app.use("/api/assets", assets);
+app.use("/api/assets", assetRoutes);
 app.use("/api/reports", reports);
 app.use("/api/employees", employees);
 app.use("/api/pms", pms);
