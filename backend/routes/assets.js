@@ -1,7 +1,6 @@
 import { Router } from "express";
 import Asset from "../models/Asset";
 import { pick } from "lodash";
-
 const router = Router();
 
 /**

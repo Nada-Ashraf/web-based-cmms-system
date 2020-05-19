@@ -15,13 +15,13 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Middlewares
-app.use(bodyParser.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 
 // Database Connection
 mongoose
   .connect("mongodb://admin:admin@localhost/cmms?authSource=admin", {
     useNewUrlParser: true,
+    useUnifiedTopology: true,
   })
   .then(() => console.log("Connected to MongoDB..."))
   .catch((err) => console.error("Couldn't connect to MongoDB...", err));
