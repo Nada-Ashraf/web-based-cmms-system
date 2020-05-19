@@ -29,8 +29,8 @@ GET http://localhost:3000/api/assets
 content-type: application/json
 
 ### 
-GET http://localhost:3000/api/assets/5ec050ea6c57db3bcc2ad7b8
-content-type: application/json
+GET http://localhost:3000/api/assets/5ec357326d554f752ae20229
+content-type: application/json 
 
 ### test reports routes
 ### 

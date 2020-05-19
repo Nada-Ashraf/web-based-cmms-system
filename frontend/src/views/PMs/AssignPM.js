@@ -10,7 +10,6 @@ import {
   FormGroup,
   Input,
   Label,
-  Progress,
 } from "reactstrap";
 import { connect } from "react-redux";
 import { login } from "../../actions/authActions";

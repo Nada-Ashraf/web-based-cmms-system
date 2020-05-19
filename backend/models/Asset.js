@@ -28,6 +28,7 @@ const AssetSchema = new Schema({
   alarms: [String],
   accessories: [String],
   sterilization: String,
+  notes: String,
 
   // Operating info
   lifetime: Number, // in years
@@ -41,18 +42,13 @@ const AssetSchema = new Schema({
   efficiency: String,
 
   // More info
-  recieved_by: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-  },
   condition: {
     type: String,
     enum: ["In service", "Need repair", "Scrapped", "Out of service"],
     default: "In service",
   },
-  notes: String,
 });
 
-const Asset = model("asset", AssetSchema);
+const Asset = model("Asset", AssetSchema);
 
 export default Asset;

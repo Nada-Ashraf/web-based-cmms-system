@@ -27,7 +27,6 @@ router.post("/", async (req, res) => {
       "contract_type",
       "contract_start_date",
       "contract_end_date",
-      "recieved_by",
       "condition",
       "notes",
       "description",
@@ -55,7 +54,7 @@ router.post("/", async (req, res) => {
  */
 
 router.get("/", async (req, res) => {
-  const assets = await Asset.find().populate("recieved_by");
+  const assets = await Asset.find();
   res.json(assets);
 });
 
@@ -66,7 +65,7 @@ router.get("/", async (req, res) => {
  */
 
 router.get("/:id", async (req, res) => {
-  const asset = await Asset.findById(req.params.id).populate("recieved_by");
+  const asset = await Asset.findById(req.params.id);
   res.send(asset);
   console.log(asset);
 });
@@ -95,7 +94,6 @@ router.put("/edit/:id", async (req, res) => {
       "contract_type",
       "contract_start_date",
       "contract_end_date",
-      "recieved_by",
       "condition",
       "notes",
       "description",

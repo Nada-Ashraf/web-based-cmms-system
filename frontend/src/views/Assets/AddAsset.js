@@ -9,6 +9,7 @@ import {
   FormGroup,
   Input,
   Label,
+  Collapse,
 } from "reactstrap";
 import { Link } from "react-router-dom";
 
@@ -24,14 +25,14 @@ class AddAsset extends Component {
     supply_date: "",
     operation_date: "",
     warranty_period: "",
-    parts: "", // note
+    parts: ["1", "2", "3"], //array
     price: "",
     maintenance_company: "",
     contract_type: "",
     contract_start_date: "",
     contract_end_date: "",
     recieved_by: "",
-    condition: "",
+    condition: "In service",
     notes: "",
     description: "",
     classification: "",
@@ -41,9 +42,22 @@ class AddAsset extends Component {
     risk_level: "",
     work_env: "",
     efficiency: "",
-    alarms: "",
-    accessories: "",
+    alarms: "", //array
+    accessories: "", //array
     sterilization: "",
+    // pms
+    accordion: [true, false, false],
+    pm_title: "",
+    pm_instructions: "",
+  };
+
+  toggleAccordion = (tab) => {
+    const prevState = this.state.accordion;
+    const state = prevState.map((x, index) => (tab === index ? !x : false));
+
+    this.setState({
+      accordion: state,
+    });
   };
 
   handleChange = (event) => {
@@ -95,7 +109,61 @@ class AddAsset extends Component {
       }),
     })
       .then((response) => response.json())
-      .then((data) => this.setState({ _id: data._id }));
+      .then((asset) => this.setState({ _id: asset._id }))
+      .then(() => {
+        fetch("/api/pms/add_pm/", {
+          method: "post",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title: this.state.pm_title,
+            instructions: this.state.pm_instructions,
+            asset: this.state._id,
+            status: "Not Assigned",
+            schedules: "Weekly",
+          }),
+        });
+      });
+  };
+
+  card = () => {
+    return (
+      <React.Fragment>
+        <FormGroup row>
+          <Col md="3">
+            <Label htmlFor="text-input">Title</Label>
+          </Col>
+          <Col xs="12" md="9">
+            <Input
+              type="text"
+              value={this.state.pm_title}
+              onChange={this.handleChange}
+              id="pm_title"
+              name="pm_title"
+              placeholder="PM title"
+            />
+          </Col>
+        </FormGroup>
+        <FormGroup row>
+          <Col md="3">
+            <Label htmlFor="textarea-input">Instructions</Label>
+          </Col>
+          <Col xs="12" md="9">
+            <Input
+              value={this.state.pm_instructions}
+              onChange={this.handleChange}
+              type="textarea"
+              name="pm_instructions"
+              id="pm_instructions"
+              rows="9"
+              placeholder="PM instructions"
+            />
+          </Col>
+        </FormGroup>
+      </React.Fragment>
+    );
   };
 
   render() {
@@ -223,19 +291,6 @@ class AddAsset extends Component {
                 />
               </Col>
             </FormGroup>
-            {/* <Button
-              className="btn-pill"
-              type="submit"
-              size="lg"
-              color="primary"
-            >
-              <i className="icon-arrow-right-circle"></i> Submit
-            </Button>
-            <Link to={`/home/Assets/add_asset/${this.state._id}`}>
-              <Button className="btn-pill" size="lg" color="primary">
-                <i className="icon-arrow-right-circle"></i> Add PMs
-              </Button>
-            </Link> */}
           </CardBody>
         </Card>
         {/* Supplement info */}
@@ -496,6 +551,90 @@ class AddAsset extends Component {
             </FormGroup>
           </CardBody>
         </Card>
+        {/* Device Details */}
+        <Card>
+          <CardHeader>
+            <strong>Device Details</strong>
+          </CardHeader>
+          <CardBody>
+            <FormGroup row>
+              <Col md="3">
+                <Label htmlFor="textarea-input">Sterilization</Label>
+              </Col>
+              <Col xs="12" md="9">
+                <Input
+                  value={this.state.sterilization}
+                  onChange={this.handleChange}
+                  type="textarea"
+                  name="sterilization"
+                  id="sterilization"
+                  rows="9"
+                  placeholder="Sterilization"
+                />
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Col md="3">
+                <Label htmlFor="textarea-input">Notes</Label>
+              </Col>
+              <Col xs="12" md="9">
+                <Input
+                  value={this.state.notes}
+                  onChange={this.handleChange}
+                  type="textarea"
+                  name="notes"
+                  id="notes"
+                  rows="9"
+                  placeholder="Notes"
+                />
+              </Col>
+            </FormGroup>
+          </CardBody>
+        </Card>
+        <Card>
+          <CardHeader>PM Details</CardHeader>
+          <CardBody>
+            <FormGroup row>
+              <Col md="3">
+                <Label htmlFor="text-input">Title</Label>
+              </Col>
+              <Col xs="12" md="9">
+                <Input
+                  type="text"
+                  value={this.state.pm_title}
+                  onChange={this.handleChange}
+                  id="pm_title"
+                  name="pm_title"
+                  placeholder="PM title"
+                />
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Col md="3">
+                <Label htmlFor="textarea-input">Instructions</Label>
+              </Col>
+              <Col xs="12" md="9">
+                <Input
+                  value={this.state.pm_instructions}
+                  onChange={this.handleChange}
+                  type="textarea"
+                  name="pm_instructions"
+                  id="pm_instructions"
+                  rows="9"
+                  placeholder="Instructions"
+                />
+              </Col>
+            </FormGroup>
+          </CardBody>
+        </Card>
+        <Button className="btn-pill" type="submit" size="lg" color="primary">
+          <i className="icon-arrow-right-circle"></i> Submit
+        </Button>
+        <Link to={`/home/Assets/add_asset/${this.state._id}`}>
+          <Button className="btn-pill" size="lg" color="primary">
+            <i className="icon-arrow-right-circle"></i> Add PMs
+          </Button>
+        </Link>
       </Form>
     );
   }
