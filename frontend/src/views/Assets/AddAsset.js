@@ -168,6 +168,10 @@ class AddAsset extends Component {
   };
 
   render() {
+    const brands = ["philips", "3A healthcare"];
+    let brandOptionItems = brands.map((brand) => (
+      <option value={brand}>{brand}</option>
+    ));
     return (
       <Form
         // action=""
@@ -238,14 +242,33 @@ class AddAsset extends Component {
                   value={this.state.department}
                   onChange={this.handleChange}
                 >
-                  <option value="0">Please select</option>
-                  <option value="cardiology">cardiology</option>
-                  <option value="radiology">radiology</option>
-                  <option value="operations">operations</option>
+                  <option value="NA">Please select</option>
+                  <option value="reception">reception</option>
+                  <option value="open heart icu">open heart icu</option>
+                  <option value="cardiology & surgery">
+                    cardiology & surgery
+                  </option>
                 </Input>
               </Col>
             </FormGroup>
             <FormGroup row>
+              <Col md="3">
+                <Label htmlFor="select">Brand</Label>
+              </Col>
+              <Col xs="12" md="9">
+                <Input
+                  type="select"
+                  name="brand"
+                  id="brand"
+                  value={this.state.brand}
+                  onChange={this.handleChange}
+                >
+                  <option value="NA">Please select</option>
+                  {brandOptionItems}
+                </Input>
+              </Col>
+            </FormGroup>
+            {/* <FormGroup row>
               <Col md="3">
                 <Label htmlFor="text-input">Brand</Label>
               </Col>
@@ -259,7 +282,7 @@ class AddAsset extends Component {
                   onChange={this.handleChange}
                 />
               </Col>
-            </FormGroup>
+            </FormGroup> */}
             <FormGroup row>
               <Col md="3">
                 <Label htmlFor="textarea-input">Classification</Label>

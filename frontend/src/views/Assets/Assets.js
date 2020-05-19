@@ -61,7 +61,7 @@ class Assets extends Component {
       <div className="animated fadeIn">
         <Card>
           <CardHeader>
-            <i className="fa fa-align-justify"></i> Assets
+            <i className="fa fa-align-justify"></i> Assets List
             {isManager ? (
               <Link to="/home/Assets/add_asset">
                 <Button className="float-right" color="primary">
@@ -122,7 +122,7 @@ class Assets extends Component {
                               <i className=" icon-pencil"></i>&nbsp;Edit
                             </Button>
                           </Link> */}
-                          <Link to={`/Assets/${asset._id}`}>
+                          <Link to={`/home/Assets/${asset._id}`}>
                             <Button
                               className="float-right"
                               color="ghost-primary"

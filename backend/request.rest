@@ -124,11 +124,11 @@ POST http://localhost:3000/api/auth/register
 content-type: application/json
 
 {
-    "name":"op",
-    "email":"2@2.com",
-    "password":"op",
-    "role":"Technician",
-    "department":"cardiology"
+    "name":"manager",
+    "email":"manager@manager.com",
+    "password":"manager",
+    "role":"Manager",
+    "department":"NA"
 }
 
 ###

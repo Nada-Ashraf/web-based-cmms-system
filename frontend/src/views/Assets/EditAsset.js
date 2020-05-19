@@ -129,10 +129,12 @@ class EditAsset extends Component {
                   value={this.state.asset.department}
                   onChange={this.handleChange}
                 >
-                  <option value="0">Please select</option>
-                  <option value="cardiology">cardiology</option>
-                  <option value="radiology">radiology</option>
-                  <option value="operations">operations</option>
+                  <option value="NA">Please select</option>
+                  <option value="reception">reception</option>
+                  <option value="open heart icu">open heart icu</option>
+                  <option value="cardiology & surgery">
+                    cardiology & surgery
+                  </option>
                 </Input>
               </Col>
             </FormGroup>

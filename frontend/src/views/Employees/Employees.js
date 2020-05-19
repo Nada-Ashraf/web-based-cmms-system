@@ -94,11 +94,11 @@ class Employees extends Component {
                               pathname: "/home/Employees/edit_employee",
                               id: employee._id,
                             }}
-                          > */}
+                          >
                           <Button className="float-right" color="ghost-success">
                             <i className=" icon-pencil"></i>&nbsp;Edit
                           </Button>
-                          {/* </Link> */}
+                          </Link> */}
                         </React.Fragment>
                       ) : (
                         <React.Fragment></React.Fragment>

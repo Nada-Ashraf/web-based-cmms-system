@@ -5,7 +5,6 @@ const express = require("express");
 import assetRoutes from "./routes/assets";
 const auth = require("./routes/auth");
 const reports = require("./routes/reports");
-const employees = require("./routes/employees");
 const users = require("./routes/users");
 const wos = require("./routes/wos");
 const pms = require("./routes/pms");
@@ -31,7 +30,6 @@ mongoose
 // Use Routes
 app.use("/api/assets", assetRoutes);
 app.use("/api/reports", reports);
-app.use("/api/employees", employees);
 app.use("/api/pms", pms);
 app.use("/api/auth", auth);
 app.use("/api/users", users);

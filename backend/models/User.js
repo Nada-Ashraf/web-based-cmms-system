@@ -25,7 +25,8 @@ const UserSchema = new mongoose.Schema({
   },
   department: {
     type: String,
-    enum: ["radiology", "cardiology", "operations"],
+    enum: ["reception", "open heart icu", "cardiology & surgery", "NA"],
+    required: true,
   },
 });
 

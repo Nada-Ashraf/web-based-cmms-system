@@ -5,8 +5,12 @@ const AssetSchema = new Schema({
   name: String,
   serial_number: String,
   model: String,
-  brand: String,
-  department: { type: String, enum: ["radiology", "cardiology", "operations"] },
+  brand: { type: String, enum: ["NA", "philips", "3A healthcare"] },
+  department: {
+    type: String,
+    enum: ["reception", "open heart icu", "cardiology & surgery", "NA"],
+    required: true,
+  },
   description: String,
   classification: String,
 
