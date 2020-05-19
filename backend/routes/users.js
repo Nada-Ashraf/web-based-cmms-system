@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router(); // User Model
 const { User } = require("../models/User");
-const Emp = require("../models/employee");
 
 /**
  * @route   GET api/users

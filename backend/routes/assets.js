@@ -31,6 +31,17 @@ router.post("/", async (req, res) => {
       "recieved_by",
       "condition",
       "notes",
+      "description",
+      "classification",
+      "lifetime",
+      "proper_freq_of_use",
+      "electricity_sensitivity",
+      "risk_level",
+      "work_env",
+      "efficiency",
+      "alarms",
+      "accessories",
+      "sterilization",
     ])
   );
   await asset.save();
@@ -89,6 +100,17 @@ router.put("/edit/:id", async (req, res) => {
       "recieved_by",
       "condition",
       "notes",
+      "description",
+      "classification",
+      "lifetime",
+      "proper_freq_of_use",
+      "electricity_sensitivity",
+      "risk_level",
+      "work_env",
+      "efficiency",
+      "alarms",
+      "accessories",
+      "sterilization",
     ]),
     { new: true }
   );

@@ -7,6 +7,8 @@ const AssetSchema = new Schema({
   model: String,
   brand: String,
   department: { type: String, enum: ["radiology", "cardiology", "operations"] },
+  description: String,
+  classification: String,
 
   // Suppliment info
   COO: String, // Country of origin
@@ -22,6 +24,19 @@ const AssetSchema = new Schema({
   contract_type: String,
   contract_start_date: Date,
   contract_end_date: Date,
+
+  // Device details
+  alarms: [String],
+  accessories: [String],
+  sterilization: String,
+
+  // operating info
+  lifetime: Number, // in years
+  proper_freq_of_use: String,
+  electricity_sensitivity: String,
+  risk_level: String,
+  work_env: String,
+  efficiency: String,
 
   // More info
   recieved_by: {

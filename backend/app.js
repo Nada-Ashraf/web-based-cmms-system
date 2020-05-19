@@ -15,7 +15,9 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Middlewares
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(express.urlencoded());
+// app.use(express.urlencoded({ extended: true }));
 
 // Database Connection
 mongoose

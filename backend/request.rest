@@ -137,8 +137,8 @@ POST http://localhost:3000/api/auth/login
 content-type: application/json
 
 {
-    "email":"nadosh1@gmail.com",
-    "password":"1998"
+    "email":"nada@nada.com",
+    "password":"nada"
 }
 
 ###
