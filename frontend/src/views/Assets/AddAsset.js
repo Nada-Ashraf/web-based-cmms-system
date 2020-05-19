@@ -276,15 +276,15 @@ class AddAsset extends Component {
             </FormGroup>
             <FormGroup row>
               <Col md="3">
-                <Label htmlFor="date-input">Operation date</Label>
+                <Label htmlFor="date-input">Contract end date</Label>
               </Col>
               <Col xs="12" md="9">
                 <Input
                   type="date"
-                  value={this.state.operation_date}
+                  value={this.state.contract_end_date}
                   onChange={this.handleChange}
-                  id="operation_date"
-                  name="operation_date"
+                  id="contract_end_date"
+                  name="contract_end_date"
                   placeholder="date"
                 />
               </Col>
@@ -316,6 +316,74 @@ class AddAsset extends Component {
                   placeholder="Asset purchase price"
                   value={this.state.price}
                   onChange={this.handleChange}
+                />
+              </Col>
+            </FormGroup>
+          </CardBody>
+        </Card>
+        {/* Maintenance info */}
+        <Card>
+          <CardHeader>
+            <strong>Maintenance info</strong>
+          </CardHeader>
+          <CardBody>
+            <FormGroup row>
+              <Col md="3">
+                <Label htmlFor="text-input">Maintenance company</Label>
+              </Col>
+              <Col xs="12" md="9">
+                <Input
+                  type="text"
+                  value={this.state.maintenance_company}
+                  onChange={this.handleChange}
+                  id="maintenance_company"
+                  name="maintenance_company"
+                  placeholder="Maintenance company"
+                />
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Col md="3">
+                <Label htmlFor="text-input">Contract type</Label>
+              </Col>
+              <Col xs="12" md="9">
+                <Input
+                  type="text"
+                  value={this.state.contract_type}
+                  onChange={this.handleChange}
+                  id="contract_type"
+                  name="contract_type"
+                  placeholder="Contract type"
+                />
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Col md="3">
+                <Label htmlFor="date-input">Contract start date</Label>
+              </Col>
+              <Col xs="12" md="9">
+                <Input
+                  type="date"
+                  value={this.state.contract_start_date}
+                  onChange={this.handleChange}
+                  id="contract_start_date"
+                  name="contract_start_date"
+                  placeholder="date"
+                />
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Col md="3">
+                <Label htmlFor="date-input">Contract end date</Label>
+              </Col>
+              <Col xs="12" md="9">
+                <Input
+                  type="date"
+                  value={this.state.operation_date}
+                  onChange={this.handleChange}
+                  id="operation_date"
+                  name="operation_date"
+                  placeholder="date"
                 />
               </Col>
             </FormGroup>
