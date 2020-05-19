@@ -14,7 +14,6 @@ const AssetSchema = new Schema({
   COO: String, // Country of origin
   supply_date: Date,
   operation_date: Date,
-  supply_country: String,
   warranty_period: Number, // in months
   parts: [String],
   price: Number,

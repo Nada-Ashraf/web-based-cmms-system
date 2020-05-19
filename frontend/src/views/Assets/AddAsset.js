@@ -23,9 +23,8 @@ class AddAsset extends Component {
     COO: "",
     supply_date: "",
     operation_date: "",
-    supply_country: "",
     warranty_period: "",
-    parts: "",
+    parts: "", // note
     price: "",
     maintenance_company: "",
     contract_type: "",
@@ -72,7 +71,6 @@ class AddAsset extends Component {
         COO: this.state.COO,
         supply_date: this.state.supply_date,
         operation_date: this.state.operation_date,
-        supply_country: this.state.supply_country,
         warranty_period: this.state.warranty_period,
         parts: this.state.parts,
         price: this.state.price,
@@ -102,18 +100,18 @@ class AddAsset extends Component {
 
   render() {
     return (
-      <Card>
-        <CardHeader>
-          <strong>Add asset info</strong>
-        </CardHeader>
-        <CardBody>
-          <Form
-            // action=""
-            method="post"
-            encType="multipart/form-data"
-            className="form-horizontal"
-            onSubmit={this.handleSubmit}
-          >
+      <Form
+        // action=""
+        method="post"
+        encType="multipart/form-data"
+        className="form-horizontal"
+        onSubmit={this.handleSubmit}
+      >
+        <Card>
+          <CardHeader>
+            <strong>Basic info</strong>
+          </CardHeader>
+          <CardBody>
             <FormGroup row>
               <Col md="3">
                 <Label htmlFor="text-input">Name</Label>
@@ -121,10 +119,10 @@ class AddAsset extends Component {
               <Col xs="12" md="9">
                 <Input
                   type="text"
-                  value={this.state.asset_name}
+                  value={this.state.name}
                   onChange={this.handleChange}
-                  id="asset_name"
-                  name="asset_name"
+                  id="name"
+                  name="name"
                   placeholder="Asset name"
                 />
               </Col>
@@ -180,16 +178,129 @@ class AddAsset extends Component {
             </FormGroup>
             <FormGroup row>
               <Col md="3">
-                <Label htmlFor="text-input">Location</Label>
+                <Label htmlFor="text-input">Brand</Label>
               </Col>
               <Col xs="12" md="9">
                 <Input
                   type="text"
-                  id="location"
-                  name="location"
-                  placeholder="Asset exact location"
-                  value={this.state.location}
+                  id="brand"
+                  name="brand"
+                  placeholder="Asset brand"
+                  value={this.state.brand}
                   onChange={this.handleChange}
+                />
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Col md="3">
+                <Label htmlFor="textarea-input">Classification</Label>
+              </Col>
+              <Col xs="12" md="9">
+                <Input
+                  value={this.state.classification}
+                  onChange={this.handleChange}
+                  type="text" // note
+                  name="classification"
+                  id="classification"
+                  rows="9"
+                  placeholder="classification"
+                />
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Col md="3">
+                <Label htmlFor="textarea-input">Description</Label>
+              </Col>
+              <Col xs="12" md="9">
+                <Input
+                  value={this.state.description}
+                  onChange={this.handleChange}
+                  type="textarea"
+                  name="description"
+                  id="description"
+                  rows="9"
+                  placeholder="description"
+                />
+              </Col>
+            </FormGroup>
+            {/* <Button
+              className="btn-pill"
+              type="submit"
+              size="lg"
+              color="primary"
+            >
+              <i className="icon-arrow-right-circle"></i> Submit
+            </Button>
+            <Link to={`/home/Assets/add_asset/${this.state._id}`}>
+              <Button className="btn-pill" size="lg" color="primary">
+                <i className="icon-arrow-right-circle"></i> Add PMs
+              </Button>
+            </Link> */}
+          </CardBody>
+        </Card>
+        {/* Supplement info */}
+        <Card>
+          <CardHeader>
+            <strong>Supplement info</strong>
+          </CardHeader>
+          <CardBody>
+            <FormGroup row>
+              <Col md="3">
+                <Label htmlFor="text-input">Country of origin</Label>
+              </Col>
+              <Col xs="12" md="9">
+                <Input
+                  type="text"
+                  value={this.state.COO}
+                  onChange={this.handleChange}
+                  id="COO"
+                  name="COO"
+                  placeholder="Country of origin"
+                />
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Col md="3">
+                <Label htmlFor="date-input">Supply date</Label>
+              </Col>
+              <Col xs="12" md="9">
+                <Input
+                  type="date"
+                  value={this.state.supply_date}
+                  onChange={this.handleChange}
+                  id="supply_date"
+                  name="supply_date"
+                  placeholder="date"
+                />
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Col md="3">
+                <Label htmlFor="date-input">Operation date</Label>
+              </Col>
+              <Col xs="12" md="9">
+                <Input
+                  type="date"
+                  value={this.state.operation_date}
+                  onChange={this.handleChange}
+                  id="operation_date"
+                  name="operation_date"
+                  placeholder="date"
+                />
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Col md="3">
+                <Label htmlFor="text-input">Warranty period</Label>
+              </Col>
+              <Col xs="12" md="9">
+                <Input
+                  value={this.state.warranty_period}
+                  onChange={this.handleChange}
+                  type="text"
+                  id="warranty_period"
+                  name="warranty_period"
+                  placeholder="Warranty period in months"
                 />
               </Col>
             </FormGroup>
@@ -208,73 +319,9 @@ class AddAsset extends Component {
                 />
               </Col>
             </FormGroup>
-            <FormGroup row>
-              <Col md="3">
-                <Label htmlFor="select">Supplier</Label>
-              </Col>
-              <Col xs="12" md="9">
-                <Input
-                  value={this.state.supplier}
-                  onChange={this.handleChange}
-                  type="select"
-                  name="supplier"
-                  id="supplier"
-                >
-                  <option value="0">Please select</option>
-                  <option value="1">Option #1</option>
-                  <option value="2">Option #2</option>
-                  <option value="3">Option #3</option>
-                </Input>
-              </Col>
-            </FormGroup>
-            <FormGroup row>
-              <Col md="3">
-                <Label htmlFor="file-input">Image</Label>
-              </Col>
-              <Col xs="12" md="9">
-                <Input type="file" id="image" name="image" />
-              </Col>
-            </FormGroup>
-            <FormGroup row>
-              <Col md="3">
-                <Label htmlFor="file-input">Manual</Label>
-              </Col>
-              <Col xs="12" md="9">
-                <Input type="file" id="manual" name="manual" />
-              </Col>
-            </FormGroup>
-            <FormGroup row>
-              <Col md="3">
-                <Label htmlFor="textarea-input">Notes</Label>
-              </Col>
-              <Col xs="12" md="9">
-                <Input
-                  value={this.state.notes}
-                  onChange={this.handleChange}
-                  type="textarea"
-                  name="notes"
-                  id="notes"
-                  rows="9"
-                  placeholder="Notes"
-                />
-              </Col>
-            </FormGroup>
-            <Button
-              className="btn-pill"
-              type="submit"
-              size="lg"
-              color="primary"
-            >
-              <i className="icon-arrow-right-circle"></i> Submit
-            </Button>
-            <Link to={`/home/Assets/add_asset/${this.state._id}`}>
-              <Button className="btn-pill" size="lg" color="primary">
-                <i className="icon-arrow-right-circle"></i> Add PMs
-              </Button>
-            </Link>
-          </Form>
-        </CardBody>
-      </Card>
+          </CardBody>
+        </Card>
+      </Form>
     );
   }
 }
