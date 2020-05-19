@@ -109,7 +109,7 @@ class Assets extends Component {
                           >
                             <i className="icon-trash"></i>&nbsp;Delete
                           </Button>
-                          <Link
+                          {/* <Link
                             to={{
                               pathname: "/home/Assets/edit_asset",
                               id: asset._id,
@@ -121,7 +121,7 @@ class Assets extends Component {
                             >
                               <i className=" icon-pencil"></i>&nbsp;Edit
                             </Button>
-                          </Link>
+                          </Link> */}
                           <Link to={`/Assets/${asset._id}`}>
                             <Button
                               className="float-right"
