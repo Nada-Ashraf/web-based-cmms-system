@@ -36,8 +36,15 @@ class Assets extends Component {
 
   handleDelete = (assetId) => {
     if (window.confirm("Are you sure you want to delete this item?")) {
-      fetch("/api/assets/delete/" + assetId, {
-        method: "DELETE",
+      fetch("/api/assets/edit/" + assetId, {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          condition: "Scrapped",
+        }),
       })
         .then((response) => {
           return response.json();
