@@ -29,11 +29,14 @@ const AssetSchema = new Schema({
   accessories: [String],
   sterilization: String,
 
-  // operating info
+  // Operating info
   lifetime: Number, // in years
   proper_freq_of_use: String,
-  electricity_sensitivity: String,
-  risk_level: String,
+  electricity_sensitivity: {
+    type: String,
+    enum: ["Class |", "Class ||", "Class |||", "NA"],
+  },
+  risk_level: { type: String, enum: ["A", "B", "C", "NA"] },
   work_env: String,
   efficiency: String,
 

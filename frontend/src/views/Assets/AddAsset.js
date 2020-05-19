@@ -389,6 +389,113 @@ class AddAsset extends Component {
             </FormGroup>
           </CardBody>
         </Card>
+        {/* Operation info */}
+        <Card>
+          <CardHeader>
+            <strong>Operation info</strong>
+          </CardHeader>
+          <CardBody>
+            <FormGroup row>
+              <Col md="3">
+                <Label htmlFor="text-input">Lifetime (in years)</Label>
+              </Col>
+              <Col xs="12" md="9">
+                <Input
+                  type="text"
+                  value={this.state.lifetime}
+                  onChange={this.handleChange}
+                  id="lifetime"
+                  name="lifetime"
+                  placeholder="Lifetime (in years)"
+                />
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Col md="3">
+                <Label htmlFor="text-input">efficiency</Label>
+              </Col>
+              <Col xs="12" md="9">
+                <Input
+                  type="text"
+                  value={this.state.efficiency}
+                  onChange={this.handleChange}
+                  id="efficiency"
+                  name="efficiency"
+                  placeholder="Asset efficiency"
+                />
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Col md="3">
+                <Label htmlFor="text-input">Proper frequency of use</Label>
+              </Col>
+              <Col xs="12" md="9">
+                <Input
+                  type="text"
+                  value={this.state.proper_freq_of_use}
+                  onChange={this.handleChange}
+                  id="proper_freq_of_use"
+                  name="proper_freq_of_use"
+                  placeholder="Proper frequency of use"
+                />
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Col md="3">
+                <Label htmlFor="select">Electricity sensitivity</Label>
+              </Col>
+              <Col xs="12" md="9">
+                <Input
+                  type="select"
+                  name="electricity_sensitivity"
+                  id="electricity_sensitivity"
+                  value={this.state.electricity_sensitivity}
+                  onChange={this.handleChange}
+                >
+                  <option value="NA">Please select</option>
+                  <option value="Class |">Class |</option>
+                  <option value="Class ||">Class ||</option>
+                  <option value="Class |||">Class |||</option>
+                </Input>
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Col md="3">
+                <Label htmlFor="select">Risk Level</Label>
+              </Col>
+              <Col xs="12" md="9">
+                <Input
+                  type="select"
+                  name="risk_level"
+                  id="risk_level"
+                  value={this.state.risk_level}
+                  onChange={this.handleChange}
+                >
+                  <option value="NA">Please select</option>
+                  <option value="A">A</option>
+                  <option value="B">B</option>
+                  <option value="C">C</option>
+                </Input>
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Col md="3">
+                <Label htmlFor="textarea-input">Work environment</Label>
+              </Col>
+              <Col xs="12" md="9">
+                <Input
+                  value={this.state.work_env}
+                  onChange={this.handleChange}
+                  type="textarea"
+                  name="work_env"
+                  id="work_env"
+                  rows="9"
+                  placeholder="Describe proper work environment"
+                />
+              </Col>
+            </FormGroup>
+          </CardBody>
+        </Card>
       </Form>
     );
   }
