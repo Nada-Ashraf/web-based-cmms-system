@@ -125,7 +125,8 @@ class AddAsset extends Component {
             schedules: "Weekly",
           }),
         });
-      });
+      })
+      .then(() => this.props.history.push("/home/Assets"));
   };
 
   card = () => {
@@ -630,11 +631,6 @@ class AddAsset extends Component {
         <Button className="btn-pill" type="submit" size="lg" color="primary">
           <i className="icon-arrow-right-circle"></i> Submit
         </Button>
-        <Link to={`/home/Assets/add_asset/${this.state._id}`}>
-          <Button className="btn-pill" size="lg" color="primary">
-            <i className="icon-arrow-right-circle"></i> Add PMs
-          </Button>
-        </Link>
       </Form>
     );
   }
