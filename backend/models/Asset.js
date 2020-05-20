@@ -6,10 +6,13 @@ const AssetSchema = new Schema({
   name: String,
   serial_number: String,
   model: String,
-  brand: { type: String, enum: ["NA", "philips", "3A healthcare"] },
+  brand: {
+    type: String,
+    enum: ["NA", "philips", "3A healthcare", "kabi fresenuis"],
+  },
   department: {
     type: String,
-    enum: ["reception", "open heart icu", "cardiology & surgery", "NA"],
+    enum: ["reception", "open heart icu", "cardiology", "surgery", "NA"],
     required: true,
   },
   description: String,
@@ -18,6 +21,7 @@ const AssetSchema = new Schema({
   // Suppliment info
   COO: String, // Country of origin
   supply_date: Date,
+  supply_company: String,
   operation_date: Date,
   warranty_period: Number, // in months
   parts: [String],

@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { Asset, validateAsset } from "../models/Asset";
+// import modules from "../models/Asset";
 import { pick } from "lodash";
 const router = Router();
 
@@ -10,52 +11,53 @@ const router = Router();
  */
 
 router.post("/", async (req, res) => {
-  // Validate The Request
-  const { error } = validateAsset(req.body);
-  if (error) {
-    return res.status(400).send(error.details[0].message);
-  }
-  // Check if already exisits
-  let asset = await asset.findOne({ serial_number: req.body.serial_number });
-  if (asset) {
-    return res.status(400).send("That equipment already exisits!");
-  } else {
-    const asset = new Asset(
-      pick(req.body, [
-        "name",
-        "serial_number",
-        "model",
-        "brand",
-        "department",
-        "COO",
-        "supply_date",
-        "operation_date",
-        "warranty_period",
-        "parts",
-        "price",
-        "maintenance_company",
-        "contract_type",
-        "contract_start_date",
-        "contract_end_date",
-        "condition",
-        "notes",
-        "description",
-        "classification",
-        "lifetime",
-        "proper_freq_of_use",
-        "electricity_sensitivity",
-        "risk_level",
-        "work_env",
-        "efficiency",
-        "alarms",
-        "accessories",
-        "sterilization",
-      ])
-    );
-    await asset.save();
-    res.json(asset);
-    res.end();
-  }
+  // // Validate The Request
+  // const { error } = validateAsset(req.body);
+  // if (error) {
+  //   return res.status(400).send(error.details[0].message);
+  // }
+  // // Check if already exisits
+  // let asset = await asset.findOne({ serial_number: req.body.serial_number });
+  // if (asset) {
+  //   return res.status(400).send("That equipment already exisits!");
+  // } else {
+  const asset = new Asset(
+    pick(req.body, [
+      "name",
+      "serial_number",
+      "model",
+      "brand",
+      "department",
+      "COO",
+      "supply_date",
+      "supply_company",
+      "operation_date",
+      "warranty_period",
+      "parts",
+      "price",
+      "maintenance_company",
+      "contract_type",
+      "contract_start_date",
+      "contract_end_date",
+      "condition",
+      "notes",
+      "description",
+      "classification",
+      "lifetime",
+      "proper_freq_of_use",
+      "electricity_sensitivity",
+      "risk_level",
+      "work_env",
+      "efficiency",
+      "alarms",
+      "accessories",
+      "sterilization",
+    ])
+  );
+  await asset.save();
+  res.send(asset);
+  res.end();
+  // }
 });
 
 /**
@@ -78,7 +80,6 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   const asset = await Asset.findById(req.params.id);
   res.send(asset);
-  console.log(asset);
 });
 
 /**
@@ -97,6 +98,7 @@ router.put("/edit/:id", async (req, res) => {
       "department",
       "COO",
       "supply_date",
+      "supply_company",
       "operation_date",
       "warranty_period",
       "parts",

@@ -45,7 +45,7 @@ class Layout extends Component {
     }
     return (
       <div className="app">
-        <AppHeader fixed className="bg-primary">
+        <AppHeader fixed>
           <Suspense fallback={this.loading()}>
             <Header onLogout={(e) => this.signOut(e)} />
           </Suspense>

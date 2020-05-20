@@ -9,7 +9,7 @@ import {
   FormGroup,
   Input,
   Label,
-  Collapse,
+  Alert,
 } from "reactstrap";
 import { Link } from "react-router-dom";
 
@@ -23,6 +23,7 @@ class AddAsset extends Component {
     department: "",
     COO: "",
     supply_date: "",
+    supply_company: "",
     operation_date: "",
     warranty_period: "",
     parts: ["1", "2", "3"], //array
@@ -50,6 +51,7 @@ class AddAsset extends Component {
     pm_title: "",
     pm_instructions: "",
     pm_schedules: "",
+    errorMessage: null,
   };
 
   toggleAccordion = (tab) => {
@@ -85,6 +87,7 @@ class AddAsset extends Component {
         department: this.state.department,
         COO: this.state.COO,
         supply_date: this.state.supply_date,
+        supply_company: this.state.supply_company,
         operation_date: this.state.operation_date,
         warranty_period: this.state.warranty_period,
         parts: this.state.parts,
@@ -110,24 +113,31 @@ class AddAsset extends Component {
       }),
     })
       .then((response) => response.json())
-      .then((asset) => this.setState({ _id: asset._id }))
-      .then(() => {
-        fetch("/api/pms/add_pm/", {
-          method: "post",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            title: this.state.pm_title,
-            instructions: this.state.pm_instructions,
-            asset: this.state._id,
-            status: "Not Assigned",
-            schedules: this.state.schedules,
-          }),
-        });
-      })
-      .then(() => this.props.history.push("/home/Assets"));
+      .catch((err) => {
+        this.setState({ errorMessage: err.message });
+      });
+    // .then((asset) => this.setState({ _id: asset._id }))
+    // .then(() => {
+    //   fetch("/api/pms/add_pm/", {
+    //     method: "post",
+    //     headers: {
+    //       Accept: "application/json",
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({
+    //       title: this.state.pm_title,
+    //       instructions: this.state.pm_instructions,
+    //       asset: this.state._id,
+    //       status: "Not Assigned",
+    //       schedules: this.state.schedules,
+    //     }),
+    //   });
+    // })
+    // .then((errorMessage) =>
+    //   errorMessage
+    //     ? this.props.history.push("/home/Assets")
+    //     : console.log("ops")
+    // );
   };
 
   card = () => {
@@ -220,6 +230,9 @@ class AddAsset extends Component {
             <strong>Basic info</strong>
           </CardHeader>
           <CardBody>
+            {this.state.errorMessage ? (
+              <Alert color="danger">{this.state.errorMessage}</Alert>
+            ) : null}
             <FormGroup row>
               <Col md="3">
                 <Label htmlFor="text-input">Name</Label>
@@ -375,16 +388,16 @@ class AddAsset extends Component {
             </FormGroup>
             <FormGroup row>
               <Col md="3">
-                <Label htmlFor="date-input">Contract end date</Label>
+                <Label htmlFor="text-input">Supply company</Label>
               </Col>
               <Col xs="12" md="9">
                 <Input
-                  type="date"
-                  value={this.state.contract_end_date}
+                  value={this.state.suuply_company}
                   onChange={this.handleChange}
-                  id="contract_end_date"
-                  name="contract_end_date"
-                  placeholder="date"
+                  type="text"
+                  id="suuply_company"
+                  name="suuply_company"
+                  placeholder="Warranty period in months"
                 />
               </Col>
             </FormGroup>

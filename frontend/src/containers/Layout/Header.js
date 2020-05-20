@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Link, NavLink } from "react-router-dom";
-import { Nav, NavItem } from "reactstrap";
+import { Link } from "react-router-dom";
+import { Nav, NavItem, Button } from "reactstrap";
 import { connect } from "react-redux";
 import { logout } from "../../actions/authActions";
 import { AppNavbarBrand, AppSidebarToggler } from "@coreui/react";
@@ -28,8 +28,16 @@ class Header extends Component {
 
         <Nav className="ml-auto" navbar>
           <Link to="/">
-            <NavItem onClick={this.props.logout} className="px-3">
-              Logout
+            <NavItem className="px-3">
+              {/* <Button onClick={this.props.logout}>Logout</Button> */}
+              <Button
+                onClick={this.props.logout}
+                className="float-right"
+                color="secondary"
+              >
+                <i className="icon-logout"></i>
+                &nbsp;Logout
+              </Button>
             </NavItem>
           </Link>
         </Nav>

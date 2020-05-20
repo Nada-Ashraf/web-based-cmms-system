@@ -9,6 +9,7 @@ class AssetDetails extends Component {
       method: "get",
     })
       .then((res) => res.json())
+      // .then((res) => res.replaceAll(/\n/g, "\\n"))
       .then((info) => this.setState({ info }));
   }
   render() {

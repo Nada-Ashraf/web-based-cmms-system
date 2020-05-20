@@ -47,7 +47,8 @@ class Assets extends Component {
         }),
       })
         .then((response) => {
-          return response.json();
+          // return response.json();
+          response.replaceAll("\\n", "\n");
         })
         .then(() => {
           window.location.reload(false);
