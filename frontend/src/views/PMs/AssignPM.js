@@ -21,6 +21,7 @@ class AssignPMs extends Component {
     assigned_to: "",
     notes: "",
     status: this.props.location.status,
+    err: null,
   };
 
   componentDidMount() {
@@ -55,11 +56,17 @@ class AssignPMs extends Component {
       body: JSON.stringify({
         assigned_to: this.state.assigned_to,
         notes: this.state.notes,
-        status: "Assined",
+        status: "Assigned",
       }),
-    }).then((response) => response.json());
-    // .then(() => this.props.history.push("/home/PMs"));
-    this.props.history.push("/home/PMs");
+    })
+      .then((response) => response.json())
+      .then(() => {
+        if (this.state.assigned_to !== "0")
+          this.props.history.push("/home/PMs");
+        else if (this.state.assigned_to === "") {
+          this.setState({ err: true });
+        }
+      });
   };
 
   render() {
@@ -117,6 +124,9 @@ class AssignPMs extends Component {
                       />
                     </Col>
                   </FormGroup>
+                  {this.state.err ? (
+                    <Alert color="danger">errorrr</Alert>
+                  ) : null}
                   <Button
                     className="btn-pill"
                     type="submit"
@@ -125,9 +135,6 @@ class AssignPMs extends Component {
                   >
                     <i className="fa fa-dot-circle-o"></i> Submit
                   </Button>
-                  {/* {this.state.msg ? (
-              <Alert color="danger">{this.state.msg}</Alert>
-            ) : null} */}
                 </Form>
               </CardBody>
             </Card>
