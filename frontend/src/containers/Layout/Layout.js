@@ -9,6 +9,7 @@ import {
   AppSidebar,
   AppSidebarFooter,
   AppSidebarForm,
+  AppFooter,
   AppSidebarHeader,
   AppSidebarMinimizer,
   AppBreadcrumb2 as AppBreadcrumb,
@@ -23,6 +24,7 @@ import technician_nav from "../../navs/technician_nav";
 import routes from "../../routes";
 
 const Header = React.lazy(() => import("./Header"));
+const Footer = React.lazy(() => import("./Footer"));
 
 class Layout extends Component {
   loading = () => (
@@ -43,7 +45,7 @@ class Layout extends Component {
     }
     return (
       <div className="app">
-        <AppHeader fixed>
+        <AppHeader fixed className="bg-primary">
           <Suspense fallback={this.loading()}>
             <Header onLogout={(e) => this.signOut(e)} />
           </Suspense>
@@ -84,6 +86,11 @@ class Layout extends Component {
             </Container>
           </main>
         </div>
+        <AppFooter>
+          <Suspense fallback={this.loading()}>
+            <Footer />
+          </Suspense>
+        </AppFooter>
       </div>
     );
   }
