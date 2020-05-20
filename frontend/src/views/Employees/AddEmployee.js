@@ -12,9 +12,7 @@ import {
   Alert,
 } from "reactstrap";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
 import { register } from "../../actions/authActions";
-import { clearErrors } from "../../actions/errorActions";
 
 class AddEmployee extends Component {
   state = {
@@ -23,14 +21,8 @@ class AddEmployee extends Component {
     password: "",
     role: "",
     department: "",
-    msg: null,
-  };
-
-  static propTypes = {
-    isAuthenticated: PropTypes.bool,
-    error: PropTypes.object.isRequired,
-    register: PropTypes.func.isRequired,
-    clearErrors: PropTypes.func.isRequired,
+    errMsg: null,
+    successMsg: null,
   };
 
   componentDidUpdate(prevProps) {
@@ -38,9 +30,9 @@ class AddEmployee extends Component {
     if (error !== prevProps.error) {
       // Check for register error
       if (error.id === "REGISTER_FAIL") {
-        this.setState({ msg: error.msg.msg });
+        this.setState({ errMsg: error.msg.msg });
       } else {
-        this.setState({ msg: null });
+        this.setState({ errMsg: null });
       }
     }
   }
@@ -65,11 +57,10 @@ class AddEmployee extends Component {
 
     // Attempt to register
     await this.props.register(newUser);
-
-    // CHECK
-    // if (this.props.error.id !== "REGISTER_FAIL") {
-    //   this.props.history.push("/home/Employees");
-    // }
+    this.setState({
+      errMsg: null,
+      successMsg: "Employee registered succesfully",
+    });
   };
 
   render() {
@@ -86,8 +77,10 @@ class AddEmployee extends Component {
             className="form-horizontal"
             onSubmit={this.handleSubmit}
           >
-            {this.state.msg ? (
-              <Alert color="danger">{this.state.msg}</Alert>
+            {this.state.errMsg ? (
+              <Alert color="danger">{this.state.errMsg}</Alert>
+            ) : this.state.successMsg ? (
+              <Alert>{this.state.successMsg}</Alert>
             ) : null}
             <FormGroup row>
               <Col md="3">
@@ -191,4 +184,4 @@ const mapStateToProps = (state) => ({
   error: state.error,
 });
 
-export default connect(mapStateToProps, { register, clearErrors })(AddEmployee);
+export default connect(mapStateToProps, { register })(AddEmployee);
