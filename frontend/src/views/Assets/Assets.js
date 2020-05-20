@@ -133,7 +133,7 @@ class Assets extends Component {
                           </Link>
                         </React.Fragment>
                       ) : (
-                        <Link to={`/Assets/${asset._id}`}>
+                        <Link to={`/home/Assets/${asset._id}`}>
                           <Button className="float-right" color="ghost-primary">
                             <i className="icon-list"></i>
                             &nbsp;Details

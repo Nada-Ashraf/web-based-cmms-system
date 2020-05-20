@@ -123,6 +123,7 @@ class PMs extends Component {
                               to={{
                                 pathname: "/home/PMs/assign_pm",
                                 id: pm._id,
+                                status: pm.status,
                               }}
                               // to="/home/PMs/assign_pm"
                               // params={{ id: pm._id }}

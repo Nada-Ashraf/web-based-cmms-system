@@ -20,6 +20,7 @@ class AssignPMs extends Component {
     // CHECK
     assigned_to: "",
     notes: "",
+    status: this.props.location.status,
   };
 
   componentDidMount() {
@@ -66,64 +67,75 @@ class AssignPMs extends Component {
     let optionItems = users.map((user) => (
       <option value={user._id}>{user.name}</option>
     ));
+    const status = this.state.status === "Not Assigned";
+
     return (
-      <Card>
-        <CardHeader>
-          <strong>Assign PM</strong>
-        </CardHeader>
-        <CardBody>
-          <Form
-            method="post"
-            encType="multipart/form-data"
-            className="form-horizontal"
-            onSubmit={this.handleSubmit}
-          >
-            <FormGroup row>
-              <Col md="3">
-                <Label htmlFor="select">Assign to</Label>
-              </Col>
-              <Col xs="12" md="9">
-                <Input
-                  type="select"
-                  name="assigned_to"
-                  id="assigned_to"
-                  value={this.state.assigned_to}
-                  onChange={this.handleChange}
+      <div>
+        {status ? (
+          <div>
+            {" "}
+            <Card>
+              <CardHeader>
+                <strong>Assign PM</strong>
+              </CardHeader>
+              <CardBody>
+                <Form
+                  method="post"
+                  encType="multipart/form-data"
+                  className="form-horizontal"
+                  onSubmit={this.handleSubmit}
                 >
-                  {optionItems}
-                </Input>
-              </Col>
-            </FormGroup>
-            <FormGroup row>
-              <Col md="3">
-                <Label htmlFor="textarea-input">Notes</Label>
-              </Col>
-              <Col xs="12" md="9">
-                <Input
-                  value={this.state.notes}
-                  onChange={this.handleChange}
-                  type="textarea"
-                  name="notes"
-                  id="notes"
-                  rows="9"
-                  placeholder="Notes"
-                />
-              </Col>
-            </FormGroup>
-            <Button
-              className="btn-pill"
-              type="submit"
-              size="lg"
-              color="primary"
-            >
-              <i className="fa fa-dot-circle-o"></i> Submit
-            </Button>
-            {/* {this.state.msg ? (
+                  <FormGroup row>
+                    <Col md="3">
+                      <Label htmlFor="select">Assign to</Label>
+                    </Col>
+                    <Col xs="12" md="9">
+                      <Input
+                        type="select"
+                        name="assigned_to"
+                        id="assigned_to"
+                        value={this.state.assigned_to}
+                        onChange={this.handleChange}
+                      >
+                        {optionItems}
+                      </Input>
+                    </Col>
+                  </FormGroup>
+                  <FormGroup row>
+                    <Col md="3">
+                      <Label htmlFor="textarea-input">Notes</Label>
+                    </Col>
+                    <Col xs="12" md="9">
+                      <Input
+                        value={this.state.notes}
+                        onChange={this.handleChange}
+                        type="textarea"
+                        name="notes"
+                        id="notes"
+                        rows="9"
+                        placeholder="Notes"
+                      />
+                    </Col>
+                  </FormGroup>
+                  <Button
+                    className="btn-pill"
+                    type="submit"
+                    size="lg"
+                    color="primary"
+                  >
+                    <i className="fa fa-dot-circle-o"></i> Submit
+                  </Button>
+                  {/* {this.state.msg ? (
               <Alert color="danger">{this.state.msg}</Alert>
             ) : null} */}
-          </Form>
-        </CardBody>
-      </Card>
+                </Form>
+              </CardBody>
+            </Card>
+          </div>
+        ) : (
+          <div>This pm has already been assigned</div>
+        )}
+      </div>
     );
   }
 }

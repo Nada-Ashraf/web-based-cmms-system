@@ -14,14 +14,12 @@ Content-Type: application/json
     "warranty_period":"",
     "parts":["","",""], // as array
     "price":"", 
-    "maintenance_company":"",
-    "contract_type":"",
+    "maintenance_company":"", //lowercase
+    "contract_type":"", // lowercase
     "contract_start_date":"",
     "contract_end_date":"",
-    "condition":"",
-    "notes":"",
     "description":"",
-    "classification":"",
+    "classification":"", //lowercase
     "lifetime":"",
     "proper_freq_of_use":"",
     "electricity_sensitivity":"", // ["Class |", "Class ||", "Class |||"]
@@ -31,7 +29,7 @@ Content-Type: application/json
     "alarms":["","",""],
     "accessories":["","",""],
     "sterilization":"",
-    "ppm":""
+    "ppm":"" // or array of there's several PPMs
 }
 
 
@@ -135,11 +133,11 @@ POST http://localhost:3000/api/auth/register
 content-type: application/json
 
 {
-    "name":"manager",
-    "email":"manager@manager.com",
-    "password":"manager",
-    "role":"Manager",
-    "department":"NA"
+    "name":"Ahmad",
+    "email":"ahmad@gmail.com",
+    "password":"ahmad",
+    "role":"Technician",
+    "department":"reception"
 }
 
 ###
