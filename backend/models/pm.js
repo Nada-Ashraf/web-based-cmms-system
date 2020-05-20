@@ -13,6 +13,7 @@ const pmSchema = new mongoose.Schema({
   status: {
     type: String,
     enum: ["Asssined", "Not Assigned", "Done", "There's an issue", ""],
+    default: "Not Assigned",
   },
   schedules: {
     type: String,
@@ -21,6 +22,7 @@ const pmSchema = new mongoose.Schema({
       "weekly",
       "monthly",
       "annual",
+      "every 3 years",
       "every 3 months",
       "every 6 months",
     ],
