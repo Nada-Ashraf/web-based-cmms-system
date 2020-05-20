@@ -18,7 +18,6 @@ class AssignPMs extends Component {
   state = {
     id: this.props.location.id,
     users: [],
-    // CHECK
     assigned_to: "",
     notes: "",
     status: this.props.location.status,
@@ -97,6 +96,7 @@ class AssignPMs extends Component {
                         value={this.state.assigned_to}
                         onChange={this.handleChange}
                       >
+                        <option value="0">Please select</option>
                         {optionItems}
                       </Input>
                     </Col>
