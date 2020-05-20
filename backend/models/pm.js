@@ -9,10 +9,11 @@ const pmSchema = new mongoose.Schema({
   assigned_to: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
+    default: "5ec4510eac0f96432c01830f",
   },
   status: {
     type: String,
-    enum: ["Asssined", "Not Assigned", "Done", "There's an issue", ""],
+    enum: ["Assigned", "Not Assigned", "Done", "There's an issue", ""],
     default: "Not Assigned",
   },
   schedules: {

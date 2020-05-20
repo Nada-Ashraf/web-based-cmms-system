@@ -109,10 +109,12 @@ POST http://localhost:3000/api/pms/add_pm
 content-type: application/json
 
 {
-    "title":"changing the battery",
+    "title":"pm",
     "asset":"5ec57529b7c5101af4dd13eb",
-    "instructions":"This procedure, which includes changing the battery, should be carried out by a qualified technician. Any abnormal functioning must be reported to the qualified technician and the pump should not be used.",
-    "schedules":"every 3 years"
+    "instructions":"pm",
+    "schedules":"every 3 years",
+    "assigned_to":"5ec58bc7a00ada228dc5ff54",
+    "status":"Assigned"
 }
 
 ###

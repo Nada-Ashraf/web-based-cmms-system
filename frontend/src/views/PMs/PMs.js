@@ -8,7 +8,7 @@ const getBadge = (status) => {
   return status === "Done"
     ? "success"
     : status === "Assigned"
-    ? "secondconditionary"
+    ? "primary"
     : status === "Not Assigned"
     ? "warning"
     : status === "There's an issue"
@@ -149,24 +149,21 @@ class PMs extends Component {
                         </React.Fragment>
                       ) : (
                         <React.Fragment>
-                          {" "}
-                          {pm.status === "Assigned" || (
-                            <Link
-                              to={{
-                                pathname: "/home/PMs/complete_pm",
-                                id: pm._id,
-                                status: pm.status,
-                              }}
+                          <Link
+                            to={{
+                              pathname: "/home/PMs/complete_pm",
+                              id: pm._id,
+                              status: pm.status,
+                            }}
+                          >
+                            <Button
+                              className="float-right"
+                              color="ghost-success"
                             >
-                              <Button
-                                className="float-right"
-                                color="ghost-success"
-                              >
-                                <i className=" icon-pencil"></i>&nbsp;Complete
-                                work
-                              </Button>
-                            </Link>
-                          )}
+                              <i className=" icon-pencil"></i>&nbsp;Complete
+                              work
+                            </Button>
+                          </Link>
                           <Link to={`/home/PMs/${pm._id}`}>
                             <Button
                               className="float-right"

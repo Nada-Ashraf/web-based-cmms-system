@@ -56,7 +56,7 @@ class AssignPMs extends Component {
       body: JSON.stringify({
         assigned_to: this.state.assigned_to,
         notes: this.state.notes,
-        status: "Asssined",
+        status: "Assined",
       }),
     }).then((response) => response.json());
     // .then(() => this.props.history.push("/home/PMs"));

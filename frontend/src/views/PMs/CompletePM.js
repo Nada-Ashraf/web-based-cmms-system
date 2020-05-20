@@ -18,7 +18,7 @@ import { login } from "../../actions/authActions";
 class CompletePM extends Component {
   state = {
     id: this.props.location.id,
-    status: this.props.location.status,
+    status: "",
     report_title: "",
     report_body: "",
     status: "",
@@ -53,10 +53,12 @@ class CompletePM extends Component {
   };
 
   render() {
-    const isAssigned = this.state.status === "Assigned";
+    const isDone =
+      this.props.location.status === "Done" ||
+      this.props.location.status === "There's an issue";
     return (
       <div>
-        {isAssigned ? (
+        {!isDone ? (
           <Card>
             <CardHeader>
               <strong>Report PM Work</strong>
