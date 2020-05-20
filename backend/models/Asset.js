@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import Joi from "@hapi/joi";
 
 const AssetSchema = new Schema({
   // Basic info
