@@ -23,13 +23,13 @@ class Assets extends Component {
     fetch("/api/assets")
       .then((res) => res.json())
       .then((assets) => {
-        if (this.props.role === "Supervisor") {
+        if (this.props.role === "Manager") {
+          this.setState({ assets });
+        } else {
           const assetsFiltered = assets.filter((asset) =>
             asset.department.includes(this.props.department)
           );
           this.setState({ assets: assetsFiltered });
-        } else {
-          this.setState({ assets });
         }
       });
   }
