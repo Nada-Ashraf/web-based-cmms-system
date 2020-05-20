@@ -10,6 +10,7 @@ import {
   FormGroup,
   Input,
   Label,
+  Alert,
 } from "reactstrap";
 import { connect } from "react-redux";
 import { login } from "../../actions/authActions";
@@ -133,7 +134,9 @@ class AssignPMs extends Component {
             </Card>
           </div>
         ) : (
-          <div>This pm has already been assigned</div>
+          <div>
+            <Alert>This work has already been assigned</Alert>
+          </div>
         )}
       </div>
     );
