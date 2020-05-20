@@ -49,6 +49,7 @@ class AddAsset extends Component {
     accordion: [true, false, false],
     pm_title: "",
     pm_instructions: "",
+    pm_schedules: "",
   };
 
   toggleAccordion = (tab) => {
@@ -122,7 +123,7 @@ class AddAsset extends Component {
             instructions: this.state.pm_instructions,
             asset: this.state._id,
             status: "Not Assigned",
-            schedules: "Weekly",
+            schedules: this.state.schedules,
           }),
         });
       })
@@ -145,6 +146,40 @@ class AddAsset extends Component {
               name="pm_title"
               placeholder="PM title"
             />
+          </Col>
+        </FormGroup>
+        <FormGroup row>
+          <Col md="3">
+            <Label htmlFor="text-input">Model</Label>
+          </Col>
+          <Col xs="12" md="9">
+            <Input
+              value={this.state.model}
+              onChange={this.handleChange}
+              type="text"
+              id="model"
+              name="model"
+              placeholder="Asset model"
+            />
+          </Col>
+        </FormGroup>
+        <FormGroup row>
+          <Col md="3">
+            <Label htmlFor="select">Department</Label>
+          </Col>
+          <Col xs="12" md="9">
+            <Input
+              type="select"
+              name="department"
+              id="department"
+              value={this.state.department}
+              onChange={this.handleChange}
+            >
+              <option value="NA">Please select</option>
+              <option value="reception">reception</option>
+              <option value="open heart icu">open heart icu</option>
+              <option value="cardiology & surgery">cardiology & surgery</option>
+            </Input>
           </Col>
         </FormGroup>
         <FormGroup row>
@@ -268,21 +303,6 @@ class AddAsset extends Component {
                 </Input>
               </Col>
             </FormGroup>
-            {/* <FormGroup row>
-              <Col md="3">
-                <Label htmlFor="text-input">Brand</Label>
-              </Col>
-              <Col xs="12" md="9">
-                <Input
-                  type="text"
-                  id="brand"
-                  name="brand"
-                  placeholder="Asset brand"
-                  value={this.state.brand}
-                  onChange={this.handleChange}
-                />
-              </Col>
-            </FormGroup> */}
             <FormGroup row>
               <Col md="3">
                 <Label htmlFor="textarea-input">Classification</Label>
@@ -647,6 +667,29 @@ class AddAsset extends Component {
                   rows="9"
                   placeholder="Instructions"
                 />
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Col md="3">
+                <Label htmlFor="select">Schedules</Label>
+              </Col>
+              <Col xs="12" md="9">
+                <Input
+                  value={this.state.pm_schedules}
+                  onChange={this.handleChange}
+                  type="select"
+                  name="pm_schedules"
+                  id="pm_schedules"
+                  rows="9"
+                  placeholder="PM schedules"
+                >
+                  <option value="NA">Please select</option>
+                  <option value="weekly">weekly</option>
+                  <option value="monthly">monthly</option>
+                  <option value="every 3 months">every 3 months</option>
+                  <option value="every 6 months">every 6 months</option>
+                  <option value="annual">annual</option>
+                </Input>
               </Col>
             </FormGroup>
           </CardBody>

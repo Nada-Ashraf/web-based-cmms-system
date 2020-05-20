@@ -3,26 +3,37 @@ POST  http://localhost:3000/api/assets
 Content-Type: application/json
 
 {
-    "name":"test",
-    "serial_number":"test",
-    "model":"test",
-    "brand":"test",
-    "department":"cardiology",
-    "COO":"test",
-    "supply_date":"2017-09-14",
-    "operation_date":"2017-09-14",
-    "supply_country":"test",
-    "warranty_period":"3",
-    "parts":["test","test2"],
-    "price":"3000",
-    "maintenance_company":"test",
-    "contract_type":"test",
-    "contract_start_date":"2017-09-14",
-    "contract_end_date":"2017-09-14",
-    "recieved_by":"5ebdfa8db509fb2946bb1284",
-    "condition":"In service",
-    "notes":"test"
+    "name":"",
+    "serial_number":"",
+    "model":"", //uppercase
+    "brand":"", //lowercase
+    "department":"", //lowercase
+    "COO":"", //country of origin //lowercase
+    "supply_date":"", // date format: "2020-05-30"
+    "operation_date":"",
+    "warranty_period":"",
+    "parts":["","",""], // as array
+    "price":"", 
+    "maintenance_company":"",
+    "contract_type":"",
+    "contract_start_date":"",
+    "contract_end_date":"",
+    "condition":"",
+    "notes":"",
+    "description":"",
+    "classification":"",
+    "lifetime":"",
+    "proper_freq_of_use":"",
+    "electricity_sensitivity":"", // ["Class |", "Class ||", "Class |||"]
+    "risk_level":"", // ["A","B","C"]
+    "work_env":"",
+    "efficiency":"",
+    "alarms":["","",""],
+    "accessories":["","",""],
+    "sterilization":"",
+    "ppm":""
 }
+
 
 ###
 GET http://localhost:3000/api/assets
