@@ -27,8 +27,8 @@ class PMs extends Component {
         if (this.props.role === "Technician") {
           const pmsFiltered = pms.filter(
             (pm) =>
-              pm.assigned_to._id.includes(this.props._id) &&
-              pm.asset.department.includes(this.props.department)
+              pm.asset.department.includes(this.props.department) &&
+              pm.assigned_to._id.includes(this.props._id)
           );
           this.setState({ pms: pmsFiltered });
         } else if (this.props.role === "Supervisor") {
