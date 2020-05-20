@@ -56,4 +56,16 @@ const AssetSchema = new Schema({
 
 const Asset = model("Asset", AssetSchema);
 
-export default Asset;
+function validateAsset(asset) {
+  const schema = Joi.object().keys({
+    name: Joi.string().required(),
+    serial_number: Joi.string().required(),
+    //   maintanince_date: Joi.date().required(),
+    //   status: Joi.string().required(),
+    //   sterileDates: Joi.date().required(),
+    //   sterileOperation: Joi.string().required(),
+  });
+  return schema.validate(asset);
+}
+
+export { Asset, validateAsset };
