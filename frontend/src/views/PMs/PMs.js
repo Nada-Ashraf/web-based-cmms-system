@@ -150,7 +150,7 @@ class PMs extends Component {
                       ) : (
                         <React.Fragment>
                           {" "}
-                          {pm.status === "Assigned" && (
+                          {pm.status === "Assigned" || (
                             <Link
                               to={{
                                 pathname: "/home/PMs/complete_pm",

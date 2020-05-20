@@ -74,7 +74,6 @@ class AssignPMs extends Component {
       <div>
         {status ? (
           <div>
-            {" "}
             <Card>
               <CardHeader>
                 <strong>Assign PM</strong>
