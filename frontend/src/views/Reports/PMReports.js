@@ -70,7 +70,13 @@ class PMReports extends Component {
                       <Badge color={getBadge(pm.status)}>{pm.status}</Badge>
                     </td>
                     <td>
-                      <Link to={`/home/Reports/PMs/${pm._id}`}>
+                      <Link
+                        to={{
+                          pathname: `/home/Reports/PMs/${pm._id}`,
+                          id: pm._id,
+                          status: pm.status,
+                        }}
+                      >
                         <Button className="float-right" color="ghost-primary">
                           <i className="icon-list"></i>
                           &nbsp;View Report
