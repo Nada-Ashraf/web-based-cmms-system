@@ -43,7 +43,7 @@ class Login extends Component {
       }
     }
     if (isAuthenticated) {
-      this.props.history.push("/home/dashboard");
+      this.props.history.push("/home/Assets");
       //   this.props.clearErrors();
     }
   }

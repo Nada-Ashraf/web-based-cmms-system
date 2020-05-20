@@ -18,13 +18,13 @@ class Header extends Component {
         />
         <AppSidebarToggler className="d-md-down-none" display="lg" />
 
-        <Nav className="d-md-down-none" navbar>
+        {/* <Nav className="d-md-down-none" navbar>
           <NavItem className="px-3">
             <NavLink to="/home/dashboard" className="nav-link">
               Dashboard
             </NavLink>
           </NavItem>
-        </Nav>
+        </Nav> */}
 
         <Nav className="ml-auto" navbar>
           <Link to="/">

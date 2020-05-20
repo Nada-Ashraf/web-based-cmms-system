@@ -99,7 +99,7 @@ class AddWO extends Component {
 
     let assets = this.state.assets;
     let assetsOptionItems = assets.map((asset) => (
-      <option value={asset._id}>{asset.name}</option>
+      <option value={asset._id}>{asset.serial_number}</option>
     ));
 
     return (

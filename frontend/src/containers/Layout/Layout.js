@@ -31,7 +31,7 @@ class Layout extends Component {
 
   signOut(e) {
     e.preventDefault();
-    this.props.history.push("/dashboard");
+    // this.props.history.push("/dashboard");
   }
 
   render() {
@@ -78,7 +78,7 @@ class Layout extends Component {
                       />
                     ) : null;
                   })}
-                  <Redirect from="/" to="/dashboard" />
+                  {/* <Redirect from="/" to="/dashboard" /> */}
                 </Switch>
               </Suspense>
             </Container>

@@ -30,7 +30,8 @@ class ViewPmReport extends Component {
   }
 
   render() {
-    const status = this.state.status === "Done";
+    const status =
+      this.state.status === "Done" || this.state.status === "There's an issue";
 
     return (
       <div className="animated fadeIn">

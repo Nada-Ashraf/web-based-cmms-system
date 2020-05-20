@@ -155,6 +155,7 @@ class PMs extends Component {
                               to={{
                                 pathname: "/home/PMs/complete_pm",
                                 id: pm._id,
+                                status: pm.status,
                               }}
                             >
                               <Button

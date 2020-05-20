@@ -9,16 +9,20 @@ import {
   FormGroup,
   Input,
   Label,
+  Alert,
 } from "reactstrap";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { login } from "../../actions/authActions";
 
 class CompletePM extends Component {
   state = {
     id: this.props.location.id,
+    status: this.props.location.status,
     report_title: "",
     report_body: "",
     status: "",
+    report_id: "",
   };
 
   handleChange = (event) => {
@@ -44,82 +48,101 @@ class CompletePM extends Component {
       }),
     })
       .then((response) => response.json())
+      .then((data) => this.setState({ report_id: data._id }))
       .then(() => this.props.history.push("/home/PMs"));
   };
 
   render() {
+    const isAssigned = this.state.status === "Assigned";
     return (
-      <Card>
-        <CardHeader>
-          <strong>Report PM Work</strong>
-        </CardHeader>
-        <CardBody>
-          <Form
-            method="post"
-            encType="multipart/form-data"
-            className="form-horizontal"
-            onSubmit={this.handleSubmit}
-          >
-            <FormGroup row>
-              <Col md="3">
-                <Label htmlFor="select">Status</Label>
-              </Col>
-              <Col xs="12" md="9">
-                <Input
-                  type="select"
-                  name="status"
-                  id="status"
-                  value={this.state.status}
-                  onChange={this.handleChange}
+      <div>
+        {isAssigned ? (
+          <Card>
+            <CardHeader>
+              <strong>Report PM Work</strong>
+            </CardHeader>
+            <CardBody>
+              <Form
+                method="post"
+                encType="multipart/form-data"
+                className="form-horizontal"
+                onSubmit={this.handleSubmit}
+              >
+                <FormGroup row>
+                  <Col md="3">
+                    <Label htmlFor="select">Status</Label>
+                  </Col>
+                  <Col xs="12" md="9">
+                    <Input
+                      type="select"
+                      name="status"
+                      id="status"
+                      value={this.state.status}
+                      onChange={this.handleChange}
+                    >
+                      <option value="">Please select</option>
+                      <option value="Done">Done</option>
+                      <option value="There's an issue">There's an issue</option>
+                    </Input>
+                  </Col>
+                </FormGroup>
+                <FormGroup row>
+                  <Col md="3">
+                    <Label htmlFor="text-input">Title</Label>
+                  </Col>
+                  <Col xs="12" md="9">
+                    <Input
+                      type="text"
+                      value={this.state.report_title}
+                      onChange={this.handleChange}
+                      id="report_title"
+                      name="report_title"
+                      placeholder="Report title"
+                    />
+                  </Col>
+                </FormGroup>
+                <FormGroup row>
+                  <Col md="3">
+                    <Label htmlFor="textarea-input">Notes</Label>
+                  </Col>
+                  <Col xs="12" md="9">
+                    <Input
+                      value={this.state.report_body}
+                      onChange={this.handleChange}
+                      type="textarea"
+                      name="report_body"
+                      id="report_body"
+                      rows="9"
+                      placeholder="report body"
+                    />
+                  </Col>
+                </FormGroup>
+                <Button
+                  className="btn-pill"
+                  type="submit"
+                  size="lg"
+                  color="primary"
                 >
-                  <option value="">Please select</option>
-                  <option value="Done">Done</option>
-                  <option value="There's an issue">There's an issue</option>
-                </Input>
-              </Col>
-            </FormGroup>
-            <FormGroup row>
-              <Col md="3">
-                <Label htmlFor="text-input">Title</Label>
-              </Col>
-              <Col xs="12" md="9">
-                <Input
-                  type="text"
-                  value={this.state.report_title}
-                  onChange={this.handleChange}
-                  id="report_title"
-                  name="report_title"
-                  placeholder="Report title"
-                />
-              </Col>
-            </FormGroup>
-            <FormGroup row>
-              <Col md="3">
-                <Label htmlFor="textarea-input">Notes</Label>
-              </Col>
-              <Col xs="12" md="9">
-                <Input
-                  value={this.state.report_body}
-                  onChange={this.handleChange}
-                  type="textarea"
-                  name="report_body"
-                  id="report_body"
-                  rows="9"
-                  placeholder="report body"
-                />
-              </Col>
-            </FormGroup>
-            <Button
-              className="btn-pill"
-              type="submit"
-              size="lg"
-              color="primary"
+                  <i className="fa fa-dot-circle-o"></i> Submit
+                </Button>
+              </Form>
+            </CardBody>
+          </Card>
+        ) : (
+          <div>
+            <Alert>The report has already been submitted!</Alert>
+            {/* <Link
+              to={{
+                pathname: `/home/Reports/PMs/${this.state.report_id}`,
+                id: this.state.report_id,
+                status: "Done",
+              }}
             >
-              <i className="fa fa-dot-circle-o"></i> Submit
-            </Button>
-          </Form>
-        </CardBody>
-      </Card>
+              <Button>View report</Button>
+            </Link> */}
+          </div>
+        )}
+      </div>
     );
   }
 }
