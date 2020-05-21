@@ -12,6 +12,11 @@ import {
   Alert,
 } from "reactstrap";
 import { Link } from "react-router-dom";
+import {
+  FormWithConstraints,
+  FieldFeedbacks,
+  FieldFeedback,
+} from "react-form-with-constraints";
 
 class AddAsset extends Component {
   state = {
@@ -64,6 +69,7 @@ class AddAsset extends Component {
   };
 
   handleChange = (event) => {
+    this.form.validateFields(event.target);
     const value = event.target.value;
     this.setState({
       ...this.state,
@@ -73,67 +79,73 @@ class AddAsset extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    fetch("/api/assets/", {
-      method: "post",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: this.state.name,
-        serial_number: this.state.serial_number,
-        model: this.state.model,
-        brand: this.state.brand,
-        department: this.state.department,
-        COO: this.state.COO,
-        supply_date: this.state.supply_date,
-        supply_company: this.state.supply_company,
-        operation_date: this.state.operation_date,
-        warranty_period: this.state.warranty_period,
-        parts: this.state.parts,
-        price: this.state.price,
-        maintenance_company: this.state.maintenance_company,
-        contract_type: this.state.contract_type,
-        contract_start_date: this.state.contract_start_date,
-        contract_end_date: this.state.contract_end_date,
-        recieved_by: this.state.recieved_by,
-        condition: this.state.condition,
-        notes: this.state.notes,
-        description: this.state.description,
-        classification: this.state.classification,
-        lifetime: this.state.lifetime,
-        proper_freq_of_use: this.state.proper_freq_of_use,
-        electricity_sensitivity: this.state.electricity_sensitivity,
-        risk_level: this.state.risk_level,
-        work_env: this.state.work_env,
-        efficiency: this.state.efficiency,
-        alarms: this.state.alarms,
-        accessories: this.state.accessories,
-        sterilization: this.state.sterilization,
-      }),
-    })
-      .then((response) => response.json())
-      // .catch((err) => {
-      //   this.setState({ errorMessage: err.message });
-      // });
-      .then((asset) => this.setState({ _id: asset._id }))
-      .then(() => {
-        fetch("/api/pms/add_pm/", {
-          method: "post",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            title: this.state.pm_title,
-            instructions: this.state.pm_instructions,
-            asset: this.state._id,
-            status: "Not Assigned",
-            schedules: this.state.schedules,
-          }),
-        });
+    this.form.validateFields();
+
+    if (!this.form.isValid()) {
+      console.log("form is invalid: do not submit");
+    } else {
+      fetch("/api/assets/", {
+        method: "post",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: this.state.name,
+          serial_number: this.state.serial_number,
+          model: this.state.model,
+          brand: this.state.brand,
+          department: this.state.department,
+          COO: this.state.COO,
+          supply_date: this.state.supply_date,
+          supply_company: this.state.supply_company,
+          operation_date: this.state.operation_date,
+          warranty_period: this.state.warranty_period,
+          parts: this.state.parts,
+          price: this.state.price,
+          maintenance_company: this.state.maintenance_company,
+          contract_type: this.state.contract_type,
+          contract_start_date: this.state.contract_start_date,
+          contract_end_date: this.state.contract_end_date,
+          recieved_by: this.state.recieved_by,
+          condition: this.state.condition,
+          notes: this.state.notes,
+          description: this.state.description,
+          classification: this.state.classification,
+          lifetime: this.state.lifetime,
+          proper_freq_of_use: this.state.proper_freq_of_use,
+          electricity_sensitivity: this.state.electricity_sensitivity,
+          risk_level: this.state.risk_level,
+          work_env: this.state.work_env,
+          efficiency: this.state.efficiency,
+          alarms: this.state.alarms,
+          accessories: this.state.accessories,
+          sterilization: this.state.sterilization,
+        }),
       })
-      .then(this.props.history.push("/home/Assets"));
+        .then((response) => response.json())
+        // .catch((err) => {
+        //   this.setState({ errorMessage: err.message });
+        // });
+        .then((asset) => this.setState({ _id: asset._id }))
+        .then(() => {
+          fetch("/api/pms/add_pm/", {
+            method: "post",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              title: this.state.pm_title,
+              instructions: this.state.pm_instructions,
+              asset: this.state._id,
+              status: "Not Assigned",
+              schedules: this.state.schedules,
+            }),
+          });
+        })
+        .then(this.props.history.push("/home/Assets"));
+    }
   };
 
   card = () => {
@@ -151,6 +163,7 @@ class AddAsset extends Component {
               id="pm_title"
               name="pm_title"
               placeholder="PM title"
+              required
             />
           </Col>
         </FormGroup>
@@ -215,12 +228,14 @@ class AddAsset extends Component {
       <option value={brand}>{brand}</option>
     ));
     return (
-      <Form
+      <FormWithConstraints
         // action=""
         method="post"
+        ref={(form) => (this.form = form)}
         encType="multipart/form-data"
         className="form-horizontal"
         onSubmit={this.handleSubmit}
+        noValidate
       >
         <Card>
           <CardHeader>
@@ -242,7 +257,12 @@ class AddAsset extends Component {
                   id="name"
                   name="name"
                   placeholder="Asset name"
+                  required
+                  minLength={5}
                 />
+                <FieldFeedbacks for="name">
+                  <FieldFeedback style={{ color: "red" }} when="*" />
+                </FieldFeedbacks>
               </Col>
             </FormGroup>
             <FormGroup row>
@@ -706,7 +726,7 @@ class AddAsset extends Component {
         <Button className="btn-pill" type="submit" size="lg" color="primary">
           <i className="icon-arrow-right-circle"></i> Submit
         </Button>
-      </Form>
+      </FormWithConstraints>
     );
   }
 }
