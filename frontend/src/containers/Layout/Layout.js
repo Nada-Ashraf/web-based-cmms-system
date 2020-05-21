@@ -1,5 +1,5 @@
 import React, { Component, Suspense } from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import * as router from "react-router-dom";
 import { Container } from "reactstrap";
 import { connect } from "react-redux";
@@ -38,7 +38,7 @@ class Layout extends Component {
 
   render() {
     let navigation;
-    if (this.props.role == "Technician") {
+    if (this.props.role === "Technician") {
       navigation = technician_nav;
     } else {
       navigation = nav;

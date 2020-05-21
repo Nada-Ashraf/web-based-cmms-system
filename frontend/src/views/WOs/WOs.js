@@ -111,9 +111,9 @@ class WOs extends Component {
                           >
                             <i className="icon-trash"></i>&nbsp;Delete
                           </Button>
-                          <Button className="float-right" color="ghost-success">
+                          {/* <Button className="float-right" color="ghost-success">
                             <i className=" icon-pencil"></i>&nbsp;Edit
-                          </Button>
+                          </Button> */}
                           <Link to={`/home/WOs/${wo._id}`}>
                             <Button
                               className="float-right"

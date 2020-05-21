@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { HashRouter, Route, Switch } from "react-router-dom";
-// import { renderRoutes } from 'react-router-config';
 import { Provider } from "react-redux";
 import store from "./store";
 import { loadUser } from "./actions/authActions";
@@ -11,7 +10,7 @@ const loading = () => (
 );
 
 // Containers
-const Layout = React.lazy(() => import("./containers/Layout"));
+const Layout = React.lazy(() => import("./containers/Layout/Layout"));
 const Login = React.lazy(() => import("./views/Auth/Login"));
 
 class App extends Component {

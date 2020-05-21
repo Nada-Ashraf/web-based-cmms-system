@@ -20,7 +20,6 @@ class CompleteWork extends Component {
     status: "",
     report_title: "",
     report_body: "",
-    status: "",
     report_id: "",
     err: null,
   };
@@ -49,7 +48,6 @@ class CompleteWork extends Component {
     })
       .then((response) => response.json())
       .then((data) => this.setState({ report_id: data._id }))
-      // .then(() => this.props.history.push(this.props.location.redirect));
       .then(() => {
         if (
           this.state.status !== "" &&

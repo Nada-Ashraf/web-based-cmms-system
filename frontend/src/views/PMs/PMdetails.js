@@ -1,13 +1,5 @@
 import React, { Component } from "react";
-import {
-  Card,
-  CardBody,
-  CardHeader,
-  Col,
-  Row,
-  Table,
-  Button,
-} from "reactstrap";
+import { Card, CardBody, CardHeader, Table } from "reactstrap";
 
 class PMdetails extends Component {
   state = { pm: {}, id: this.props.match.params.id };

@@ -36,8 +36,6 @@ class PMReports extends Component {
   }
 
   render() {
-    const isManager = this.props.role === "Manager";
-    const isSupervisor = this.props.role === "Supervisor";
     return (
       <div className="animated fadeIn">
         <Card>
