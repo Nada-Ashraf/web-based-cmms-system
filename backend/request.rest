@@ -23,20 +23,7 @@ Content-Type: application/json
     "risk_level":"A", 
     "work_env":"-Operating Temperature: 5 C – 40 C \\n -Humidity: 20% – 90 %, no condensation. \\n -Atmospheric pressure: 700 hPa to 1060 hPa. \\n -Fully recharge the equipment before usage to avoid any risks caused by micro power cuts in the mains supply.",
     "efficiency":"excellent", 
-    "alarms": ["Upstream occlusion alarm" ,
-                "Air detection alarm" ,
-                "Air volume alarm" ,
-                "Door alarm" ,
-                "Global alarm ",
-                "Battery alarm" ,
-                "End of infusion alarm" ,
-                "Downstream occlusion alarm" ,
-                "Tube absence alarm" ,
-                "Drip detector alarm- under flow" ,
-                "Drip detector alarm- over flow" ,
-                "Pressure limit alarm" ,
-                "Free flow alarm ",
-                "Mobile clamp absence alarm"],
+    "alarms": "Upstream occlusion alarm \\n Air detection alarm",
     "accessories":"NA", 
     "sterilization":"1.Disconnect the base from its mains supply before cleaning.\n 2.Do not place in AUTOCLAVE nor immerse device.\n 3.If the device is placed in high contamination risk unit, leave it in the room during disinfecting, after having it disinfected with a moist cloth.\n 4.Use a cloth soaked in DETERGERNT-DISINFECTANT diluted with water to destroy microorganisms.\n  5.Avoid abrasive scrubbing that could scratch the casing, do not rinse or wipe the surfaces.\n 6.Take care of ALCOHOL-based sprays (20%-40% Alcohol) They lead to small cracks in plastic."
 }
@@ -46,7 +33,20 @@ GET http://localhost:3000/api/assets/edit/5ec57529b7c5101af4dd13eb
 content-type: application/json
 
 {
-    "sterilization":"1.Disconnect the base from its mains supply before cleaning.\\n 2.Do not place in AUTOCLAVE nor immerse device.\\n 3.If the device is placed in high contamination risk unit, leave it in the room during disinfecting, after having it disinfected with a moist cloth.\\n 4.Use a cloth soaked in DETERGERNT-DISINFECTANT diluted with water to destroy microorganisms.\\n  5.Avoid abrasive scrubbing that could scratch the casing, do not rinse or wipe the surfaces.\\n 6.Take care of ALCOHOL-based sprays (20%-40% Alcohol) They lead to small cracks in plastic."
+    "alarms": ["Upstream occlusion alarm\\n" ,
+                "Air detection alarm\\n" ,
+                "Air volume alarm\\n" , 
+                "Door alarm\\n" ,
+                "Global alarm ",
+                "Battery alarm\\n" ,
+                "End of infusion alarm\\n" ,
+                "Downstream occlusion alarm\\n" ,
+                "Tube absence alarm\\n" ,
+                "Drip detector alarm- under flow\\n" ,
+                "Drip detector alarm- over flow\\n" ,
+                "Pressure limit alarm\\n" ,
+                "Free flow alarm \\n" ,
+                "Mobile clamp absence alarm\\n"]
 }
 
 ###
@@ -121,8 +121,6 @@ content-type: application/json
     "asset":"5ec57529b7c5101af4dd13eb",
     "instructions":"pm",
     "schedules":"every 3 years",
-    "assigned_to":"5ec58bc7a00ada228dc5ff54",
-    "status":"Assigned"
 }
 
 ### 

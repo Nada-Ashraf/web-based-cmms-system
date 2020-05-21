@@ -13,7 +13,7 @@ class AssetDetails extends Component {
       .then((info) => this.setState({ info }));
   }
   render() {
-    const { work_env, sterilization } = this.state.info;
+    const { work_env, sterilization, alarms } = this.state.info;
     return (
       <div className="animated fadeIn">
         <Card>
@@ -36,6 +36,22 @@ class AssetDetails extends Component {
                   <strong>Classification: </strong>
                 </td>
                 <td>{this.state.info.classification}</td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Classification: </strong>
+                </td>
+                <td>
+                  {alarms !== undefined
+                    ? alarms.split("\\n").map((text) => {
+                        return (
+                          <span>
+                            {text} <br />
+                          </span>
+                        );
+                      })
+                    : null}
+                </td>
               </tr>
               <tr>
                 <td>

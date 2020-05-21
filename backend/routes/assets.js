@@ -122,7 +122,7 @@ router.put("/edit/:id", async (req, res) => {
     ]),
     { new: true }
   );
-  res.send(asset);
+  res.json(asset);
 });
 
 /**

@@ -667,6 +667,22 @@ class AddAsset extends Component {
             </FormGroup>
             <FormGroup row>
               <Col md="3">
+                <Label htmlFor="textarea-input">Alarms</Label>
+              </Col>
+              <Col xs="12" md="9">
+                <Input
+                  value={this.state.alarms}
+                  onChange={this.handleChange}
+                  type="textarea"
+                  name="alarms"
+                  id="alarms"
+                  rows="9"
+                  placeholder="alarms"
+                />
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Col md="3">
                 <Label htmlFor="textarea-input">Notes</Label>
               </Col>
               <Col xs="12" md="9">

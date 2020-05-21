@@ -34,7 +34,7 @@ const AssetSchema = new Schema({
   contract_end_date: Date,
 
   // Device details
-  alarms: [String],
+  alarms: String,
   accessories: [String],
   sterilization: String,
   notes: String,
