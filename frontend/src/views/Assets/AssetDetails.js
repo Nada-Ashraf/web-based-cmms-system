@@ -1,17 +1,19 @@
 import React, { Component } from "react";
 import { Card, CardBody, CardHeader, Table } from "reactstrap";
+import moment from "moment";
 
 class AssetDetails extends Component {
-  state = { info: [], work_env: "" };
+  state = { info: [] };
 
   componentDidMount() {
     fetch("/api/assets/" + this.props.match.params.id, {
       method: "get",
     })
       .then((res) => res.json())
-      .then((info) => this.setState({ info, work_env: info.work_env }));
+      .then((info) => this.setState({ info }));
   }
   render() {
+    const { work_env, sterilization } = this.state.info;
     return (
       <div className="animated fadeIn">
         <Card>
@@ -25,143 +27,154 @@ class AssetDetails extends Component {
             <Table responsive striped hover>
               <tr>
                 <td>
-                  <strong>description: </strong>
+                  <strong>Description: </strong>
                 </td>
                 <td>{this.state.info.description}</td>
               </tr>
               <tr>
                 <td>
-                  <strong>classification: </strong>
+                  <strong>Classification: </strong>
                 </td>
                 <td>{this.state.info.classification}</td>
               </tr>
               <tr>
                 <td>
-                  <strong>serial_number: </strong>
+                  <strong>Serial number: </strong>
                 </td>
                 <td>{this.state.info.serial_number}</td>
               </tr>
               <tr>
                 <td>
-                  <strong>model: </strong>
+                  <strong>Model: </strong>
                 </td>
                 <td>{this.state.info.model}</td>
               </tr>
               <tr>
                 <td>
-                  <strong>brand: </strong>
+                  <strong>Brand: </strong>
                 </td>
                 <td>{this.state.info.brand}</td>
               </tr>
               <tr>
                 <td>
-                  <strong>department: </strong>
+                  <strong>Department: </strong>
                 </td>
                 <td>{this.state.info.department}</td>
               </tr>
               <tr>
                 <td>
-                  <strong>COO: </strong>
+                  <strong>Country of origin: </strong>
                 </td>
                 <td>{this.state.info.COO}</td>
               </tr>
               <tr>
                 <td>
-                  <strong>supply_date: </strong>
+                  <strong>Supply date: </strong>
                 </td>
-                <td>{this.state.info.supply_date}</td>
+                <td>
+                  {moment(this.state.info.supply_date).format(
+                    "dddd, MMMM Do YYYY"
+                  )}
+                </td>
               </tr>
               <tr>
                 <td>
-                  <strong>operation_date: </strong>
+                  <strong>Operation date: </strong>
                 </td>
-                <td>{this.state.info.operation_date}</td>
+                <td>
+                  {moment(this.state.info.operation_date).format(
+                    "dddd, MMMM Do YYYY"
+                  )}
+                </td>
               </tr>
               <tr>
                 <td>
-                  <strong>warranty_period: </strong>
+                  <strong>Warranty period: </strong>
                 </td>
                 <td>{this.state.info.warranty_period}</td>
               </tr>
               <tr>
                 <td>
-                  <strong>price: </strong>
+                  <strong>Purchase price: </strong>
                 </td>
                 <td>{this.state.info.price}</td>
               </tr>
               <tr>
                 <td>
-                  <strong>maintenance_company: </strong>
+                  <strong>Maintenance company: </strong>
                 </td>
                 <td>{this.state.info.maintenance_company}</td>
               </tr>
               <tr>
                 <td>
-                  <strong>contract_type: </strong>
+                  <strong>Contract type: </strong>
                 </td>
                 <td>{this.state.info.contract_type}</td>
               </tr>
               <tr>
                 <td>
-                  <strong>contract_start_date: </strong>
+                  <strong>Contract start date: </strong>
                 </td>
-                <td>{this.state.info.contract_start_date}</td>
+                <td>
+                  {" "}
+                  {moment(this.state.info.conract_start_date).format(
+                    "dddd, MMMM Do YYYY"
+                  )}
+                </td>
               </tr>
               <tr>
                 <td>
-                  <strong>contract_end_date: </strong>
+                  <strong>Contract end date: </strong>
                 </td>
-                <td>{this.state.info.contract_end_date}</td>
-              </tr>
-              {/* <tr>
                 <td>
-                  <strong>recieved_by: </strong>
+                  {moment(this.state.info.conract_end_date).format(
+                    "dddd, MMMM Do YYYY"
+                  )}
                 </td>
-                <td>{this.state.info.recieved_by.name}</td>
-              </tr> */}
-              <tr>
-                <td>
-                  <strong>condition: </strong>
-                </td>
-                <td>{this.state.info.condition}</td>
               </tr>
               <tr>
                 <td>
-                  <strong>notes: </strong>
+                  <strong>Status: </strong>
+                </td>
+                <td>{this.state.info.status}</td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Notes: </strong>
                 </td>
                 <td>{this.state.info.notes}</td>
               </tr>
               <tr>
                 <td>
-                  <strong>lifetime: </strong>
+                  <strong>Lifetime: </strong>
                 </td>
                 <td>{this.state.info.lifetime}</td>
               </tr>
               <tr>
                 <td>
-                  <strong>proper_freq_of_use: </strong>
+                  <strong>Proper freq of use: </strong>
                 </td>
                 <td>{this.state.info.proper_freq_of_use}</td>
               </tr>
               <tr>
                 <td>
-                  <strong>electricity_sensitivity: </strong>
+                  <strong>Electricity sensitivity: </strong>
                 </td>
                 <td>{this.state.info.electricity_sensitivity}</td>
               </tr>
               <tr>
                 <td>
-                  <strong>risk_level: </strong>
+                  <strong>Risk level: </strong>
                 </td>
                 <td>{this.state.info.risk_level}</td>
               </tr>
               <tr>
                 <td>
-                  <strong>work_env: </strong>
+                  <strong>Work environment: </strong>
                 </td>
                 <td>
-                  {this.state.work_env !== undefined
-                    ? this.state.work_env.split("\\n").map((text) => {
+                  {work_env !== undefined
+                    ? work_env.split("\\n").map((text) => {
                         return (
                           <span>
                             {text} <br />
@@ -173,15 +186,25 @@ class AssetDetails extends Component {
               </tr>
               <tr>
                 <td>
-                  <strong>efficiency: </strong>
+                  <strong>Efficiency: </strong>
                 </td>
                 <td>{this.state.info.efficiency}</td>
               </tr>
               <tr>
                 <td>
-                  <strong>sterilization: </strong>
+                  <strong>Sterilization: </strong>
                 </td>
-                <td>{this.state.info.sterilization}</td>
+                <td>
+                  {sterilization !== undefined
+                    ? sterilization.split("\\n").map((text) => {
+                        return (
+                          <span>
+                            {text} <br />
+                          </span>
+                        );
+                      })
+                    : null}
+                </td>
               </tr>
             </Table>
           </CardBody>

@@ -43,7 +43,7 @@ class Assets extends Component {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          condition: "Scrapped",
+          status: "Scrapped",
         }),
       })
         .then((response) => {
@@ -94,8 +94,8 @@ class Assets extends Component {
                     <td>{asset.serial_number}</td>
                     <td>{asset.department}</td>
                     <td>
-                      <Badge color={getBadge(asset.condition)}>
-                        {asset.condition}
+                      <Badge color={getBadge(asset.status)}>
+                        {asset.status}
                       </Badge>
                     </td>
                     <td>
