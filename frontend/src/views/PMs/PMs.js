@@ -154,6 +154,8 @@ class PMs extends Component {
                               pathname: "/home/PMs/complete_pm",
                               id: pm._id,
                               status: pm.status,
+                              endpoint: "/api/pms/edit/",
+                              redirect: "/home/PMs",
                             }}
                           >
                             <Button

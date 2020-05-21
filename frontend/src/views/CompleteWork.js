@@ -12,14 +12,16 @@ import {
   Alert,
 } from "reactstrap";
 import { connect } from "react-redux";
-import { login } from "../../actions/authActions";
+import { login } from "../actions/authActions";
 
-class CompleteWO extends Component {
+class CompleteWork extends Component {
   state = {
     id: this.props.location.id,
+    status: "",
     report_title: "",
     report_body: "",
     status: "",
+    report_id: "",
   };
 
   handleChange = (event) => {
@@ -32,7 +34,7 @@ class CompleteWO extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    fetch("/api/wos/edit/" + this.state.id, {
+    fetch(this.props.location.endpoint + this.state.id, {
       method: "PUT",
       headers: {
         Accept: "application/json",
@@ -45,7 +47,8 @@ class CompleteWO extends Component {
       }),
     })
       .then((response) => response.json())
-      .then(() => this.props.history.push("/home/WOs"));
+      .then((data) => this.setState({ report_id: data._id }))
+      .then(() => this.props.history.push(this.props.location.redirect));
   };
 
   render() {
@@ -57,7 +60,7 @@ class CompleteWO extends Component {
         {!isDone ? (
           <Card>
             <CardHeader>
-              <strong>Report WO Work</strong>
+              <strong>Report Work</strong>
             </CardHeader>
             <CardBody>
               <Form
@@ -127,7 +130,18 @@ class CompleteWO extends Component {
             </CardBody>
           </Card>
         ) : (
-          <Alert>The report has already been submitted</Alert>
+          <div>
+            <Alert>The report has already been submitted!</Alert>
+            {/* <Link
+              to={{
+                pathname: `/home/Reports/PMs/${this.state.report_id}`,
+                id: this.state.report_id,
+                status: "Done",
+              }}
+            >
+              <Button>View report</Button>
+            </Link> */}
+          </div>
         )}
       </div>
     );
@@ -139,4 +153,4 @@ const mapStateToProps = (state) => ({
   department: state.auth.user.department,
 });
 
-export default connect(mapStateToProps, { login })(CompleteWO);
+export default connect(mapStateToProps, { login })(CompleteWork);

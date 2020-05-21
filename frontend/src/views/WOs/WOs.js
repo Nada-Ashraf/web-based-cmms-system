@@ -143,6 +143,8 @@ class WOs extends Component {
                               pathname: "/home/WOs/complete_wo",
                               id: wo._id,
                               status: wo.status,
+                              endpoint: "/api/wos/edit/",
+                              redirect: "/home/WOs",
                             }}
                           >
                             <Button

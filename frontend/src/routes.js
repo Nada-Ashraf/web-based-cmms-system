@@ -9,15 +9,14 @@ const Employees = React.lazy(() => import("./views/Employees/Employees"));
 const AddEmployee = React.lazy(() => import("./views/Employees/AddEmployee"));
 const PMReports = React.lazy(() => import("./views/Reports/PMReports"));
 const WOReports = React.lazy(() => import("./views/Reports/WOReports"));
-// const ViewPmReport = React.lazy(() => import("./views/Reports/ViewPmReport"));
-// const ViewWOReport = React.lazy(() => import("./views/Reports/ViewWOReport"));
 const ViewReport = React.lazy(() => import("./views/Reports/ViewReport"));
 const Users = React.lazy(() => import("./views/Users/Users"));
 const User = React.lazy(() => import("./views/Users/User"));
 const PMs = React.lazy(() => import("./views/PMs/PMs"));
 const AssignPM = React.lazy(() => import("./views/PMs/AssignPM"));
-const CompletePM = React.lazy(() => import("./views/PMs/CompletePM"));
-const CompleteWO = React.lazy(() => import("./views/WOs/CompleteWO"));
+// const CompletePM = React.lazy(() => import("./views/PMs/CompletePM"));
+// const CompleteWO = React.lazy(() => import("./views/WOs/CompleteWO"));
+const CompleteWork = React.lazy(() => import("./views/CompleteWork"));
 const WOs = React.lazy(() => import("./views/WOs/WOs"));
 const AddWO = React.lazy(() => import("./views/WOs/AddWO"));
 const WOdetails = React.lazy(() => import("./views/WOs/WOdetails"));
@@ -39,13 +38,13 @@ const routes = [
     path: "/home/PMs/complete_pm",
     exact: true,
     name: "Complete PM",
-    component: CompletePM,
+    component: CompleteWork,
   },
   {
     path: "/home/WOs/complete_wo",
     exact: true,
     name: "Complete WO",
-    component: CompleteWO,
+    component: CompleteWork,
   },
   { path: "/home/WOs", exact: true, name: "WOs", component: WOs },
   { path: "/home/WOs/Add_WO", exact: true, name: "Add WO", component: AddWO },
@@ -103,12 +102,6 @@ const routes = [
     name: "View Report",
     component: ViewReport,
   },
-  // {
-  //   path: "/home/Reports/WOs/:id",
-  //   exact: true,
-  //   name: "View WO Report",
-  //   component: ViewReport,
-  // },
   { path: "/home/users", exact: true, name: "Users", component: Users },
   {
     path: "/home/users/:id",
