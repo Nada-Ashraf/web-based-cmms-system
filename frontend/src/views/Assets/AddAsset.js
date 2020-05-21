@@ -113,31 +113,27 @@ class AddAsset extends Component {
       }),
     })
       .then((response) => response.json())
-      .catch((err) => {
-        this.setState({ errorMessage: err.message });
-      });
-    // .then((asset) => this.setState({ _id: asset._id }))
-    // .then(() => {
-    //   fetch("/api/pms/add_pm/", {
-    //     method: "post",
-    //     headers: {
-    //       Accept: "application/json",
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({
-    //       title: this.state.pm_title,
-    //       instructions: this.state.pm_instructions,
-    //       asset: this.state._id,
-    //       status: "Not Assigned",
-    //       schedules: this.state.schedules,
-    //     }),
-    //   });
-    // })
-    // .then((errorMessage) =>
-    //   errorMessage
-    //     ? this.props.history.push("/home/Assets")
-    //     : console.log("ops")
-    // );
+      // .catch((err) => {
+      //   this.setState({ errorMessage: err.message });
+      // });
+      .then((asset) => this.setState({ _id: asset._id }))
+      .then(() => {
+        fetch("/api/pms/add_pm/", {
+          method: "post",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title: this.state.pm_title,
+            instructions: this.state.pm_instructions,
+            asset: this.state._id,
+            status: "Not Assigned",
+            schedules: this.state.schedules,
+          }),
+        });
+      })
+      .then(this.props.history.push("/home/Assets"));
   };
 
   card = () => {

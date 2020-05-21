@@ -141,13 +141,15 @@ class AddWO extends Component {
                   value={this.state.assigned_to}
                   onChange={this.handleChange}
                 >
+                  <option value="0">Please select</option>
+
                   {usersOptionItems}
                 </Input>
               </Col>
             </FormGroup>
             <FormGroup row>
               <Col md="3">
-                <Label htmlFor="select">Asset</Label>
+                <Label htmlFor="select">Asset Serial Number</Label>
               </Col>
               <Col xs="12" md="9">
                 <Input
@@ -157,6 +159,7 @@ class AddWO extends Component {
                   value={this.state.asset}
                   onChange={this.handleChange}
                 >
+                  <option value="0">Please select</option>
                   {assetsOptionItems}
                 </Input>
               </Col>

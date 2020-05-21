@@ -8,11 +8,16 @@ import {
   Table,
   Button,
   CardFooter,
+  Alert,
 } from "reactstrap";
 import { Link } from "react-router-dom";
 
 class ViewWOReport extends Component {
-  state = { wo: {}, id: this.props.match.params.id };
+  state = {
+    wo: {},
+    id: this.props.match.params.id,
+    status: this.props.location.status,
+  };
 
   componentDidMount() {
     fetch("/api/wos/" + this.state.id, {
@@ -25,38 +30,44 @@ class ViewWOReport extends Component {
   }
 
   render() {
+    const status =
+      this.state.status === "Done" || this.state.status === "There's an issue";
     return (
       <div className="animated fadeIn">
-        <Card>
-          <CardHeader>
-            <strong>
-              <i className="icon-info pr-1"></i>Report Title:{" "}
-              {this.state.wo.report_title}{" "}
-            </strong>
-          </CardHeader>
-          <CardBody>
-            <Table responsive striped hover>
-              <tr>
-                {/* <td>
+        {status ? (
+          <Card>
+            <CardHeader>
+              <strong>
+                <i className="icon-info pr-1"></i>Report Title:{" "}
+                {this.state.wo.report_title}{" "}
+              </strong>
+            </CardHeader>
+            <CardBody>
+              <Table responsive striped hover>
+                <tr>
+                  {/* <td>
                   <strong>Instructions: </strong>
                 </td> */}
-                <td>{this.state.wo.report_body}</td>
-              </tr>
-            </Table>
-          </CardBody>
-          <CardFooter>
-            <Link
-              to={{
-                pathname: "/home/WOs/Add_WO",
-                // asset_id: this.state.wo.asset._id,
-              }}
-            >
-              <Button className="float-right" color="primary">
-                Start Work order
-              </Button>
-            </Link>
-          </CardFooter>
-        </Card>
+                  <td>{this.state.wo.report_body}</td>
+                </tr>
+              </Table>
+            </CardBody>
+            <CardFooter>
+              <Link
+                to={{
+                  pathname: "/home/WOs/Add_WO",
+                  // asset_id: this.state.wo.asset._id,
+                }}
+              >
+                <Button className="float-right" color="primary">
+                  Start Another Work order
+                </Button>
+              </Link>
+            </CardFooter>
+          </Card>
+        ) : (
+          <Alert>No report yet</Alert>
+        )}
       </div>
     );
   }

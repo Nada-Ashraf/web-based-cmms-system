@@ -21,7 +21,6 @@ class CompletePM extends Component {
     status: "",
     report_title: "",
     report_body: "",
-    status: "",
     report_id: "",
   };
 

@@ -28,7 +28,8 @@ const woSchema = new mongoose.Schema({
   report_body: String,
   status: {
     type: String,
-    enum: ["Done", "There's an issue", ""],
+    enum: ["Done", "There's an issue", "Assigned"],
+    default: "Assigned",
   },
 });
 

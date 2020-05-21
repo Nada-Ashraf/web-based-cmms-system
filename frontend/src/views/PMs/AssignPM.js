@@ -124,9 +124,7 @@ class AssignPMs extends Component {
                       />
                     </Col>
                   </FormGroup>
-                  {this.state.err ? (
-                    <Alert color="danger">errorrr</Alert>
-                  ) : null}
+                  {this.state.err ? <Alert color="danger">error</Alert> : null}
                   <Button
                     className="btn-pill"
                     type="submit"

@@ -8,7 +8,7 @@ const getBadge = (status) => {
   return status === "Done"
     ? "success"
     : status === "Assigned"
-    ? "secondconditionary"
+    ? "primary"
     : status === "Not Assigned"
     ? "warning"
     : status === "There's an issue"
@@ -64,6 +64,16 @@ class WOs extends Component {
           <CardHeader>
             <i className="fa fa-align-justify"></i> Work orders{" "}
             <small className="text-muted">list</small>
+            {isSupervisor || isManager ? (
+              <Link to="/home/WOs/Add_WO">
+                <Button className="float-right" color="primary">
+                  <i className="icon-plus"></i>
+                  &nbsp;Create Work order
+                </Button>
+              </Link>
+            ) : (
+              <div></div>
+            )}
           </CardHeader>
           <CardBody>
             <Table responsive hover>
@@ -87,7 +97,7 @@ class WOs extends Component {
                     <td>{wo.asset.department}</td>
                     <td>{wo.assigned_to.name}</td>
                     <td>
-                      <Badge color={getBadge(wo.priority)}>{wo.priority}</Badge>
+                      <Badge color={getBadge(wo.status)}>{wo.status}</Badge>
                     </td>
                     <td>
                       {isManager ? (
@@ -132,6 +142,7 @@ class WOs extends Component {
                             to={{
                               pathname: "/home/WOs/complete_wo",
                               id: wo._id,
+                              status: wo.status,
                             }}
                           >
                             <Button
