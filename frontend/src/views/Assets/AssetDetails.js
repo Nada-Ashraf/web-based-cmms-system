@@ -2,15 +2,14 @@ import React, { Component } from "react";
 import { Card, CardBody, CardHeader, Table } from "reactstrap";
 
 class AssetDetails extends Component {
-  state = { info: [] };
+  state = { info: [], work_env: "" };
 
   componentDidMount() {
     fetch("/api/assets/" + this.props.match.params.id, {
       method: "get",
     })
       .then((res) => res.json())
-      // .then((res) => res.replaceAll(/\n/g, "\\n"))
-      .then((info) => this.setState({ info }));
+      .then((info) => this.setState({ info, work_env: info.work_env }));
   }
   render() {
     return (
@@ -160,7 +159,17 @@ class AssetDetails extends Component {
                 <td>
                   <strong>work_env: </strong>
                 </td>
-                <td>{this.state.info.work_env}</td>
+                <td>
+                  {this.state.work_env !== undefined
+                    ? this.state.work_env.split("\\n").map((text) => {
+                        return (
+                          <span>
+                            {text} <br />
+                          </span>
+                        );
+                      })
+                    : null}
+                </td>
               </tr>
               <tr>
                 <td>
