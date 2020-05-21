@@ -1,12 +1,13 @@
-const express = require("express");
-const router = express.Router();
-const { WO } = require("../models/wo");
-const _ = require("lodash");
+import { Router } from "express";
+import { WO } from "../models/WorkOrder";
+import { pick } from "lodash";
+
+const router = Router();
 
 // Add wo
 router.post("/create", async (req, res) => {
   const wo = new WO(
-    _.pick(req.body, [
+    pick(req.body, [
       "title",
       "asset",
       "instructions",
@@ -44,7 +45,7 @@ router.get("/:id", async (req, res) => {
 router.put("/edit/:id", async (req, res) => {
   const wo = await WO.findByIdAndUpdate(
     req.params.id,
-    _.pick(req.body, [
+    pick(req.body, [
       "title",
       "asset",
       "instructions",
@@ -68,4 +69,4 @@ router.delete("/delete/:id", async (req, res) => {
   res.send(wo);
 });
 
-module.exports = router;
+export default router;

@@ -112,9 +112,7 @@ content-type: application/json
     "title":"pm",
     "asset":"5ec57529b7c5101af4dd13eb",
     "instructions":"pm",
-    "schedules":"every 3 years",
-    "assigned_to":"5ec58bc7a00ada228dc5ff54",
-    "status":"Assigned"
+    "schedules":"every 3 years" 
 }
 
 ### 

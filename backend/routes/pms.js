@@ -1,12 +1,13 @@
-const express = require("express");
-const router = express.Router();
-const { PM } = require("../models/pm");
-const _ = require("lodash");
+import { Router } from "express";
+import { PM } from "../models/PM";
+import { pick } from "lodash";
+
+const router = Router();
 
 // Add pm
 router.post("/add_pm", async (req, res) => {
   const pm = new PM(
-    _.pick(req.body, [
+    pick(req.body, [
       "title",
       "asset",
       "instructions",
@@ -41,7 +42,7 @@ router.get("/:id", async (req, res) => {
 router.put("/edit/:id", async (req, res) => {
   const pm = await PM.findByIdAndUpdate(
     req.params.id,
-    _.pick(req.body, [
+    pick(req.body, [
       "title",
       "asset",
       "instructions",
@@ -62,4 +63,4 @@ router.delete("/delete/:id", async (req, res) => {
   res.send(pm);
 });
 
-module.exports = router;
+export default router;

@@ -1,13 +1,14 @@
-const mongoose = require("mongoose");
-const woSchema = new mongoose.Schema({
+import { Schema, model } from "mongoose";
+
+const WorkOrderSchema = new Schema({
   title: String,
   asset: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: "Asset",
   },
   instructions: [String],
   assigned_to: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: "User",
   },
   priority: {
@@ -34,6 +35,6 @@ const woSchema = new mongoose.Schema({
 });
 
 // compile schema into a model to create a class
-const WO = mongoose.model("WO", woSchema);
+const WorkOrder = model("WorkOrder", WorkOrderSchema);
 
-exports.WO = WO;
+export default WorkOrder;

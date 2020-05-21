@@ -1,6 +1,5 @@
 import { Router } from "express";
-import { Asset, validateAsset } from "../models/Asset";
-// import modules from "../models/Asset";
+import { Asset } from "../models/Asset";
 import { pick } from "lodash";
 const router = Router();
 

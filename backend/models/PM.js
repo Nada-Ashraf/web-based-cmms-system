@@ -1,15 +1,15 @@
-const mongoose = require("mongoose");
-const pmSchema = new mongoose.Schema({
+import { Schema, model } from "mongoose";
+
+const PMSchema = new Schema({
   title: String,
   asset: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: "Asset",
   },
   instructions: [String],
   assigned_to: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: "User",
-    default: "5ec4510eac0f96432c01830f",
   },
   status: {
     type: String,
@@ -34,6 +34,6 @@ const pmSchema = new mongoose.Schema({
 });
 
 // compile schema into a model to create a class
-const PM = mongoose.model("PM", pmSchema);
+const PM = model("PM", PMSchema);
 
-exports.PM = PM;
+export default PM;
