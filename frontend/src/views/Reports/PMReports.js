@@ -72,9 +72,10 @@ class PMReports extends Component {
                     <td>
                       <Link
                         to={{
-                          pathname: `/home/Reports/PMs/${pm._id}`,
+                          pathname: `/home/Reports/${pm._id}`,
                           id: pm._id,
                           status: pm.status,
+                          endpoint: "/api/pms/",
                         }}
                       >
                         <Button className="float-right" color="ghost-primary">

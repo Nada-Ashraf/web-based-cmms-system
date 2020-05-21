@@ -9,8 +9,9 @@ const Employees = React.lazy(() => import("./views/Employees/Employees"));
 const AddEmployee = React.lazy(() => import("./views/Employees/AddEmployee"));
 const PMReports = React.lazy(() => import("./views/Reports/PMReports"));
 const WOReports = React.lazy(() => import("./views/Reports/WOReports"));
-const ViewPmReport = React.lazy(() => import("./views/Reports/ViewPmReport"));
-const ViewWOReport = React.lazy(() => import("./views/Reports/ViewWOReport"));
+// const ViewPmReport = React.lazy(() => import("./views/Reports/ViewPmReport"));
+// const ViewWOReport = React.lazy(() => import("./views/Reports/ViewWOReport"));
+const ViewReport = React.lazy(() => import("./views/Reports/ViewReport"));
 const Users = React.lazy(() => import("./views/Users/Users"));
 const User = React.lazy(() => import("./views/Users/User"));
 const PMs = React.lazy(() => import("./views/PMs/PMs"));
@@ -97,17 +98,17 @@ const routes = [
     component: WOReports,
   },
   {
-    path: "/home/Reports/PMs/:id",
+    path: "/home/Reports/:id",
     exact: true,
-    name: "View PM Report",
-    component: ViewPmReport,
+    name: "View Report",
+    component: ViewReport,
   },
-  {
-    path: "/home/Reports/WOs/:id",
-    exact: true,
-    name: "View WO Report",
-    component: ViewWOReport,
-  },
+  // {
+  //   path: "/home/Reports/WOs/:id",
+  //   exact: true,
+  //   name: "View WO Report",
+  //   component: ViewReport,
+  // },
   { path: "/home/users", exact: true, name: "Users", component: Users },
   {
     path: "/home/users/:id",

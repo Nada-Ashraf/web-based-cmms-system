@@ -72,9 +72,10 @@ class WOReports extends Component {
                     <td>
                       <Link
                         to={{
-                          pathname: `/home/Reports/WOs/${wo._id}`,
+                          pathname: `/home/Reports/${wo._id}`,
                           id: wo._id,
                           status: wo.status,
+                          endpoint: "/api/wos/",
                         }}
                       >
                         <Button className="float-right" color="ghost-primary">
