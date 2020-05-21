@@ -14,8 +14,6 @@ const Users = React.lazy(() => import("./views/Users/Users"));
 const User = React.lazy(() => import("./views/Users/User"));
 const PMs = React.lazy(() => import("./views/PMs/PMs"));
 const AssignPM = React.lazy(() => import("./views/PMs/AssignPM"));
-// const CompletePM = React.lazy(() => import("./views/PMs/CompletePM"));
-// const CompleteWO = React.lazy(() => import("./views/WOs/CompleteWO"));
 const CompleteWork = React.lazy(() => import("./views/CompleteWork"));
 const WOs = React.lazy(() => import("./views/WOs/WOs"));
 const AddWO = React.lazy(() => import("./views/WOs/AddWO"));

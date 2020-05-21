@@ -132,7 +132,7 @@ content-type: application/json
     "priority":"Urgent",
     "status":"Assigned",
     "importance":"Important",
-    "due_date":"2020-05-20",
+    "due_date":"2020-05-20", 
     "notes":"notes"
 }
 

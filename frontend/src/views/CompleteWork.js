@@ -22,6 +22,7 @@ class CompleteWork extends Component {
     report_body: "",
     status: "",
     report_id: "",
+    err: null,
   };
 
   handleChange = (event) => {
@@ -48,7 +49,22 @@ class CompleteWork extends Component {
     })
       .then((response) => response.json())
       .then((data) => this.setState({ report_id: data._id }))
-      .then(() => this.props.history.push(this.props.location.redirect));
+      // .then(() => this.props.history.push(this.props.location.redirect));
+      .then(() => {
+        if (
+          this.state.status !== "" &&
+          this.state.report_title !== "" &&
+          this.state.report_body !== ""
+        )
+          this.props.history.push(this.props.location.redirect);
+        else if (
+          this.state.status === "" ||
+          this.state.report_title === "" ||
+          this.state.report_body === ""
+        ) {
+          this.setState({ err: true });
+        }
+      });
   };
 
   render() {
@@ -69,6 +85,10 @@ class CompleteWork extends Component {
                 className="form-horizontal"
                 onSubmit={this.handleSubmit}
               >
+                {this.state.err ? (
+                  <Alert color="danger">Please enter all fields!</Alert>
+                ) : null}
+
                 <FormGroup row>
                   <Col md="3">
                     <Label htmlFor="select">Status</Label>

@@ -8,7 +8,7 @@ const getBadge = (status) => {
   return status === "Done"
     ? "success"
     : status === "Assigned"
-    ? "secondconditionary"
+    ? "primary"
     : status === "Not Assigned"
     ? "warning"
     : status === "There's an issue"
