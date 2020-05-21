@@ -47,26 +47,24 @@ class AssignPMs extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    fetch("/api/pms/edit/" + this.state.id, {
-      method: "PUT",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        assigned_to: this.state.assigned_to,
-        notes: this.state.notes,
-        status: "Assigned",
-      }),
-    })
-      .then((response) => response.json())
-      .then(() => {
-        if (this.state.assigned_to !== "0")
-          this.props.history.push("/home/PMs");
-        else if (this.state.assigned_to === "") {
-          this.setState({ err: true });
-        }
-      });
+    if (this.state.assigned_to === "") {
+      this.setState({ err: true });
+    } else {
+      fetch("/api/pms/edit/" + this.state.id, {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          assigned_to: this.state.assigned_to,
+          notes: this.state.notes,
+          status: "Assigned",
+        }),
+      })
+        .then((response) => response.json())
+        .then(() => this.props.history.push("/home/PMs"));
+    }
   };
 
   render() {
@@ -91,6 +89,11 @@ class AssignPMs extends Component {
                   className="form-horizontal"
                   onSubmit={this.handleSubmit}
                 >
+                  {this.state.err ? (
+                    <Alert color="danger">
+                      Please assign work to a technician
+                    </Alert>
+                  ) : null}
                   <FormGroup row>
                     <Col md="3">
                       <Label htmlFor="select">Assign to</Label>
@@ -103,7 +106,7 @@ class AssignPMs extends Component {
                         value={this.state.assigned_to}
                         onChange={this.handleChange}
                       >
-                        <option value="0">Please select</option>
+                        <option value="">Please select</option>
                         {optionItems}
                       </Input>
                     </Col>
@@ -124,7 +127,6 @@ class AssignPMs extends Component {
                       />
                     </Col>
                   </FormGroup>
-                  {this.state.err ? <Alert color="danger">error</Alert> : null}
                   <Button
                     className="btn-pill"
                     type="submit"
