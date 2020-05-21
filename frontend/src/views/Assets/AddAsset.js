@@ -122,9 +122,6 @@ class AddAsset extends Component {
         }),
       })
         .then((response) => response.json())
-        // .catch((err) => {
-        //   this.setState({ errorMessage: err.message });
-        // });
         .then((asset) => this.setState({ _id: asset._id }))
         .then(() => {
           fetch("/api/pms/add_pm/", {
@@ -138,11 +135,10 @@ class AddAsset extends Component {
               instructions: this.state.pm_instructions,
               asset: this.state._id,
               status: "Not Assigned",
-              schedules: this.state.schedules,
             }),
           });
         })
-        .then(this.props.history.push("/home/Assets"));
+        .then(() => this.props.history.push("/home/Assets"));
     }
   };
 
