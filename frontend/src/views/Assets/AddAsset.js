@@ -235,6 +235,10 @@ class AddAsset extends Component {
     let brandOptionItems = brands.map((brand) => (
       <option value={brand}>{brand}</option>
     ));
+    const classifications = ["life support devices"];
+    let classificationOptionItems = classifications.map((classification) => (
+      <option value={classification}>{classification}</option>
+    ));
     return (
       <FormWithConstraints
         // action=""
@@ -346,18 +350,21 @@ class AddAsset extends Component {
             </FormGroup>
             <FormGroup row>
               <Col md="3">
-                <Label htmlFor="textarea-input">Classification</Label>
+                <Label htmlFor="select">Classification</Label>
               </Col>
               <Col xs="12" md="9">
                 <Input
-                  value={this.state.classification}
-                  onChange={this.handleChange}
-                  type="text" // note
+                  type="select"
                   name="classification"
                   id="classification"
-                  rows="9"
-                  placeholder="classification"
-                />
+                  value={this.state.classification}
+                  onChange={this.handleChange}
+                  required
+                >
+                  <option value="">Please select</option>
+                  {classificationOptionItems}
+                </Input>
+                {this.errorMsg("classification")}
               </Col>
             </FormGroup>
             <FormGroup row>

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { PM } from "../models/PM";
+import PM from "../models/PM";
 import { pick } from "lodash";
 
 const router = Router();

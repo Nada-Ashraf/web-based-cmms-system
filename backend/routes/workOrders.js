@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { WO } from "../models/WorkOrder";
+import WO from "../models/WorkOrder";
 import { pick } from "lodash";
 
 const router = Router();

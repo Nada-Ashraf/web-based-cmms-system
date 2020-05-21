@@ -38,7 +38,15 @@ Content-Type: application/json
                 "Free flow alarm ",
                 "Mobile clamp absence alarm"],
     "accessories":"NA", 
-    "sterilization":"1.Disconnect the base from its mains supply before cleaning. 2.Do not place in AUTOCLAVE nor immerse device. 3.If the device is placed in high contamination risk unit, leave it in the room during disinfecting, after having it disinfected with a moist cloth. 4.Use a cloth soaked in DETERGERNT-DISINFECTANT diluted with water to destroy microorganisms.  5.Avoid abrasive scrubbing that could scratch the casing, do not rinse or wipe the surfaces. 6.Take care of ALCOHOL-based sprays (20%-40% Alcohol) They lead to small cracks in plastic."
+    "sterilization":"1.Disconnect the base from its mains supply before cleaning.\n 2.Do not place in AUTOCLAVE nor immerse device.\n 3.If the device is placed in high contamination risk unit, leave it in the room during disinfecting, after having it disinfected with a moist cloth.\n 4.Use a cloth soaked in DETERGERNT-DISINFECTANT diluted with water to destroy microorganisms.\n  5.Avoid abrasive scrubbing that could scratch the casing, do not rinse or wipe the surfaces.\n 6.Take care of ALCOHOL-based sprays (20%-40% Alcohol) They lead to small cracks in plastic."
+}
+
+###
+GET http://localhost:3000/api/assets/edit/5ec57529b7c5101af4dd13eb
+content-type: application/json
+
+{
+    "sterilization":"1.Disconnect the base from its mains supply before cleaning.\\n 2.Do not place in AUTOCLAVE nor immerse device.\\n 3.If the device is placed in high contamination risk unit, leave it in the room during disinfecting, after having it disinfected with a moist cloth.\\n 4.Use a cloth soaked in DETERGERNT-DISINFECTANT diluted with water to destroy microorganisms.\\n  5.Avoid abrasive scrubbing that could scratch the casing, do not rinse or wipe the surfaces.\\n 6.Take care of ALCOHOL-based sprays (20%-40% Alcohol) They lead to small cracks in plastic."
 }
 
 ###
@@ -112,7 +120,9 @@ content-type: application/json
     "title":"pm",
     "asset":"5ec57529b7c5101af4dd13eb",
     "instructions":"pm",
-    "schedules":"every 3 years" 
+    "schedules":"every 3 years",
+    "assigned_to":"5ec58bc7a00ada228dc5ff54",
+    "status":"Assigned"
 }
 
 ### 
@@ -128,7 +138,7 @@ content-type: application/json
     "instructions":"wo",
     "assigned_to":"5ec58bc7a00ada228dc5ff54",
     "priority":"Urgent",
-    "status":"Assigned",
+    "status":"Done",
     "importance":"Important",
     "due_date":"2020-05-20", 
     "notes":"notes"

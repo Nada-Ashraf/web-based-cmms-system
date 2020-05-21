@@ -16,7 +16,7 @@ const AssetSchema = new Schema({
     required: true,
   },
   description: String,
-  classification: String,
+  classification: { type: String, enum: ["life support devices"] },
 
   // Suppliment info
   COO: String, // Country of origin
@@ -51,7 +51,7 @@ const AssetSchema = new Schema({
   efficiency: String,
 
   // More info
-  condition: {
+  status: {
     type: String,
     enum: ["In service", "Need repair", "Scrapped", "Out of service"],
     default: "In service",

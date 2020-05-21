@@ -23,14 +23,18 @@ class WOReports extends Component {
     fetch("/api/wos")
       .then((res) => res.json())
       .then((wos) => {
+        const doneWOs = wos.filter(
+          (wo) =>
+            wo.status.includes("Done") || wo.status.includes("There's an issue")
+        );
         // CHECK
         if (this.props.role === "Supervisor") {
-          const wosFiltered = wos.filter((wo) =>
+          const wosFiltered = doneWOs.filter((wo) =>
             wo.asset.department.includes(this.props.department)
           );
           this.setState({ wos: wosFiltered });
         } else {
-          this.setState({ wos });
+          this.setState({ wos: doneWOs });
         }
       });
   }
