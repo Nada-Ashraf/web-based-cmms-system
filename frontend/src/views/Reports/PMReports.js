@@ -24,13 +24,17 @@ class PMReports extends Component {
       .then((res) => res.json())
       .then((pms) => {
         // CHECK
+        const donePMs = pms.filter(
+          (pm) =>
+            pm.status.includes("Done") || pm.status.includes("There's an issue")
+        );
         if (this.props.role === "Supervisor") {
-          const pmsFiltered = pms.filter((pm) =>
+          const pmsFiltered = donePMs.filter((pm) =>
             pm.asset.department.includes(this.props.department)
           );
           this.setState({ pms: pmsFiltered });
         } else {
-          this.setState({ pms });
+          this.setState({ pms: donePMs });
         }
       });
   }
