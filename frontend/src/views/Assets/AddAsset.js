@@ -148,6 +148,14 @@ class AddAsset extends Component {
     }
   };
 
+  errorMsg = (name) => {
+    return (
+      <FieldFeedbacks for={name}>
+        <FieldFeedback style={{ color: "red" }} when="*" />
+      </FieldFeedbacks>
+    );
+  };
+
   card = () => {
     return (
       <React.Fragment>
@@ -193,13 +201,15 @@ class AddAsset extends Component {
               id="department"
               value={this.state.department}
               onChange={this.handleChange}
+              required
             >
-              <option value="NA">Please select</option>
+              <option value="">Please select</option>
               <option value="reception">reception</option>
               <option value="open heart icu">open heart icu</option>
               <option value="surgery">surgery</option>
               <option value="cardiology">cardiology</option>
             </Input>
+            {this.errorMsg("department")}
           </Col>
         </FormGroup>
         <FormGroup row>
@@ -260,9 +270,7 @@ class AddAsset extends Component {
                   required
                   minLength={5}
                 />
-                <FieldFeedbacks for="name">
-                  <FieldFeedback style={{ color: "red" }} when="*" />
-                </FieldFeedbacks>
+                {this.errorMsg("name")}
               </Col>
             </FormGroup>
             <FormGroup row>
@@ -277,7 +285,9 @@ class AddAsset extends Component {
                   id="serial_number"
                   name="serial_number"
                   placeholder="Serial number"
+                  required
                 />
+                {this.errorMsg("serial_number")}
               </Col>
             </FormGroup>
             <FormGroup row>
@@ -306,13 +316,15 @@ class AddAsset extends Component {
                   id="department"
                   value={this.state.department}
                   onChange={this.handleChange}
+                  required
                 >
-                  <option value="NA">Please select</option>
+                  <option value="">Please select</option>
                   <option value="reception">reception</option>
                   <option value="open heart icu">open heart icu</option>
                   <option value="cardiology">cardiology</option>
                   <option value="surgery">surgery</option>
                 </Input>
+                {this.errorMsg("department")}
               </Col>
             </FormGroup>
             <FormGroup row>
@@ -326,10 +338,12 @@ class AddAsset extends Component {
                   id="brand"
                   value={this.state.brand}
                   onChange={this.handleChange}
+                  required
                 >
-                  <option value="NA">Please select</option>
+                  <option value="">Please select</option>
                   {brandOptionItems}
                 </Input>
+                {this.errorMsg("brand")}
               </Col>
             </FormGroup>
             <FormGroup row>
@@ -579,12 +593,14 @@ class AddAsset extends Component {
                   id="electricity_sensitivity"
                   value={this.state.electricity_sensitivity}
                   onChange={this.handleChange}
+                  required
                 >
-                  <option value="NA">Please select</option>
+                  <option value="">Please select</option>
                   <option value="Class |">Class |</option>
                   <option value="Class ||">Class ||</option>
                   <option value="Class |||">Class |||</option>
                 </Input>
+                {this.errorMsg("electricity_sensitivity")}
               </Col>
             </FormGroup>
             <FormGroup row>
@@ -598,12 +614,14 @@ class AddAsset extends Component {
                   id="risk_level"
                   value={this.state.risk_level}
                   onChange={this.handleChange}
+                  required
                 >
-                  <option value="NA">Please select</option>
+                  <option value="">Please select</option>
                   <option value="A">A</option>
                   <option value="B">B</option>
                   <option value="C">C</option>
                 </Input>
+                {this.errorMsg("risk_level")}
               </Col>
             </FormGroup>
             <FormGroup row>
@@ -711,14 +729,16 @@ class AddAsset extends Component {
                   id="pm_schedules"
                   rows="9"
                   placeholder="PM schedules"
+                  required
                 >
-                  <option value="NA">Please select</option>
+                  <option value="">Please select</option>
                   <option value="weekly">weekly</option>
                   <option value="monthly">monthly</option>
                   <option value="every 3 months">every 3 months</option>
                   <option value="every 6 months">every 6 months</option>
                   <option value="annual">annual</option>
                 </Input>
+                {this.errorMsg("pm_schedules")}
               </Col>
             </FormGroup>
           </CardBody>
