@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Badge, Card, CardBody, CardHeader, Table, Button } from "reactstrap";
 import { connect } from "react-redux";
 import { login } from "../../actions/authActions";
+import moment from "moment";
 
 const getBadge = (status) => {
   return status === "Done"
@@ -53,7 +54,7 @@ class PMReports extends Component {
                 <tr>
                   <th scope="col">PM name</th>
                   <th scope="col">Asset</th>
-                  <th scope="col">Department</th>
+                  <th scope="col">Return date</th>
                   {/* <th scope="col">Assigned to</th> */}
                   <th scope="col">Status</th>
                   <th scope="col"></th>
@@ -66,7 +67,9 @@ class PMReports extends Component {
                     <Link to={`/home/Assets/${pm.asset._id}`}>
                       <td>{pm.asset.name}</td>
                     </Link>
-                    <td>{pm.asset.department}</td>
+                    <td>
+                      {moment(pm.report_date).format("dddd, MMMM Do YYYY")}
+                    </td>
                     {/* <td>{pm.assigned_to.name}</td> */}
                     <td>
                       <Badge color={getBadge(pm.status)}>{pm.status}</Badge>
