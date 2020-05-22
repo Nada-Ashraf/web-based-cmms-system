@@ -3,32 +3,36 @@ POST  http://localhost:3000/api/assets
 Content-Type: application/json
 
 {
-    "name":"Infusion Pump",
-    "serial_number":"‫‪20370613‬‬",
-    "model":"optima pt", 
-    "brand":"kabi fresenuis",
-    "department":"cardiology", 
-    "COO":"france", 
-    "operation_date":"2005-01-31",
-    "warranty_period":"2", 
-    "supply_company":"egyptian group",
-    "parts":"NA", 
-    "maintenance_company":"NA", 
-    "contract_type":"NA", 
-    "description":"An infusion pump is a medical device that delivers fluids, such as nutrients and medications, into a patient’s body in controlled amounts.It offers significant advantages over manual administration of fluids,including the ability to deliver fluids in very small volumes, and the ability to deliver fluids at precisely programmed rates or automated intervals.",
-    "classification":"life support devices", 
-    "lifetime":"10", 
+    "department":"OR",
+    "name":"Camera System",
+    "brand":"linvatec", 
+    "model":"IM3300 EDTV", 
+    "serial_number": "56875",
+    "COO":"US",  
+    "supply_date":"",
+    "operation_date":"",
+    "warranty_period":"NA",
+    "supply_company":"NA",
+    "price":"NA",
+    "maintenance_company":"NA",
+    "contract_type":"NA",
+    "contract_start_date":"",
+    "contract_end_date":"",
+    "description":"The 3 CCD digital camera consists of a camera control unit and a connectable camera head. The camera head connects to an endoscope for High Definition visualization during minimally invasive surgical procedures. The camera controller provides outputs for video monitoring, video recording.",
+    "lifetime":"NA",
     "proper_freq_of_use":"NA",
-    "electricity_sensitivity":"Class |", 
-    "risk_level":"A", 
-    "work_env":"-Operating Temperature: 5 C – 40 C \\n -Humidity: 20% – 90 %, no condensation. \\n -Atmospheric pressure: 700 hPa to 1060 hPa. \\n -Fully recharge the equipment before usage to avoid any risks caused by micro power cuts in the mains supply.",
-    "efficiency":"excellent", 
-    "alarms": "Upstream occlusion alarm \\n Air detection alarm",
-    "accessories":"NA", 
-    "sterilization":"1.Disconnect the base from its mains supply before cleaning.\n 2.Do not place in AUTOCLAVE nor immerse device.\n 3.If the device is placed in high contamination risk unit, leave it in the room during disinfecting, after having it disinfected with a moist cloth.\n 4.Use a cloth soaked in DETERGERNT-DISINFECTANT diluted with water to destroy microorganisms.\n  5.Avoid abrasive scrubbing that could scratch the casing, do not rinse or wipe the surfaces.\n 6.Take care of ALCOHOL-based sprays (20%-40% Alcohol) They lead to small cracks in plastic."
+    "electricity_sensitivity":"Class ||",
+    "classification":"diagnostic devices",
+    "risk_level":"C",
+    "work_env": "- Power Requirements 110 VAC – 240 VAC, 50/60Hz \\n - Operating Temperature 20° F to 104° F (-7° C to 40° C) \\n - Storage Temperature -40° F to 122° F (-40° C to 50° C) \\n  - Humidity 30% to 90%",
+    "efficiency":"NA",
+    "alarms":"- Oxygen saturation \\n - Injection of contrast dye  Pulse frequency ",
+    "accessories":"NA",
+    "sterilization":"NA"
 }
 
 ###
+
 GET http://localhost:3000/api/assets/edit/5ec57529b7c5101af4dd13eb
 content-type: application/json
 

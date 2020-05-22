@@ -32,7 +32,6 @@ router.post("/", async (req, res) => {
       "supply_company",
       "operation_date",
       "warranty_period",
-      "parts",
       "price",
       "maintenance_company",
       "contract_type",
@@ -66,7 +65,7 @@ router.post("/", async (req, res) => {
  */
 
 router.get("/", async (req, res) => {
-  const assets = await Asset.find();
+  const assets = await Asset.find().sort({ name: -1 });
   res.json(assets);
 });
 
@@ -100,7 +99,6 @@ router.put("/edit/:id", async (req, res) => {
       "supply_company",
       "operation_date",
       "warranty_period",
-      "parts",
       "price",
       "maintenance_company",
       "contract_type",

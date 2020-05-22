@@ -8,39 +8,67 @@ const AssetSchema = new Schema({
   model: String,
   brand: {
     type: String,
-    enum: ["NA", "philips", "3A healthcare", "kabi fresenuis"],
+    enum: [
+      "linvatec",
+      "surgiris",
+      "covidien",
+      "toshiba",
+      "NA",
+      "hill-rom",
+      "philips",
+      "3A healthcare",
+      "kabi fresenuis",
+      "schilir",
+      "multi master",
+      "newport",
+      "spacelabs",
+      "apik",
+      "gem",
+    ],
   },
   department: {
     type: String,
-    enum: ["reception", "open heart icu", "cardiology", "surgery", "NA"],
+    enum: ["reception", "open heart icu", "cardiology", "surgery", "NA", "OR"],
     required: true,
   },
   description: String,
-  classification: { type: String, enum: ["life support devices"] },
+  classification: {
+    type: String,
+    enum: [
+      "life support devices",
+      "miscellaneous",
+      "monitoring devices",
+      "diagnostic devices",
+      "therapeutic devices",
+      "NA",
+    ],
+  },
 
   // Suppliment info
-  COO: String, // Country of origin
-  supply_date: Date,
+  COO: {
+    type: String,
+    enum: ["US", "germany", "italy", "egypt", "switzerland", "japan", "france"],
+  }, // Country of origin
+  supply_date: { type: Date, default: undefined },
   supply_company: String,
-  operation_date: Date,
-  warranty_period: Number, // in months
-  parts: [String],
-  price: Number,
+  operation_date: { type: Date, default: undefined },
+  warranty_period: String, // in months
+  price: String,
 
   // Maintenance info
   maintenance_company: String,
   contract_type: String,
-  contract_start_date: Date,
-  contract_end_date: Date,
+  contract_start_date: { type: Date, default: undefined },
+  contract_end_date: { type: Date, default: undefined },
 
   // Device details
   alarms: String,
-  accessories: [String],
+  accessories: String,
   sterilization: String,
   notes: String,
 
   // Operating info
-  lifetime: Number, // in years
+  lifetime: String, // in years
   proper_freq_of_use: String,
   electricity_sensitivity: {
     type: String,

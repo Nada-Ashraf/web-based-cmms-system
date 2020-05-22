@@ -29,7 +29,6 @@ class AddAsset extends Component {
     supply_company: "",
     operation_date: "",
     warranty_period: "",
-    parts: ["1", "2", "3"], //array
     price: "",
     maintenance_company: "",
     contract_type: "",
@@ -99,7 +98,6 @@ class AddAsset extends Component {
           supply_company: this.state.supply_company,
           operation_date: this.state.operation_date,
           warranty_period: this.state.warranty_period,
-          parts: this.state.parts,
           price: this.state.price,
           maintenance_company: this.state.maintenance_company,
           contract_type: this.state.contract_type,
