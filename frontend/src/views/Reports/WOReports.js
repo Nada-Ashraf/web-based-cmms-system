@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Badge, Card, CardBody, CardHeader, Table, Button } from "reactstrap";
 import { connect } from "react-redux";
 import { login } from "../../actions/authActions";
+import moment from "moment";
 
 const getBadge = (status) => {
   return status === "Done"
@@ -53,7 +54,7 @@ class WOReports extends Component {
                 <tr>
                   <th scope="col">WO title</th>
                   <th scope="col">Asset</th>
-                  <th scope="col">Department</th>
+                  <th scope="col">Report date</th>
                   {/* <th scope="col">Assigned to</th> */}
                   <th scope="col">Status</th>
                   <th scope="col"></th>
@@ -66,7 +67,9 @@ class WOReports extends Component {
                     <Link to={`/home/Assets/${wo.asset._id}`}>
                       <td>{wo.asset.name}</td>
                     </Link>
-                    <td>{wo.asset.department}</td>
+                    <td>
+                      {moment(wo.report_date).format("dddd, MMMM Do YYYY")}
+                    </td>
                     {/* <td>{wo.assigned_to.name}</td> */}
                     <td>
                       <Badge color={getBadge(wo.status)}>{wo.status}</Badge>

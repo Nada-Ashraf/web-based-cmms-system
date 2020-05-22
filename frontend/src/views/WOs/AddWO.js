@@ -29,21 +29,7 @@ class AddWO extends Component {
   };
 
   componentDidMount() {
-    // fetch("/api/users")
-    //   .then((res) => res.json())
-    //   .then((users) => {
-    //     const usersFiltered = users.filter(
-    //       (user) =>
-    //         user.role.includes("Technician") &&
-    //         user.department.includes(this.props.department)
-    //     );
-    //     this.setState({ users: usersFiltered });
-    //   });
-
-    Promise.all([
-      fetch("/api/users"), //res1 // users
-      fetch("/api/assets"), //res2 //assets
-    ])
+    Promise.all([fetch("/api/users"), fetch("/api/assets")])
       .then(([users, assets]) => Promise.all([users.json(), assets.json()]))
       .then(([users, assets]) => {
         const usersFiltered = users.filter(
@@ -82,7 +68,6 @@ class AddWO extends Component {
         priority: this.state.priority,
         importance: this.state.importance,
         due_date: this.state.due_date,
-        notes: this.state.notes,
       }),
     }).then((response) => response.json());
     // .then(() => this.props.history.push("/home/PMs"));
@@ -226,22 +211,6 @@ class AddWO extends Component {
                   id="due_date"
                   name="due_date"
                   placeholder="due date"
-                />
-              </Col>
-            </FormGroup>
-            <FormGroup row>
-              <Col md="3">
-                <Label htmlFor="textarea-input">Notes</Label>
-              </Col>
-              <Col xs="12" md="9">
-                <Input
-                  value={this.state.notes}
-                  onChange={this.handleChange}
-                  type="textarea"
-                  name="notes"
-                  id="notes"
-                  rows="9"
-                  placeholder="Notes"
                 />
               </Col>
             </FormGroup>
