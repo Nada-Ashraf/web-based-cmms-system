@@ -9,6 +9,7 @@ import {
   Row,
   Col,
 } from "reactstrap";
+import moment from "moment";
 
 class ViewReport extends Component {
   state = {
@@ -36,19 +37,21 @@ class ViewReport extends Component {
         {status ? (
           <Card>
             <CardHeader>
-              <Col>
-                <Row>
+              <Row>
+                <Col>
                   <strong>
                     <i className="icon-info pr-1"></i>Report Title:
                     {this.state.data.report_title}
                   </strong>
-                </Row>
-                <Row>
+                </Col>
+                <Col>
                   <div className="float-right">
-                    {this.state.data.report_date}
+                    {moment(this.state.data.report_date).format(
+                      "dddd, MMMM Do YYYY"
+                    )}
                   </div>
-                </Row>
-              </Col>
+                </Col>
+              </Row>
             </CardHeader>
             <CardBody>
               <Table responsive striped hover>
