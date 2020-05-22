@@ -197,7 +197,7 @@ class AddAsset extends Component {
             >
               <option value="">Please select</option>
               <option value="reception">reception</option>
-              <option value="open heart icu">open heart icu</option>
+              <option value="OR">OR</option>
               <option value="surgery">surgery</option>
               <option value="cardiology">cardiology</option>
             </Input>
@@ -316,7 +316,7 @@ class AddAsset extends Component {
                 >
                   <option value="">Please select</option>
                   <option value="reception">reception</option>
-                  <option value="open heart icu">open heart icu</option>
+                  <option value="OR">OR</option>
                   <option value="cardiology">cardiology</option>
                   <option value="surgery">surgery</option>
                 </Input>

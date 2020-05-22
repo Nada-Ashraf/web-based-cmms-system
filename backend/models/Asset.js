@@ -28,7 +28,7 @@ const AssetSchema = new Schema({
   },
   department: {
     type: String,
-    enum: ["reception", "open heart icu", "cardiology", "surgery", "NA", "OR"],
+    enum: ["reception", "cardiology", "surgery", "NA", "OR"],
     required: true,
   },
   description: String,
