@@ -21,6 +21,7 @@ class CompleteWork extends Component {
     report_title: "",
     report_body: "",
     report_id: "",
+    report_date: null,
     err: null,
   };
 
@@ -44,6 +45,7 @@ class CompleteWork extends Component {
         report_title: this.state.report_title,
         report_body: this.state.report_body,
         status: this.state.status,
+        report_date: Date.now(),
       }),
     })
       .then((response) => response.json())

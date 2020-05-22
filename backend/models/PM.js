@@ -32,6 +32,7 @@ const PMSchema = new Schema({
   notes: String,
   report_title: String,
   report_body: String,
+  report_date: { type: Date, default: null },
 });
 
 // compile schema into a model to create a class

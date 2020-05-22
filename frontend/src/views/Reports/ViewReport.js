@@ -6,6 +6,8 @@ import {
   Table,
   CardFooter,
   Alert,
+  Row,
+  Col,
 } from "reactstrap";
 
 class ViewReport extends Component {
@@ -34,10 +36,19 @@ class ViewReport extends Component {
         {status ? (
           <Card>
             <CardHeader>
-              <strong>
-                <i className="icon-info pr-1"></i>Report Title:{" "}
-                {this.state.data.report_title}{" "}
-              </strong>
+              <Col>
+                <Row>
+                  <strong>
+                    <i className="icon-info pr-1"></i>Report Title:
+                    {this.state.data.report_title}
+                  </strong>
+                </Row>
+                <Row>
+                  <div className="float-right">
+                    {this.state.data.report_date}
+                  </div>
+                </Row>
+              </Col>
             </CardHeader>
             <CardBody>
               <Table responsive striped hover>

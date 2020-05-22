@@ -17,6 +17,7 @@ router.post("/add_pm", async (req, res) => {
       "notes",
       "report_title",
       "report_body",
+      "report_date",
     ])
   );
   await pm.save();
@@ -52,6 +53,7 @@ router.put("/edit/:id", async (req, res) => {
       "notes",
       "report_title",
       "report_body",
+      "report_date",
     ]),
     { new: true }
   );

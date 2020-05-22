@@ -20,6 +20,7 @@ router.post("/create", async (req, res) => {
       "report_title",
       "report_body",
       "status",
+      "report_date",
     ])
   );
   await wo.save();
@@ -58,6 +59,7 @@ router.put("/edit/:id", async (req, res) => {
       "report_title",
       "report_body",
       "status",
+      "report_date",
     ]),
     { new: true }
   );

@@ -32,6 +32,7 @@ const WorkOrderSchema = new Schema({
     enum: ["Done", "There's an issue", "Assigned"],
     default: "Assigned",
   },
+  report_date: { type: Date, default: null },
 });
 
 // compile schema into a model to create a class
