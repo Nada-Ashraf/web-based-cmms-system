@@ -54,7 +54,7 @@ class WOReports extends Component {
                 <tr>
                   <th scope="col">WO title</th>
                   <th scope="col">Asset</th>
-                  <th scope="col">Report date</th>
+                  <th scope="col">Return date</th>
                   {/* <th scope="col">Assigned to</th> */}
                   <th scope="col">Status</th>
                   <th scope="col"></th>
@@ -83,9 +83,15 @@ class WOReports extends Component {
                           endpoint: "/api/wos/",
                         }}
                       >
-                        <Button className="float-right" color="ghost-primary">
+                        <Button className="float-right" color="ghost-success">
                           <i className="icon-list"></i>
                           &nbsp;View Report
+                        </Button>
+                      </Link>
+                      <Link to={`/home/WOs/${wo._id}`}>
+                        <Button className="float-right" color="ghost-primary">
+                          <i className="icon-list"></i>
+                          &nbsp;Details
                         </Button>
                       </Link>
                     </td>

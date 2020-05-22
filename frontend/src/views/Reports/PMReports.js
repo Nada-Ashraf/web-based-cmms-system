@@ -83,9 +83,15 @@ class PMReports extends Component {
                           endpoint: "/api/pms/",
                         }}
                       >
-                        <Button className="float-right" color="ghost-primary">
+                        <Button className="float-right" color="ghost-success">
                           <i className="icon-list"></i>
                           &nbsp;View Report
+                        </Button>
+                      </Link>
+                      <Link to={`/home/PMs/${pm._id}`}>
+                        <Button className="float-right" color="ghost-primary">
+                          <i className="icon-list"></i>
+                          &nbsp;Instructions
                         </Button>
                       </Link>
                     </td>
