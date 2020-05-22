@@ -6,10 +6,11 @@ const PMSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Asset",
   },
-  instructions: [String],
+  instructions: String,
   assigned_to: {
     type: Schema.Types.ObjectId,
     ref: "User",
+    default: "5ec835b40747450f040fe50c",
   },
   status: {
     type: String,

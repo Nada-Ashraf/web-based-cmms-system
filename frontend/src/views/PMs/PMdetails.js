@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Card, CardBody, CardHeader, Table } from "reactstrap";
 
 class PMdetails extends Component {
-  state = { pm: {}, id: this.props.match.params.id };
+  state = { pm: [], id: this.props.match.params.id };
 
   componentDidMount() {
     fetch("/api/pms/" + this.state.id, {
@@ -15,6 +15,7 @@ class PMdetails extends Component {
   }
 
   render() {
+    const { instructions } = this.state.pm;
     return (
       <div className="animated fadeIn">
         <Card>
@@ -29,7 +30,17 @@ class PMdetails extends Component {
                 <td>
                   <strong>Instructions: </strong>
                 </td>
-                <td>{this.state.pm.instructions}</td>
+                <td>
+                  {instructions !== undefined
+                    ? instructions.split("\\n").map((text) => {
+                        return (
+                          <span>
+                            {text} <br />
+                          </span>
+                        );
+                      })
+                    : null}
+                </td>
               </tr>
             </Table>
           </CardBody>

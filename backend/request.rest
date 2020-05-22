@@ -3,62 +3,42 @@ POST  http://localhost:3000/api/assets
 Content-Type: application/json
 
 {
-    "department":"OR",
-    "name":"Camera System",
-    "brand":"linvatec", 
-    "model":"IM3300 EDTV", 
-    "serial_number": "56875",
-    "COO":"US",  
+    "department":"cardiology",
+    "name":"Syringe pump",
+    "brand":"fresenuis kabi",
+    "model":"INJECTOMAT AGILIA IS",
+    "serial_number": "19921591",
+    "COO":"france",  
     "supply_date":"",
-    "operation_date":"",
-    "warranty_period":"NA",
-    "supply_company":"NA",
+    "operation_date":"2005-01-31",
+    "warranty_period":"2",
+    "supply_company":"Egyptian group",
     "price":"NA",
     "maintenance_company":"NA",
     "contract_type":"NA",
     "contract_start_date":"",
     "contract_end_date":"",
-    "description":"The 3 CCD digital camera consists of a camera control unit and a connectable camera head. The camera head connects to an endoscope for High Definition visualization during minimally invasive surgical procedures. The camera controller provides outputs for video monitoring, video recording.",
-    "lifetime":"NA",
-    "proper_freq_of_use":"NA",
+    "description":"It is a small infusion pump used to gradually deliver precise and accurate small amounts of fluid, medication, blood and blood product infusions to a patient.",
+    "lifetime":"10",
+    "proper_freq_of_use":"24/7",
     "electricity_sensitivity":"Class ||",
-    "classification":"diagnostic devices",
-    "risk_level":"C",
-    "work_env": "- Power Requirements 110 VAC – 240 VAC, 50/60Hz \\n - Operating Temperature 20° F to 104° F (-7° C to 40° C) \\n - Storage Temperature -40° F to 122° F (-40° C to 50° C) \\n  - Humidity 30% to 90%",
-    "efficiency":"NA",
-    "alarms":"- Oxygen saturation \\n - Injection of contrast dye  Pulse frequency ",
+    "classification":"life support devices",
+    "risk_level":"A",
+    "work_env": "-Operating Temperature: 10 to 40°C. -Relative humidity:10 to 90% non-condensing.  \\n -Atmospheric pressure: 70 to 110 kPa.",
+    "efficiency":"excellent",
+    "alarms":"1. Pressure limit alarm. \\n 2. End of infusion alarm. \\n 3. Fault alarm (flow rate difference in relation to normal flow rate) \\n 4. Motorization alarm (force exerted on piston) \\n",
     "accessories":"NA",
-    "sterilization":"NA"
+    "sterilization":" 1. Disconnect the base from its mains supply before cleaning. \\n 2. Do not place in AUTOCLAVE nor immerse device. \\n 3. If the device is placed in high contamination risk unit, leave it in the room during disinfecting, after having it disinfected with a moist cloth. \\n 4. Use a cloth soaked in DETERGERNT-DISINFECTANT diluted with water to destroy microorganisms. \\n 5. Avoid abrasive scrubbing that could scratch the casing, do not rinse or wipe the surfaces. \\n 6. Take care of ALCOHOL-based sprays (20%-40% Alcohol) They lead to small cracks in plastic."
 }
 
 ###
 
-GET http://localhost:3000/api/assets/edit/5ec57529b7c5101af4dd13eb
-content-type: application/json
-
-{
-    "alarms": ["Upstream occlusion alarm\\n" ,
-                "Air detection alarm\\n" ,
-                "Air volume alarm\\n" , 
-                "Door alarm\\n" ,
-                "Global alarm ",
-                "Battery alarm\\n" ,
-                "End of infusion alarm\\n" ,
-                "Downstream occlusion alarm\\n" ,
-                "Tube absence alarm\\n" ,
-                "Drip detector alarm- under flow\\n" ,
-                "Drip detector alarm- over flow\\n" ,
-                "Pressure limit alarm\\n" ,
-                "Free flow alarm \\n" ,
-                "Mobile clamp absence alarm\\n"]
-}
-
 ###
-GET http://localhost:3000/api/assets
+GET http://localhost:3000/api/wos
 content-type: application/json
 
 ### 
-GET http://localhost:3000/api/assets/5ec357326d554f752ae20229
+GET http://localhost:3000/api/assets/5ec77b40cc3f3c546aae3b87
 content-type: application/json 
 
 ### test reports routes
@@ -121,30 +101,31 @@ POST http://localhost:3000/api/pms/add_pm
 content-type: application/json
 
 {
-    "title":"pm",
-    "asset":"5ec57529b7c5101af4dd13eb",
-    "instructions":"pm",
-    "schedules":"every 3 years",
-}
+    "title":"General device ppm",
+    "asset":"5ec850521aa82b2deb44609f",
+    "instructions": "Change battary and check alarms:\\n `- Battery alarm. \\n- Disengagement alarm. \\n- Plunger head position alarm. \\n- Syringe clamp alarm. \\n",
+    "schedules": "every 3 years"
+} 
 
 ### 
 
-### 
 
 POST http://localhost:3000/api/wos/create
 content-type: application/json
 
 {
-    "title":"wo",
-    "asset":"5ec57529b7c5101af4dd13eb",
-    "instructions":"wo",
-    "assigned_to":"5ec58bc7a00ada228dc5ff54",
+    "title":"Check power cord",
+    "asset":"5ec77b40cc3f3c546aae3b87",
+    "instructions":"Replacement of the power cord due to found exposed wires and damaged connector.",
     "priority":"Urgent",
-    "status":"Done",
     "importance":"Important",
-    "due_date":"2020-05-20", 
-    "notes":"notes"
+    "due_date":"2020-06-06",
+    "assigned_to":"5ec799481e9c587c73a19e97",
+    "status":"Assigned"
 }
+
+
+When should the fuses be replaced? An internal component malfunction can damage the fuses. You may need to replace the fuses if the generator fails the self-test or if the generator stops functioning, even though it is receiving power from a wall outlet. Refer to the LigaSure Vessel Sealing Generator Service Manual for instructions
 
 ###
 GET http://localhost:3000/api/pms
@@ -155,11 +136,11 @@ GET http://localhost:3000/api/pms/5ec050ef6c57db3bcc2ad7b9
 content-type: application/json
 
 ### 
-PUT http://localhost:3000/api/pms/edit/5ec050ef6c57db3bcc2ad7b9
+PUT http://localhost:3000/api/pms/edit/5ec78a7f1e9c587c73a19e8b
 content-type: application/json
 
 {
-    "report_title":"hhh"
+    "assigned_to":"5ec799391e9c587c73a19e96"
 }
 
 ### 
@@ -169,11 +150,11 @@ POST http://localhost:3000/api/auth/register
 content-type: application/json
 
 {
-    "name":"Ahmad",
-    "email":"ahmad@gmail.com",
-    "password":"ahmad",
-    "role":"Technician",
-    "department":"reception"
+    "name":"manager",
+    "email":"manager@cmms.com",
+    "password":"manager",
+    "role":"Manager",
+    "department":"NA"
 }
 
 ###

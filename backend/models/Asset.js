@@ -16,6 +16,8 @@ const AssetSchema = new Schema({
       "NA",
       "hill-rom",
       "philips",
+      "fresenuis kabi",
+      "sirio",
       "3A healthcare",
       "kabi fresenuis",
       "schilir",
