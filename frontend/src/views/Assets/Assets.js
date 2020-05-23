@@ -92,7 +92,7 @@ class Assets extends Component {
                     <td>{asset.name}</td>
                     <td>{asset.model}</td>
                     <td>{asset.serial_number}</td>
-                    <td>{asset.department}</td>
+                    <td>{asset._id}</td>
                     <td>
                       <Badge color={getBadge(asset.status)}>
                         {asset.status}

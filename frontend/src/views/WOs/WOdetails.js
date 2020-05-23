@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Card, CardBody, CardHeader, Table } from "reactstrap";
 
 class WOdetails extends Component {
-  state = { wo: {}, id: this.props.match.params.id };
+  state = { wo: [], id: this.props.match.params.id };
 
   componentDidMount() {
     fetch("/api/wos/" + this.state.id, {
@@ -15,6 +15,7 @@ class WOdetails extends Component {
   }
 
   render() {
+    const { instructions } = this.state.wo;
     return (
       <div className="animated fadeIn">
         <Card>
@@ -29,7 +30,19 @@ class WOdetails extends Component {
                 <td>
                   <strong>Instructions: </strong>
                 </td>
-                <td>{this.state.wo.instructions}</td>
+                <td>
+                  {" "}
+                  {instructions !== undefined
+                    ? instructions.split("\\n").map((text) => {
+                        return (
+                          <span>
+                            {text} <br />
+                            <br />
+                          </span>
+                        );
+                      })
+                    : null}
+                </td>
               </tr>
             </Table>
           </CardBody>

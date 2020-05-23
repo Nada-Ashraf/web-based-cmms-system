@@ -6,7 +6,7 @@ const WorkOrderSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Asset",
   },
-  instructions: [String],
+  instructions: String,
   assigned_to: {
     type: Schema.Types.ObjectId,
     ref: "User",

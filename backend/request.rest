@@ -103,7 +103,7 @@ content-type: application/json
 {
     "title":"General device ppm",
     "asset":"5ec850521aa82b2deb44609f",
-    "instructions": "Change battary and check alarms:\\n `- Battery alarm. \\n- Disengagement alarm. \\n- Plunger head position alarm. \\n- Syringe clamp alarm. \\n",
+    "instructions": "1. Charge and deliver a shock when powered by AC power alone. \\n 2. Charge and deliver a shock when powered by battery alone. \\n 3. Disarm when the disarm sort key is pressed.",
     "schedules": "every 3 years"
 } 
 
@@ -114,13 +114,13 @@ POST http://localhost:3000/api/wos/create
 content-type: application/json
 
 {
-    "title":"Check power cord",
-    "asset":"5ec77b40cc3f3c546aae3b87",
-    "instructions":"Replacement of the power cord due to found exposed wires and damaged connector.",
-    "priority":"Urgent",
-    "importance":"Important",
-    "due_date":"2020-06-06",
-    "assigned_to":"5ec799481e9c587c73a19e97",
+    "title":"Clean instrument",
+    "asset":"5ec76c9fdd4a6b3f3c3e9c44",
+    "instructions": "1. Remove the cartridge from the analyzer as described in Section XI: Removing the Cartridge. Discard the cartridge in a biohazard container. Once the cartridge has been removed, it cannot be reinserted.  2. Shut down the instrument as described in Section XIII: Shutting Down the Analyzer. \\n  3. Disconnect the instrument from AC power supply [AC outlet or uninterruptible power supply (UPS)]. \\n  4. Remove any blood or dust from the outer surface of the case using a clean, soft cloth moistened with the 10% chlorine bleach solution. \\n  5. Inspect the cartridge bay area and clean the polyester laminate protective sheet on the bottom of the bay as needed. \\n  6. (Optional) With the AC power cord unplugged from the power source, wipe the AC power cord completely from end to end using a soft cloth moistened with cleaning solution. \\n  7. If necessary, remove the instrument from the work surface, and clean the work surface using a cloth or paper towel moistened with the 10% chlorine bleach solution. \\n  8. Place any used cloth or paper towel in an appropriate biohazard waste bag. Seal the bag and dispose of it in accordance your institution’s procedures for disposing of materials contaminated with biohazard material. \\n  9. Reconnect the power cord to a properly grounded and wired AC outlet (AC outlet or UPS).",
+    "priority":"Not Urgent",
+    "importance":"Not Important",
+    "due_date":"2020-07-01",
+    "assigned_to":"5ec799871e9c587c73a19e99",
     "status":"Assigned"
 }
 
