@@ -1,4 +1,4 @@
-# web-based-cmms-system
+# Web based CMMS system
 
 Prototype implementation of a web-based CMMS system using MERN stack.
 
@@ -14,9 +14,62 @@ For more info about folder structure click [here](https://stackoverflow.com/a/51
 2. run server and client:
    `npm run dev`
 
-### System flow overview
+## Work Flow
 
-## Snapshots
+### Work Orders
+
+1. The department supervisor start a work order and assign it to a technican.
+
+<p align="center">
+<br>
+ <img src="./snapshots/create_wo.png" width="60%" height="60%">
+   <br>
+<em> Fig: Create work order form</em>
+<br>
+</p>
+
+2. The technican complete the work order and write a report back to the supervisor.
+
+<p align="center">
+<br>
+ <img src="./snapshots/complete_wo2.png" width="60%" height="60%">
+   <br>
+<em>Fig: Return report form </em>
+<br>
+</p>
+
+### Preventive Maintenance
+
+1. The system manager add the preventive maintenance required for a specfic asset when registering it in the system for the first time.
+
+<p align="center">
+<br>
+ <img src="./snapshots/add_pm.png" width="60%" height="60%">
+   <br>
+<em>Fig: Add PM</em>
+<br>
+</p>
+
+2. The department supervisor assign PM work to a technician.
+
+<p align="center">
+<br>
+ <img src="./snapshots/assign_pm.png" width="60%" height="60%">
+   <br>
+<em>Fig: Assign PM work</em>
+<br>
+</p>
+
+3. The technican complete the work order and write a report back to the supervisor.
+<p align="center">
+<br>
+ <img src="./snapshots/complete_pm.png" width="60%" height="60%">
+   <br>
+<em>Fig: Return report form </em>
+<br>
+</p>
+
+## UI Overview
 
 ### 1. Login page
 
