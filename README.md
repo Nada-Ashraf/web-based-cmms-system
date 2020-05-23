@@ -1,6 +1,6 @@
 <br />
 <p align="center">
-  <a href="https://github.com/Abdulrahman-Khalid/nabd-react-native">
+  <a href="https://github.com/Nada-Ashraf/web-based-cmms-system">
     <img src="./snapshots/logo.png" alt="Logo" width="50%" height="50%">
   </a>
 
@@ -8,6 +8,16 @@
     Prototype implementation of a web-based CMMS system using the MERN stack.
   </p>
 </p>
+
+<div align="center">
+
+[![GitHub issues](https://img.shields.io/github/contributors/Nada-Ashraf/web-based-cmms-system)](https://github.com/Nada-Ashraf/web-based-cmms-system/contributors)
+[![GitHub issues](https://img.shields.io/github/issues/Nada-Ashraf/web-based-cmms-system)](https://github.com/Nada-Ashraf/web-based-cmms-system/issues)
+[![GitHub forks](https://img.shields.io/github/forks/Nada-Ashraf/web-based-cmms-system)](https://github.com/Nada-Ashraf/web-based-cmms-system/network)
+[![GitHub stars](https://img.shields.io/github/stars/Nada-Ashraf/web-based-cmms-system)](https://github.com/Nada-Ashraf/web-based-cmms-system/stargazers)
+[![GitHub license](https://img.shields.io/github/license/Nada-Ashraf/web-based-cmms-system)](https://github.com/Nada-Ashraf/web-based-cmms-system/blob/master/LICENSE)
+
+</div>
 
 </div>
 
