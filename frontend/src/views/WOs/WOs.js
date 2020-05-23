@@ -64,7 +64,7 @@ class WOs extends Component {
           <CardHeader>
             <i className="fa fa-align-justify"></i> Work orders{" "}
             <small className="text-muted">list</small>
-            {isSupervisor || isManager ? (
+            {isSupervisor ? (
               <Link to="/home/WOs/Add_WO">
                 <Button className="float-right" color="primary">
                   <i className="icon-plus"></i>
@@ -104,7 +104,7 @@ class WOs extends Component {
                     <td>
                       {isManager ? (
                         <React.Fragment>
-                          <Button
+                          {/* <Button
                             className="float-right"
                             color="ghost-danger"
                             onClick={() => {
@@ -112,7 +112,7 @@ class WOs extends Component {
                             }}
                           >
                             <i className="icon-trash"></i>&nbsp;Delete
-                          </Button>
+                          </Button> */}
                           {/* <Button className="float-right" color="ghost-success">
                             <i className=" icon-pencil"></i>&nbsp;Edit
                           </Button> */}

@@ -21,7 +21,8 @@ class WOdetails extends Component {
         <Card>
           <CardHeader>
             <strong>
-              <i className="icon-info pr-1"></i>wo Title: {this.state.wo.title}{" "}
+              <i className="icon-info pr-1"></i>
+              {this.state.wo.title}{" "}
             </strong>
           </CardHeader>
           <CardBody>
