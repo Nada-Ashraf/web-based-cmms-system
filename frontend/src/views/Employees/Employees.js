@@ -76,7 +76,7 @@ class Employees extends Component {
                     <td>{employee.name}</td>
                     <td>{employee.role}</td>
                     <td>{employee.email}</td>
-                    <td>{employee._id}</td>
+                    <td>{employee.department}</td>
                     <td>
                       {isManager ? (
                         <React.Fragment>
