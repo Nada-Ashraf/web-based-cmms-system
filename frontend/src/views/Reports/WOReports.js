@@ -64,9 +64,11 @@ class WOReports extends Component {
                 {this.state.wos.map((wo) => (
                   <tr key={wo._id}>
                     <td>{wo.title}</td>
-                    <Link to={`/home/Assets/${wo.asset._id}`}>
-                      <td>{wo.asset.name}</td>
-                    </Link>
+                    <td>
+                      <Link to={`/home/Assets/${wo.asset._id}`}>
+                        {wo.asset.name}
+                      </Link>
+                    </td>
                     <td>
                       {moment(wo.report_date).format("dddd, MMMM Do YYYY")}
                     </td>

@@ -91,9 +91,11 @@ class WOs extends Component {
                 {this.state.wos.map((wo) => (
                   <tr key={wo._id}>
                     <td>{wo.title}</td>
-                    <Link to={`/home/Assets/${wo.asset._id}`}>
-                      <td>{wo.asset.name}</td>
-                    </Link>
+                    <td>
+                      <Link to={`/home/Assets/${wo.asset._id}`}>
+                        {wo.asset.name}
+                      </Link>
+                    </td>
                     <td>{wo.asset.department}</td>
                     <td>{wo.assigned_to.name}</td>
                     <td>

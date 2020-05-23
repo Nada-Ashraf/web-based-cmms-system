@@ -64,9 +64,11 @@ class PMReports extends Component {
                 {this.state.pms.map((pm) => (
                   <tr key={pm._id}>
                     <td>{pm.title}</td>
-                    <Link to={`/home/Assets/${pm.asset._id}`}>
-                      <td>{pm.asset.name}</td>
-                    </Link>
+                    <td>
+                      <Link to={`/home/Assets/${pm.asset._id}`}>
+                        {pm.asset.name}
+                      </Link>
+                    </td>
                     <td>
                       {moment(pm.report_date).format("dddd, MMMM Do YYYY")}
                     </td>
