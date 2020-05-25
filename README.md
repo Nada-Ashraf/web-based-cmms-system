@@ -15,22 +15,19 @@
 [![GitHub issues](https://img.shields.io/github/issues/Nada-Ashraf/web-based-cmms-system)](https://github.com/Nada-Ashraf/web-based-cmms-system/issues)
 [![GitHub forks](https://img.shields.io/github/forks/Nada-Ashraf/web-based-cmms-system)](https://github.com/Nada-Ashraf/web-based-cmms-system/network)
 [![GitHub stars](https://img.shields.io/github/stars/Nada-Ashraf/web-based-cmms-system)](https://github.com/Nada-Ashraf/web-based-cmms-system/stargazers)
-[![GitHub license](https://img.shields.io/github/license/Nada-Ashraf/web-based-cmms-system)](https://github.com/Nada-Ashraf/web-based-cmms-system/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/Nada-Ashraf/web-based-cmms-system)](https://github.com/Nada-Ashraf/web-based-cmms-system/master/LICENSE)
 
 </div>
-
-</div>
-
-## Folder structure
-
-For more info about folder structure click [here](https://stackoverflow.com/a/51128385).
 
 ## How to run
 
-1. install dependancies:
-   `npm install`
+1. Install backend dependancies:
+   `cd backend && npm install`
 
-2. run server and client:
+2. Install frontend dependancies:
+   `cd .. && cd frontend && npm install`
+
+3. run server and client:
    `npm run dev`
 
 ## Work Flow

@@ -35,6 +35,11 @@ export default {
           url: "/home/Reports/WOs",
           icon: "icon-wrench",
         },
+        {
+          name: "Departments Reports",
+          url: "/home/DepartmentReports",
+          icon: "icon-wrench",
+        },
       ],
     },
   ],
