@@ -30,6 +30,41 @@
 3. run server and client:
    `npm run dev`
 
+## Output: Departments reports
+
+- The manager can view all preventive maintenance and work orders work reports for each department.
+
+- The supervisor of a department can view preventive maintenance and work orders work reports for that department.
+
+- The details of each report can be viewd by clicking on `View Report` button.
+
+1. **Cardiology Report**
+<p align="center">
+<br>
+ <img src="./snapshots/cardiology_reports.png" width="75%" height="75%">
+   <br>
+<em> Fig: Cardiology reports</em>
+<br>
+</p>
+
+2. **Surgery Report**
+<p align="center">
+<br>
+ <img src="./snapshots/surgery_reports.png" width="75%" height="75%">
+   <br>
+<em> Fig: Surgery reports</em>
+<br>
+</p>
+
+3. **Reception Report**
+<p align="center">
+<br>
+ <img src="./snapshots/reception_reports.png" width="75%" height="75%">
+   <br>
+<em> Fig: Reception reports</em>
+<br>
+</p>
+
 ## Work Flow
 
 ### Work Orders

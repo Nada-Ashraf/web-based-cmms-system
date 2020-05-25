@@ -56,7 +56,8 @@ class ManagerReports extends Component {
       <div className="animated fadeIn">
         <Card>
           <CardHeader>
-            <i className="fa fa-align-justify"></i> Department{" "}
+            <i className="fa fa-align-justify"></i>{" "}
+            {this.props.location.department}{" "}
             <small className="text-muted">PMs</small>
           </CardHeader>
           <CardBody>
@@ -117,7 +118,8 @@ class ManagerReports extends Component {
 
         <Card>
           <CardHeader>
-            <i className="fa fa-align-justify"></i> Department{" "}
+            <i className="fa fa-align-justify"></i>{" "}
+            {this.props.location.department}{" "}
             <small className="text-muted">WOs</small>
           </CardHeader>
           <CardBody>

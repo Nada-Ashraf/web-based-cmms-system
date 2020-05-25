@@ -38,7 +38,7 @@ const routes = [
   {
     path: "/home/DepartmentReports/Department",
     exact: true,
-    name: "Manager Reports",
+    name: "",
     component: ManagerReports,
   },
   { path: "/home/PMs", exact: true, name: "PMs", component: PMs },
