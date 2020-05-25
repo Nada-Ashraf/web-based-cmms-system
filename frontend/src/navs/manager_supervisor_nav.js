@@ -38,7 +38,7 @@ export default {
         {
           name: "Departments Reports",
           url: "/home/DepartmentReports",
-          icon: "icon-wrench",
+          icon: "icon-puzzle",
         },
       ],
     },

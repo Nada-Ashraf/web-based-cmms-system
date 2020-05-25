@@ -16,7 +16,12 @@ const CompleteWork = React.lazy(() => import("./views/CompleteWork"));
 const WOs = React.lazy(() => import("./views/WOs/WOs"));
 const AddWO = React.lazy(() => import("./views/WOs/AddWO"));
 const WOdetails = React.lazy(() => import("./views/WOs/WOdetails"));
-const DepartmentReports = React.lazy(() => import("./views/DepartmentReports"));
+const DepartmentReports = React.lazy(() =>
+  import("./views/DepartmentReports/DepartmentReports")
+);
+const ManagerReports = React.lazy(() =>
+  import("./views/DepartmentReports/ManagerReports")
+);
 // const Login = React.lazy(() => import("./views/Auth/Login"));
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
@@ -29,6 +34,12 @@ const routes = [
     exact: true,
     name: "Departments Reports",
     component: DepartmentReports,
+  },
+  {
+    path: "/home/DepartmentReports/Department",
+    exact: true,
+    name: "Manager Reports",
+    component: ManagerReports,
   },
   { path: "/home/PMs", exact: true, name: "PMs", component: PMs },
   {
