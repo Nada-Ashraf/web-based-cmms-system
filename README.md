@@ -7,7 +7,6 @@
   <p align="center" style="font-family: times, serif; font-size:14pt; font-style:italic">
     Prototype implementation of a web-based CMMS system using the MERN stack.
   </p>
-</p>
 
 <div align="center">
 
@@ -18,6 +17,19 @@
 [![GitHub license](https://img.shields.io/github/license/Nada-Ashraf/web-based-cmms-system)](https://github.com/Nada-Ashraf/web-based-cmms-system/master/LICENSE)
 
 </div>
+
+  <p align="center" style="font-family: times, serif; font-size:14pt; font-style:italic">
+    <Strong> Group No. 7 </Strong>
+    <br/>
+    Nada Ashraf
+    <br/>
+    Khalid Maher
+    <br/>
+    Ali Gamal
+    <br/>
+    Sara Mohamad
+  </p>
+</p>
 
 ## How to run
 
@@ -249,7 +261,7 @@ The manager can:
 
 #### 2.5 Reports
 
-The manager can view all PM and WO reports. //CHECK
+The manager can view all PM and WO reports.
 
 <p align="center">
 <br>
